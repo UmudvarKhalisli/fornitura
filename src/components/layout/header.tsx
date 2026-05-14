@@ -31,7 +31,7 @@ export function Header({ locale, dictionary, settings }: HeaderProps) {
             <img 
               src="/logo.png" 
               alt="Fornitura Logo" 
-              className="h-10 md:h-14 w-auto object-contain" 
+              className="h-16 md:h-20 w-auto object-contain scale-[1.2] md:scale-[1.4] origin-left" 
             />
           </Link>
 
