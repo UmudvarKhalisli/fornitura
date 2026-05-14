@@ -1,13 +1,15 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Container } from '@/components/shared/container';
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, ArrowRight } from 'lucide-react';
 
 interface CTASectionProps {
   dictionary: any;
   settings: any;
+  locale: string;
 }
 
-export function CTASection({ dictionary, settings }: CTASectionProps) {
+export function CTASection({ dictionary, settings, locale }: CTASectionProps) {
   return (
     <section className="py-20 md:py-32 bg-deep-charcoal relative overflow-hidden flex items-center justify-center">
       {/* Background Image with Overlay */}
@@ -33,17 +35,30 @@ export function CTASection({ dictionary, settings }: CTASectionProps) {
             {dictionary.home.cta_section_desc}
           </p>
           
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-whatsapp rounded-lg blur opacity-40 group-hover:opacity-70 transition duration-500 animate-pulse" />
-            <a
-              href={`https://wa.me/${settings?.whatsapp_number?.replace(/[^\d]/g, '') || ''}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative inline-flex items-center justify-center gap-3 px-10 py-4 bg-whatsapp text-white font-bold rounded-lg hover:bg-[#1ebe5a] transition-all duration-300 text-lg shadow-xl hover:-translate-y-1 hover:shadow-whatsapp/50"
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            {/* Primary Action Button */}
+            <Link
+              href={`/${locale}/spare-parts`}
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-muted-gold text-deep-charcoal font-bold rounded-lg hover:bg-white transition-all duration-300 text-base md:text-lg shadow-lg hover:-translate-y-1 hover:shadow-xl group"
             >
-              <MessageCircle className="w-6 h-6" />
-              {dictionary.home.cta_section_button}
-            </a>
+              {dictionary.nav.spare_parts}
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+
+            {/* Small Animated WhatsApp Button */}
+            <div className="relative group flex items-center">
+              <div className="absolute -inset-2 bg-whatsapp rounded-full blur-md opacity-40 group-hover:opacity-70 transition duration-500 animate-pulse" />
+              <a
+                href={`https://wa.me/${settings?.whatsapp_number?.replace(/[^\d]/g, '') || ''}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative flex items-center gap-3 px-5 py-3 bg-[#111111] border border-whatsapp/30 text-white font-medium rounded-full hover:bg-[#1ebe5a] hover:border-[#1ebe5a] transition-all duration-300 text-sm md:text-base z-10"
+                aria-label="WhatsApp"
+              >
+                <MessageCircle className="w-5 h-5 text-whatsapp group-hover:text-white transition-colors" />
+                <span>WhatsApp</span>
+              </a>
+            </div>
           </div>
         </div>
       </Container>

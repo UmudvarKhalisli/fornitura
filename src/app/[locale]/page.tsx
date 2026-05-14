@@ -58,7 +58,7 @@ export default async function HomePage({
       <WhyChooseUs dictionary={dictionary} />
       <RepairIntro dictionary={dictionary} locale={locale} settings={settings} />
       <BrandsSection brands={brands} dictionary={dictionary} />
-      <CTASection dictionary={dictionary} settings={settings} />
+      <CTASection dictionary={dictionary} settings={settings} locale={locale} />
     </>
   );
 }
