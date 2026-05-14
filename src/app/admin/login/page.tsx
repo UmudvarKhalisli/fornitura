@@ -58,9 +58,7 @@ export default function AdminLoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-deep-charcoal">
       <div className="w-full max-w-sm mx-auto p-8">
         <div className="text-center mb-8">
-          <div className="w-12 h-12 bg-muted-gold rounded-md flex items-center justify-center mx-auto mb-4">
-            <span className="text-deep-charcoal font-bold text-xl">F</span>
-          </div>
+          <img src="/logo.png" alt="Fornitura Logo" className="h-12 w-auto mx-auto mb-4 object-contain brightness-0 invert" />
           <h1 className="text-2xl font-bold text-white">Admin Login</h1>
           <p className="text-sm text-metallic-silver mt-1">Fornitura</p>
         </div>
