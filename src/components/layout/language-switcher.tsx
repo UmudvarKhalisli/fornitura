@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-const labels: Record<Locale, string> = { az: 'Azərbaycan', en: 'English', ru: 'Русский' };
+const labels: Record<Locale, string> = { az: 'AZ', en: 'EN', ru: 'RU' };
 
 export function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {
   const pathname = usePathname();
@@ -31,12 +31,12 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {
       <DropdownMenuTrigger className="flex items-center justify-center w-9 h-9 rounded-md text-medium-gray hover:text-deep-charcoal hover:bg-off-white transition-colors focus:outline-none cursor-pointer">
         <Globe className="w-5 h-5" />
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-32 z-[100]">
+      <DropdownMenuContent align="end" sideOffset={8} className="w-16 min-w-[4rem] z-[100] bg-white border border-light-gray p-1 shadow-md rounded-md">
         {SUPPORTED_LOCALES.map((locale) => (
           <DropdownMenuItem
             key={locale}
             onClick={() => switchLanguage(locale)}
-            className={`cursor-pointer ${currentLocale === locale ? 'font-bold text-muted-gold bg-off-white' : 'text-deep-charcoal'}`}
+            className={`cursor-pointer justify-center text-sm rounded-sm py-1.5 ${currentLocale === locale ? 'font-bold text-muted-gold bg-off-white' : 'text-deep-charcoal hover:bg-off-white/50'}`}
           >
             {labels[locale]}
           </DropdownMenuItem>
