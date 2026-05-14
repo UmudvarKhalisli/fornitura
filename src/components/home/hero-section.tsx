@@ -20,11 +20,11 @@ export function HeroSection({ dictionary, locale, settings }: HeroSectionProps) 
         src={heroImage || "/hero-bg.png"}
         alt="Heavy machinery background"
         fill
-        className="object-cover opacity-40 mix-blend-overlay"
+        className="object-cover opacity-60"
         priority
         sizes="100vw"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-deep-charcoal/90 via-deep-charcoal/60 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-deep-charcoal/80 via-deep-charcoal/30 to-transparent" />
 
       {/* Overlay pattern */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
