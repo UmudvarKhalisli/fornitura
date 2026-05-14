@@ -28,10 +28,8 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <button className="flex items-center justify-center w-9 h-9 rounded-md text-medium-gray hover:text-deep-charcoal hover:bg-off-white transition-colors focus:outline-none">
-          <Globe className="w-5 h-5" />
-        </button>
+      <DropdownMenuTrigger className="flex items-center justify-center w-9 h-9 rounded-md text-medium-gray hover:text-deep-charcoal hover:bg-off-white transition-colors focus:outline-none cursor-pointer">
+        <Globe className="w-5 h-5" />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-32 z-[100]">
         {SUPPORTED_LOCALES.map((locale) => (
