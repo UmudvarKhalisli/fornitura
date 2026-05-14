@@ -9,15 +9,13 @@ const LOCALE_COOKIE = 'NEXT_LOCALE';
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Skip non-page routes
+  // Skip non-page routes and static files
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
     pathname.startsWith('/admin') ||
     pathname.startsWith('/static') ||
-    pathname === '/robots.txt' ||
-    pathname === '/sitemap.xml' ||
-    pathname === '/favicon.ico'
+    pathname.match(/\.(png|jpe?g|gif|svg|webp|ico|xml|txt)$/i)
   ) {
     return NextResponse.next();
   }
@@ -40,5 +38,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next|api|admin|static|robots.txt|sitemap.xml|favicon.ico).*)'],
+  matcher: ['/((?!_next|api|admin|static|.*\\..*).*)'],
 };
