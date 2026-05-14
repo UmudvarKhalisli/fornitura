@@ -40,12 +40,12 @@ export function Header({ locale, dictionary, settings }: HeaderProps) {
               <Link
                 key={link.href}
                 href={link.href}
-                className="relative overflow-hidden px-3 py-2 group text-sm font-medium"
+                className="relative inline-flex items-center justify-center overflow-hidden px-3 py-2 group text-sm font-medium rounded-md"
               >
-                <span className="block transition-transform duration-300 ease-out group-hover:-translate-y-[150%] text-medium-gray">
+                <span className="block transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-[150%] text-medium-gray group-hover:text-deep-charcoal">
                   {link.label}
                 </span>
-                <span className="absolute inset-0 flex items-center justify-center transition-transform duration-300 ease-out translate-y-[150%] group-hover:translate-y-0 text-muted-gold font-semibold">
+                <span className="absolute inset-0 flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] translate-y-[150%] group-hover:translate-y-0 text-muted-gold font-bold">
                   {link.label}
                 </span>
               </Link>
