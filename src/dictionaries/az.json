@@ -1,0 +1,143 @@
+{
+  "nav": {
+    "home": "Ana səhifə",
+    "spare_parts": "Ehtiyat hissələri",
+    "repair_service": "Təmir xidməti",
+    "about": "Haqqımızda",
+    "brands": "Brendlər",
+    "contact": "Əlaqə",
+    "blog": "Bloq"
+  },
+  "hero": {
+    "title": "Ağır texnika ehtiyat hissələri üçün etibarlı ünvan",
+    "subtitle": "Fornitura ekskavator, kran, buldozer, yükləyici və digər ağır texnikalar üçün ehtiyat hissələrinin satışını və texniki dəstək xidmətlərini təqdim edir.",
+    "cta_primary": "Ehtiyat hissələrinə bax",
+    "cta_secondary": "WhatsApp ilə sorğu göndər"
+  },
+  "catalog": {
+    "title": "Ehtiyat hissələri",
+    "subtitle": "Geniş çeşiddə ağır texnika ehtiyat hissələri",
+    "search_placeholder": "Məhsul adı və ya kod ilə axtar...",
+    "all_categories": "Bütün kateqoriyalar",
+    "all_brands": "Bütün brendlər",
+    "filter": "Filter",
+    "clear_filters": "Filtrləri təmizlə",
+    "no_results": "Heç bir məhsul tapılmadı",
+    "no_results_desc": "Axtarış kriteriyalarınız uyğun məhsul tapılmadı. Fərqli sözlərlə yenidən cəhd edin.",
+    "results_count": "{count} məhsul tapıldı",
+    "page": "Səhifə {page}"
+  },
+  "product": {
+    "part_number": "Kod",
+    "category": "Kateqoriya",
+    "brand": "Brend",
+    "compatible_models": "Uyğun modellər",
+    "in_stock": "Stokda var",
+    "out_of_stock": "Stokda yoxdur",
+    "ask_price_whatsapp": "Qiyməti WhatsApp ilə soruş",
+    "description": "Məhsul haqqında",
+    "back_to_catalog": "Kataloqa qayıt",
+    "share": "Paylaş",
+    "featured_title": "Seçilmiş məhsullar"
+  },
+  "categories": {
+    "title": "Kateqoriyalar",
+    "view_all": "Bütün kateqoriyalar",
+    "view_category": "Kateqoriyaya bax"
+  },
+  "brands": {
+    "title": "Brendlər",
+    "subtitle": "Əməkdaşlıq etdiyimiz brendlər",
+    "view_all": "Bütün brendlər"
+  },
+  "repair_service": {
+    "title": "Təmir xidməti",
+    "subtitle": "Peşəkar texniki dəstək və təmir xidmətləri",
+    "cta": "WhatsApp ilə müraciət et",
+    "learn_more": "Ətraflı məlumat"
+  },
+  "about": {
+    "title": "Haqqımızda",
+    "subtitle": "Fornitura haqqında"
+  },
+  "contact": {
+    "title": "Əlaqə",
+    "subtitle": "Bizimlə əlaqə saxlayın",
+    "form_title": "Mesaj göndərin",
+    "name": "Adınız",
+    "email": "E-poçt",
+    "phone": "Telefon",
+    "subject": "Mövzu",
+    "message": "Mesajınız",
+    "submit": "Göndər",
+    "success": "Mesajınız uğurla göndərildi!",
+    "success_desc": "Ən qısa zamanda sizinlə əlaqə saxlayacağıq.",
+    "error": "Xəta baş verdi",
+    "error_desc": "Mesajınız göndərilə bilmədi. Zəhmət olmasa yenidən cəhd edin.",
+    "call_us": "Zəng et",
+    "write_us": "WhatsApp",
+    "email_us": "E-poçt göndər",
+    "visit_us": "Ünvanımız"
+  },
+  "blog": {
+    "title": "Bloq",
+    "subtitle": "Sənaye xəbərləri və məqalələr",
+    "read_more": "Oxu",
+    "no_posts": "Hələ heç bir məqalə yoxdur",
+    "back_to_blog": "Bloqa qayıt",
+    "published_at": "Yayımlanma tarixi"
+  },
+  "home": {
+    "why_choose_us": "Niyə Fornitura?",
+    "why_choose_us_desc": "Ağır texnika ehtiyat hissələri sahəsində etibarlı tərəfdaşınız",
+    "quality": "Yüksək keyfiyyət",
+    "quality_desc": "Orijinal və sertifikatlı ehtiyat hissələri",
+    "delivery": "Sürətli çatdırılma",
+    "delivery_desc": "Sifarişlərinizin operativ çatdırılması",
+    "support": "Texniki dəstək",
+    "support_desc": "Peşəkar məsləhət və dəstək xidməti",
+    "experience": "Təcrübə",
+    "experience_desc": "Uzun illərə əsaslanan sahə təcrübəsi",
+    "repair_intro_title": "Təmir xidmətləri",
+    "repair_intro_desc": "Ağır texnikanız üçün peşəkar təmir və texniki qulluq xidmətləri təqdim edirik.",
+    "cta_section_title": "Ehtiyat hissəsi axtarırsınız?",
+    "cta_section_desc": "Bizə WhatsApp ilə yazın, mütəxəssislərimiz sizə ən qısa zamanda cavab versin.",
+    "cta_section_button": "WhatsApp ilə yaz"
+  },
+  "footer": {
+    "rights": "Bütün hüquqlar qorunur.",
+    "navigation": "Naviqasiya",
+    "contact": "Əlaqə məlumatları",
+    "follow_us": "Bizi izləyin",
+    "working_hours": "İş saatları",
+    "working_hours_text": "Bazar ertəsi - Şənbə: 09:00 - 18:00"
+  },
+  "common": {
+    "loading": "Yüklənir...",
+    "error": "Xəta baş verdi",
+    "retry": "Yenidən cəhd et",
+    "not_found": "Səhifə tapılmadı",
+    "not_found_desc": "Axtardığınız səhifə mövcud deyil və ya silinmişdir.",
+    "go_home": "Ana səhifəyə qayıt",
+    "language": "Dil",
+    "whatsapp": "WhatsApp",
+    "call": "Zəng et",
+    "email": "E-poçt"
+  },
+  "seo": {
+    "home_title": "Fornitura - Ağır texnika ehtiyat hissələri",
+    "home_desc": "Ekskavator, kran, buldozer və digər ağır texnikalar üçün ehtiyat hissələrinin satışı və texniki dəstək.",
+    "catalog_title": "Ehtiyat hissələri kataloqu",
+    "catalog_desc": "Geniş çeşiddə ağır texnika ehtiyat hissələri. Keyfiyyətli və sertifikatlı məhsullar.",
+    "repair_title": "Təmir xidməti",
+    "repair_desc": "Ağır texnikanız üçün peşəkar təmir və texniki qulluq xidmətləri.",
+    "about_title": "Haqqımızda",
+    "about_desc": "Fornitura - ağır texnika ehtiyat hissələri sahəsində etibarlı tərəfdaşınız.",
+    "brands_title": "Brendlər",
+    "brands_desc": "Əməkdaşlıq etdiyimiz brendlər və istehsalçılar.",
+    "contact_title": "Əlaqə",
+    "contact_desc": "Fornitura ilə əlaqə saxlayın.",
+    "blog_title": "Bloq",
+    "blog_desc": "Sənaye xəbərləri, məqalələr və yeniliklər."
+  }
+}
