@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import { Phone, Mail, MapPin, Clock, MessageCircle, Globe, ExternalLink } from 'lucide-react';
-// Social icons: since lucide-react doesn't have brand icons, we use generic ones
+import { Phone, Mail, MapPin, Clock, MessageCircle, Globe, ExternalLink, Instagram, Facebook, Linkedin, Youtube } from 'lucide-react';
 
 interface FooterProps {
   locale: string;
@@ -16,7 +15,6 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
     { label: dictionary.nav.spare_parts, href: `/${locale}/spare-parts` },
     { label: dictionary.nav.repair_service, href: `/${locale}/repair-service` },
     { label: dictionary.nav.about, href: `/${locale}/about` },
-    { label: dictionary.nav.brands, href: `/${locale}/brands` },
     { label: dictionary.nav.contact, href: `/${locale}/contact` },
     { label: dictionary.nav.blog, href: `/${locale}/blog` },
   ];
@@ -24,33 +22,34 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
   const address = settings?.[`address_${locale}`] || settings?.address_en || 'Bakı, Azərbaycan';
 
   return (
-    <footer className="bg-deep-charcoal text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+    <footer className="bg-[#111111] text-white border-t border-dark-graphite/50 relative overflow-hidden">
+      {/* Subtle Background Elements */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-muted-gold/5 rounded-full blur-[80px]" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           {/* Company */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-muted-gold rounded-md flex items-center justify-center">
-                <span className="text-deep-charcoal font-bold text-lg">F</span>
-              </div>
-              <span className="text-xl font-bold">Fornitura</span>
-            </div>
-            <p className="text-metallic-silver text-sm leading-relaxed max-w-xs">
+          <div className="lg:pr-8">
+            <Link href={`/${locale}`} className="inline-block mb-6">
+              <img src="/logo.png" alt="Fornitura Logo" className="h-12 w-auto object-contain brightness-0 invert" />
+            </Link>
+            <p className="text-metallic-silver text-sm leading-relaxed mb-8">
               {dictionary.hero.subtitle}
             </p>
           </div>
 
           {/* Navigation */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-gold mb-4">
+            <h3 className="text-sm font-bold uppercase tracking-widest text-muted-gold mb-6 flex items-center gap-2">
+              <div className="w-4 h-[2px] bg-muted-gold" />
               {dictionary.footer.navigation}
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-3">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-metallic-silver hover:text-white transition-colors"
+                    className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300"
                   >
                     {link.label}
                   </Link>
@@ -61,23 +60,18 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
 
           {/* Contact */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-gold mb-4">
+            <h3 className="text-sm font-bold uppercase tracking-widest text-muted-gold mb-6 flex items-center gap-2">
+              <div className="w-4 h-[2px] bg-muted-gold" />
               {dictionary.footer.contact}
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {settings?.phone_number && (
                 <li>
-                  <a href={`tel:${settings.phone_number}`} className="flex items-center gap-2 text-sm text-metallic-silver hover:text-white transition-colors">
-                    <Phone className="w-4 h-4 shrink-0" />
+                  <a href={`tel:${settings.phone_number}`} className="flex items-center gap-3 text-sm text-metallic-silver hover:text-muted-gold transition-colors group">
+                    <div className="w-8 h-8 rounded-full bg-dark-graphite flex items-center justify-center group-hover:bg-muted-gold/20 transition-colors">
+                      <Phone className="w-4 h-4" />
+                    </div>
                     {settings.phone_number}
-                  </a>
-                </li>
-              )}
-              {settings?.email && (
-                <li>
-                  <a href={`mailto:${settings.email}`} className="flex items-center gap-2 text-sm text-metallic-silver hover:text-white transition-colors">
-                    <Mail className="w-4 h-4 shrink-0" />
-                    {settings.email}
                   </a>
                 </li>
               )}
@@ -87,57 +81,73 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
                     href={`https://wa.me/${settings.whatsapp_number.replace(/[^\d]/g, '')}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-metallic-silver hover:text-white transition-colors"
+                    className="flex items-center gap-3 text-sm text-metallic-silver hover:text-[#25D366] transition-colors group"
                   >
-                    <MessageCircle className="w-4 h-4 shrink-0" />
+                    <div className="w-8 h-8 rounded-full bg-dark-graphite flex items-center justify-center group-hover:bg-[#25D366]/20 transition-colors">
+                      <MessageCircle className="w-4 h-4" />
+                    </div>
                     {settings.whatsapp_number}
                   </a>
                 </li>
               )}
-              <li className="flex items-start gap-2 text-sm text-metallic-silver">
-                <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
-                <span>{address}</span>
-              </li>
-              <li className="flex items-center gap-2 text-sm text-metallic-silver">
-                <Clock className="w-4 h-4 shrink-0" />
-                {dictionary.footer.working_hours_text}
+              {settings?.email && (
+                <li>
+                  <a href={`mailto:${settings.email}`} className="flex items-center gap-3 text-sm text-metallic-silver hover:text-muted-gold transition-colors group">
+                    <div className="w-8 h-8 rounded-full bg-dark-graphite flex items-center justify-center group-hover:bg-muted-gold/20 transition-colors">
+                      <Mail className="w-4 h-4" />
+                    </div>
+                    {settings.email}
+                  </a>
+                </li>
+              )}
+              <li className="flex items-start gap-3 text-sm text-metallic-silver">
+                <div className="w-8 h-8 rounded-full bg-dark-graphite flex items-center justify-center shrink-0 mt-0.5">
+                  <MapPin className="w-4 h-4" />
+                </div>
+                <span className="mt-1.5">{address}</span>
               </li>
             </ul>
           </div>
 
           {/* Social */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-gold mb-4">
+            <h3 className="text-sm font-bold uppercase tracking-widest text-muted-gold mb-6 flex items-center gap-2">
+              <div className="w-4 h-[2px] bg-muted-gold" />
               {dictionary.footer.follow_us}
             </h3>
             <div className="flex flex-wrap gap-3">
               {settings?.instagram_url && (
-                <a href={settings.instagram_url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-dark-graphite rounded-md flex items-center justify-center hover:bg-muted-gold hover:text-deep-charcoal transition-all" aria-label="Instagram">
-                  <Globe className="w-5 h-5" />
+                <a href={settings.instagram_url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-dark-graphite rounded-lg flex items-center justify-center hover:bg-muted-gold hover:text-deep-charcoal transition-all hover:-translate-y-1 shadow-lg" aria-label="Instagram">
+                  <Instagram className="w-5 h-5" />
                 </a>
               )}
               {settings?.facebook_url && (
-                <a href={settings.facebook_url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-dark-graphite rounded-md flex items-center justify-center hover:bg-muted-gold hover:text-deep-charcoal transition-all" aria-label="Facebook">
-                  <Globe className="w-5 h-5" />
+                <a href={settings.facebook_url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-dark-graphite rounded-lg flex items-center justify-center hover:bg-muted-gold hover:text-deep-charcoal transition-all hover:-translate-y-1 shadow-lg" aria-label="Facebook">
+                  <Facebook className="w-5 h-5" />
                 </a>
               )}
               {settings?.linkedin_url && (
-                <a href={settings.linkedin_url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-dark-graphite rounded-md flex items-center justify-center hover:bg-muted-gold hover:text-deep-charcoal transition-all" aria-label="LinkedIn">
-                  <Globe className="w-5 h-5" />
+                <a href={settings.linkedin_url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-dark-graphite rounded-lg flex items-center justify-center hover:bg-muted-gold hover:text-deep-charcoal transition-all hover:-translate-y-1 shadow-lg" aria-label="LinkedIn">
+                  <Linkedin className="w-5 h-5" />
                 </a>
               )}
               {settings?.youtube_url && (
-                <a href={settings.youtube_url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-dark-graphite rounded-md flex items-center justify-center hover:bg-muted-gold hover:text-deep-charcoal transition-all" aria-label="Youtube">
-                  <ExternalLink className="w-5 h-5" />
+                <a href={settings.youtube_url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-dark-graphite rounded-lg flex items-center justify-center hover:bg-muted-gold hover:text-deep-charcoal transition-all hover:-translate-y-1 shadow-lg" aria-label="Youtube">
+                  <Youtube className="w-5 h-5" />
                 </a>
               )}
+            </div>
+            
+            <div className="mt-8 flex items-center gap-3 text-metallic-silver/50">
+              <Clock className="w-4 h-4 shrink-0" />
+              <span className="text-sm">{dictionary.footer.working_hours_text}</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-dark-graphite">
+      <div className="border-t border-dark-graphite/50 bg-deep-charcoal/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-xs text-metallic-silver">
             &copy; {currentYear} Fornitura. {dictionary.footer.rights}
