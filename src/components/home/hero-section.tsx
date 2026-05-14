@@ -16,18 +16,15 @@ export function HeroSection({ dictionary, locale, settings }: HeroSectionProps) 
   return (
     <section className="relative min-h-[80vh] md:min-h-[85vh] flex items-center bg-deep-charcoal overflow-hidden">
       {/* Background image or gradient */}
-      {heroImage ? (
-        <Image
-          src={heroImage}
-          alt=""
-          fill
-          className="object-cover opacity-30"
-          priority
-          sizes="100vw"
-        />
-      ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-deep-charcoal via-dark-graphite to-dark-navy" />
-      )}
+      <Image
+        src={heroImage || "/hero-bg.png"}
+        alt="Heavy machinery background"
+        fill
+        className="object-cover opacity-40 mix-blend-overlay"
+        priority
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-deep-charcoal/90 via-deep-charcoal/60 to-transparent" />
 
       {/* Overlay pattern */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
