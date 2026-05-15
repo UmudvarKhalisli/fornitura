@@ -63,3 +63,7 @@ body {
 .animate-whatsapp-pulse {
   animation: whatsapp-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+
+/* Hide scrollbar globally */
+::-webkit-scrollbar { display: none; }
+* { -ms-overflow-style: none; scrollbar-width: none; }
