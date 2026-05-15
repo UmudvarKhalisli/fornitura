@@ -85,14 +85,14 @@ export function ProductFilters({
         <div className="w-px h-8 bg-light-gray mx-2" />
 
         <Select
-          value={currentCategory || undefined}
-          onValueChange={(v) => updateFilter('category', v === 'all' ? null : v)}
+          value={currentCategory || 'hamisi'}
+          onValueChange={(v) => updateFilter('category', v === 'hamisi' ? null : v)}
         >
           <SelectTrigger className="w-[200px] h-11 bg-white border-none shadow-sm rounded-xl focus:ring-1 focus:ring-muted-gold">
             <SelectValue placeholder="Hamısı" />
           </SelectTrigger>
           <SelectContent className="rounded-xl">
-            <SelectItem value="all" className="rounded-lg">Hamısı</SelectItem>
+            <SelectItem value="hamisi" className="rounded-lg">Hamısı</SelectItem>
             {categories.map((cat) => (
               <SelectItem key={cat.id} value={cat.slug_en} className="rounded-lg">
                 {cat[`name_${locale}` as keyof typeof cat] as string}
@@ -143,14 +143,14 @@ export function ProductFilters({
         {mobileOpen && (
           <div className="space-y-3 p-4 bg-off-white rounded-lg border border-light-gray">
             <Select
-              value={currentCategory || undefined}
-              onValueChange={(v) => updateFilter('category', v === 'all' ? null : v)}
+              value={currentCategory || 'hamisi'}
+              onValueChange={(v) => updateFilter('category', v === 'hamisi' ? null : v)}
             >
               <SelectTrigger>
                 <SelectValue placeholder="Hamısı" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">Hamısı</SelectItem>
+                <SelectItem value="hamisi">Hamısı</SelectItem>
                 {categories.map((cat) => (
                   <SelectItem key={cat.id} value={cat.slug_en}>
                     {cat[`name_${locale}` as keyof typeof cat] as string}
