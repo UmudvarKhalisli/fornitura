@@ -208,7 +208,7 @@ export default async function RepairServicePage({
             </div>
             
             <div className="bg-white p-6 md:p-10 rounded-3xl shadow-sm border border-light-gray/50">
-              <ContactForm dictionary={dictionary} locale={locale} />
+              <ContactForm dictionary={dictionary} locale={locale} settings={settings} showContactInfo />
             </div>
           </div>
         </Container>
