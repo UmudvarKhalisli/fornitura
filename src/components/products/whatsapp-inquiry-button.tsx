@@ -29,7 +29,9 @@ export function WhatsAppInquiryButton({
   const message = buildWhatsAppMessage({ productName, partNumber, productUrl, locale });
   const url = getWhatsAppUrl(phone, message);
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     trackWhatsAppClick(productName);
     window.open(url, '_blank');
   };

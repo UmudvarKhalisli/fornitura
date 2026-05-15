@@ -69,7 +69,7 @@ export function ProductCard({ product, locale, dictionary, settings, siteUrl }: 
           )}
         </div>
 
-        <div onClick={(e) => e.preventDefault()} className="mt-auto pt-4 border-t border-light-gray/30">
+        <div className="mt-auto pt-4 border-t border-light-gray/30">
           <WhatsAppInquiryButton
             phone={settings?.whatsapp_number || ''}
             productName={name}
