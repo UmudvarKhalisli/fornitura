@@ -160,8 +160,8 @@ export function ContactForm({ dictionary, locale, settings, showContactInfo }: C
     );
   }
 
-  const phoneNum = settings?.phone_number || '+994 50 000 00 00';
-  const whatsappNum = settings?.whatsapp_number || '+994 50 000 00 00';
+  const phoneNum = settings?.phone_number || '+994 50 210 79 20';
+  const whatsappNum = settings?.whatsapp_number || '+994 50 210 79 20';
   const emailAddr = settings?.email || 'info@fornitura.az';
   const address = settings?.address_az || 'Bakı, Azərbaycan';
 

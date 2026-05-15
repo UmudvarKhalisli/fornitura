@@ -42,108 +42,33 @@ export default async function ContactPage({
     <>
       <BreadcrumbSchema items={breadcrumbItems} locale={locale} />
 
-      <section className="py-12 md:py-20 bg-white">
+      <section className="py-12 md:py-20 bg-off-white min-h-screen">
         <Container>
-          <div className="max-w-2xl mx-auto text-center mb-12 md:mb-16">
-            <span className="text-muted-gold text-xs font-semibold uppercase tracking-[0.15em]">
-              {dictionary.nav.contact}
-            </span>
-            <h1 className="text-3xl md:text-5xl font-bold text-deep-charcoal tracking-tight mt-3 mb-4">
-              {dictionary.contact.title}
-            </h1>
-            <p className="text-medium-gray">{dictionary.contact.subtitle}</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-10 md:gap-16">
-            {/* Contact info */}
-            <div className="space-y-6">
-              {settings?.phone_number && (
-                <a
-                  href={`tel:${settings.phone_number}`}
-                  className="flex items-center gap-4 p-4 rounded-lg border border-light-gray hover:border-muted-gold/30 transition-colors group"
-                >
-                  <div className="w-10 h-10 rounded-full bg-off-white group-hover:bg-muted-gold/10 flex items-center justify-center transition-colors">
-                    <Phone className="w-5 h-5 text-muted-gold" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-medium-gray uppercase tracking-wider">{dictionary.contact.call_us}</p>
-                    <p className="font-semibold text-deep-charcoal">{settings.phone_number}</p>
-                  </div>
-                </a>
-              )}
-
-              {settings?.whatsapp_number && (
-                <a
-                  href={`https://wa.me/${settings.whatsapp_number.replace(/[^\d]/g, '')}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 rounded-lg border border-light-gray hover:border-whatsapp/30 transition-colors group"
-                >
-                  <div className="w-10 h-10 rounded-full bg-off-white group-hover:bg-whatsapp/10 flex items-center justify-center transition-colors">
-                    <MessageCircle className="w-5 h-5 text-whatsapp" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-medium-gray uppercase tracking-wider">{dictionary.contact.write_us}</p>
-                    <p className="font-semibold text-deep-charcoal">{settings.whatsapp_number}</p>
-                  </div>
-                </a>
-              )}
-
-              {settings?.email && (
-                <a
-                  href={`mailto:${settings.email}`}
-                  className="flex items-center gap-4 p-4 rounded-lg border border-light-gray hover:border-muted-gold/30 transition-colors group"
-                >
-                  <div className="w-10 h-10 rounded-full bg-off-white group-hover:bg-muted-gold/10 flex items-center justify-center transition-colors">
-                    <Mail className="w-5 h-5 text-muted-gold" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-medium-gray uppercase tracking-wider">{dictionary.contact.email_us}</p>
-                    <p className="font-semibold text-deep-charcoal">{settings.email}</p>
-                  </div>
-                </a>
-              )}
-
-              <div className="flex items-start gap-4 p-4 rounded-lg border border-light-gray">
-                <div className="w-10 h-10 shrink-0 rounded-full bg-off-white flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-muted-gold" />
-                </div>
-                <div>
-                  <p className="text-xs text-medium-gray uppercase tracking-wider">{dictionary.contact.visit_us}</p>
-                  <p className="font-semibold text-deep-charcoal">{address}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4 p-4 rounded-lg border border-light-gray">
-                <div className="w-10 h-10 shrink-0 rounded-full bg-off-white flex items-center justify-center">
-                  <Clock className="w-5 h-5 text-muted-gold" />
-                </div>
-                <div>
-                  <p className="text-xs text-medium-gray uppercase tracking-wider">{dictionary.footer.working_hours}</p>
-                  <p className="font-semibold text-deep-charcoal">{dictionary.footer.working_hours_text}</p>
-                </div>
-              </div>
-
-              {settings?.google_maps_url && (
+          <ContactForm dictionary={dictionary} locale={locale} settings={settings} showContactInfo />
+          
+          {settings?.google_maps_url && (
+            <div className="mt-16 md:mt-24">
+              <span className="text-muted-gold text-[10px] font-bold uppercase tracking-[0.2em] mb-4 block text-center">
+                Ünvanımız
+              </span>
+              <h3 className="text-2xl md:text-3xl font-bold text-deep-charcoal mb-8 text-center">
+                Bizi Xəritədə Tapın
+              </h3>
+              <div className="w-full h-[400px] md:h-[500px] rounded-3xl overflow-hidden border border-light-gray/40 shadow-lg bg-white p-2">
                 <iframe
                   src={settings.google_maps_url}
                   width="100%"
-                  height="200"
-                  className="rounded-lg border border-light-gray"
+                  height="100%"
+                  className="rounded-2xl"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Location"
                 />
-              )}
+              </div>
             </div>
-
-            {/* Contact form */}
-            <div>
-              <ContactForm dictionary={dictionary} locale={locale} />
-            </div>
-          </div>
+          )}
         </Container>
       </section>
     </>
