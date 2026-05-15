@@ -67,13 +67,19 @@ export function ProductFilters({
       {/* Desktop filters */}
       <div className="hidden md:flex items-center gap-4 bg-off-white p-3 rounded-2xl border border-light-gray/50 shadow-sm">
         <form onSubmit={handleSearch} className="relative flex-1 max-w-md">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-medium-gray" />
           <Input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder={dictionary.catalog.search_placeholder}
-            className="pl-10 pr-4 h-11 bg-white border-none shadow-sm rounded-xl focus-visible:ring-1 focus-visible:ring-muted-gold"
+            className="pl-4 pr-12 h-11 bg-white border-none shadow-sm rounded-xl focus-visible:ring-1 focus-visible:ring-muted-gold"
           />
+          <Button 
+            type="submit" 
+            size="icon" 
+            className="absolute right-1 top-1/2 -translate-y-1/2 h-9 w-9 bg-muted-gold text-white hover:bg-[#e6b800] rounded-lg shadow-sm"
+          >
+            <Search className="w-4 h-4" />
+          </Button>
         </form>
 
         <div className="w-px h-8 bg-light-gray mx-2" />
@@ -83,30 +89,13 @@ export function ProductFilters({
           onValueChange={(v) => updateFilter('category', v === 'all' ? null : v)}
         >
           <SelectTrigger className="w-[200px] h-11 bg-white border-none shadow-sm rounded-xl focus:ring-1 focus:ring-muted-gold">
-            <SelectValue placeholder={dictionary.catalog.all_categories} />
+            <SelectValue placeholder="Hamısı" />
           </SelectTrigger>
           <SelectContent className="rounded-xl">
-            <SelectItem value="all" className="rounded-lg">{dictionary.catalog.all_categories}</SelectItem>
+            <SelectItem value="all" className="rounded-lg">Hamısı</SelectItem>
             {categories.map((cat) => (
               <SelectItem key={cat.id} value={cat.slug_en} className="rounded-lg">
                 {cat[`name_${locale}` as keyof typeof cat] as string}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-
-        <Select
-          value={currentBrand || 'all'}
-          onValueChange={(v) => updateFilter('brand', v === 'all' ? null : v)}
-        >
-          <SelectTrigger className="w-[200px] h-11 bg-white border-none shadow-sm rounded-xl focus:ring-1 focus:ring-muted-gold">
-            <SelectValue placeholder={dictionary.catalog.all_brands} />
-          </SelectTrigger>
-          <SelectContent className="rounded-xl">
-            <SelectItem value="all" className="rounded-lg">{dictionary.catalog.all_brands}</SelectItem>
-            {brands.map((brand) => (
-              <SelectItem key={brand.id} value={brand.slug} className="rounded-lg">
-                {brand.name}
               </SelectItem>
             ))}
           </SelectContent>
@@ -124,13 +113,19 @@ export function ProductFilters({
       <div className="md:hidden space-y-3">
         <div className="flex items-center gap-2">
           <form onSubmit={handleSearch} className="relative flex-1">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-medium-gray" />
             <Input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder={dictionary.catalog.search_placeholder}
-              className="pl-10 pr-4 h-12 bg-white border-light-gray/50 shadow-sm rounded-xl focus-visible:ring-1 focus-visible:ring-muted-gold"
+              className="pl-4 pr-12 h-12 bg-white border-light-gray/50 shadow-sm rounded-xl focus-visible:ring-1 focus-visible:ring-muted-gold"
             />
+            <Button 
+              type="submit" 
+              size="icon" 
+              className="absolute right-1 top-1/2 -translate-y-1/2 h-10 w-10 bg-muted-gold text-white hover:bg-[#e6b800] rounded-lg shadow-sm"
+            >
+              <Search className="w-5 h-5" />
+            </Button>
           </form>
           <Button
             variant="outline"
@@ -152,30 +147,13 @@ export function ProductFilters({
               onValueChange={(v) => updateFilter('category', v === 'all' ? null : v)}
             >
               <SelectTrigger>
-                <SelectValue placeholder={dictionary.catalog.all_categories} />
+                <SelectValue placeholder="Hamısı" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">{dictionary.catalog.all_categories}</SelectItem>
+                <SelectItem value="all">Hamısı</SelectItem>
                 {categories.map((cat) => (
                   <SelectItem key={cat.id} value={cat.slug_en}>
                     {cat[`name_${locale}` as keyof typeof cat] as string}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-
-            <Select
-              value={currentBrand || 'all'}
-              onValueChange={(v) => updateFilter('brand', v === 'all' ? null : v)}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder={dictionary.catalog.all_brands} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">{dictionary.catalog.all_brands}</SelectItem>
-                {brands.map((brand) => (
-                  <SelectItem key={brand.id} value={brand.slug}>
-                    {brand.name}
                   </SelectItem>
                 ))}
               </SelectContent>
