@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { Outfit, Geist_Mono } from 'next/font/google';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { notFound } from 'next/navigation';
@@ -16,6 +17,27 @@ const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin']
 export async function generateStaticParams() {
   return [{ locale: 'az' }, { locale: 'en' }, { locale: 'ru' }];
 }
+
+export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://fornitura.vercel.app'),
+  openGraph: {
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Fornitura' }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/og-image.jpg']
+  },
+  icons: {
+    icon: '/favicon.ico'
+  },
+  alternates: {
+    languages: {
+      az: '/az',
+      en: '/en',
+      ru: '/ru'
+    }
+  }
+};
 
 export default async function LocaleLayout({
   children,
@@ -37,7 +59,7 @@ export default async function LocaleLayout({
         <Header locale={locale} dictionary={dictionary} settings={settings} />
         <main className="flex-1">{children}</main>
         <Footer locale={locale} dictionary={dictionary} settings={settings} />
-        <WhatsAppButton phone={settings?.whatsapp_number || '+994 50 210 79 20'} />
+        <WhatsAppButton phone={settings?.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP || ''} />
         <OrganizationSchema />
       </body>
       {process.env.NEXT_PUBLIC_GA_ID && (

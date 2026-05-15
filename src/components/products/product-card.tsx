@@ -71,7 +71,7 @@ export function ProductCard({ product, locale, dictionary, settings, siteUrl }: 
 
         <div className="mt-auto pt-4 border-t border-light-gray/30">
           <WhatsAppInquiryButton
-            phone={settings?.whatsapp_number || '+994 50 210 79 20'}
+            phone={settings?.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP || ''}
             productName={name}
             partNumber={product.part_number}
             productUrl={productUrl}

@@ -126,18 +126,18 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
             <ul className="space-y-4 mb-8">
               {true && (
                 <li>
-                  <a href={`tel:${(settings?.phone_number || '+994 50 210 79 20')}`} className="flex items-center gap-3 text-sm text-metallic-silver hover:text-muted-gold transition-colors group">
+                  <a href={`tel:${(settings?.phone_number || process.env.NEXT_PUBLIC_PHONE || '')}`} className="flex items-center gap-3 text-sm text-metallic-silver hover:text-muted-gold transition-colors group">
                     <div className="w-8 h-8 rounded-full bg-dark-graphite flex items-center justify-center group-hover:bg-muted-gold/20 transition-colors">
                       <Phone className="w-4 h-4" />
                     </div>
-                    {(settings?.phone_number || '+994 50 210 79 20')}
+                    {(settings?.phone_number || process.env.NEXT_PUBLIC_PHONE || '')}
                   </a>
                 </li>
               )}
               {true && (
                 <li>
                   <a
-                    href={`https://wa.me/${(settings?.whatsapp_number || '+994 50 210 79 20').replace(/[^\d]/g, '')}`}
+                    href={`https://wa.me/${(settings?.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP || '').replace(/[^\d]/g, '')}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-sm text-metallic-silver hover:text-[#25D366] transition-colors group"
@@ -145,7 +145,7 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
                     <div className="w-8 h-8 rounded-full bg-dark-graphite flex items-center justify-center group-hover:bg-[#25D366]/20 transition-colors">
                       <MessageCircle className="w-4 h-4" />
                     </div>
-                    {(settings?.whatsapp_number || '+994 50 210 79 20')}
+                    {(settings?.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP || '')}
                   </a>
                 </li>
               )}

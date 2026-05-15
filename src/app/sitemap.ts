@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 
 const locales = ['az', 'en', 'ru'] as const;
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://fornitura.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://fornitura.vercel.app';
 
 const staticPages = [
   { path: '', changefreq: 'weekly' as const, priority: 1.0 },

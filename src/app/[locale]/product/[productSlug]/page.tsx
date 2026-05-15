@@ -134,7 +134,7 @@ export default async function ProductDetailPage({
                     >
                       <Image
                         src={img}
-                        alt=""
+                        alt={`${name} thumbnail ${i + 1}`}
                         fill
                         className="object-cover"
                         sizes="80px"
@@ -216,7 +216,7 @@ export default async function ProductDetailPage({
               {/* CTA */}
               <div className="border-t border-light-gray pt-6 mt-6">
                 <WhatsAppInquiryButton
-                  phone={settings?.whatsapp_number || '+994 50 210 79 20'}
+                  phone={settings?.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP || ''}
                   productName={name}
                   partNumber={product.part_number}
                   productUrl={productUrl}
@@ -252,6 +252,20 @@ export default async function ProductDetailPage({
           </div>
         </Container>
       </section>
+      <JsonLd data={{
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name,
+        description,
+        image: product.image_url || undefined,
+        sku: product.part_number || undefined,
+        offers: {
+           '@type': 'Offer',
+           priceCurrency: 'AZN',
+           price: '0.00',
+           availability: product.in_stock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock'
+        }
+      }} />
     </>
   );
 }
