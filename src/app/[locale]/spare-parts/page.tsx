@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import Image from 'next/image';
 import { getDictionary } from '@/i18n';
 import { getActiveCategories } from '@/lib/db/queries/categories';
 import { getActiveBrands } from '@/lib/db/queries/brands';
@@ -71,7 +72,15 @@ export default async function SparePartsPage({
 
       {/* Premium Page Header */}
       <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 flex items-center bg-deep-charcoal overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-deep-charcoal via-deep-charcoal/80 to-deep-charcoal/20 z-10" />
+        <Image
+          src="/catalog-bg.png"
+          alt="Spare Parts Catalog"
+          fill
+          className="object-cover opacity-30 mix-blend-overlay"
+          priority
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-deep-charcoal via-deep-charcoal/80 to-transparent z-10" />
         <div className="absolute inset-0 opacity-[0.03] z-10" style={{
           backgroundImage: `radial-gradient(circle at 25px 25px, white 1px, transparent 0)`,
           backgroundSize: '50px 50px',
