@@ -68,16 +68,16 @@ export function Header({ locale, dictionary, settings }: HeaderProps) {
           {/* Right side */}
           <div className="flex items-center gap-3">
             <a
-              href={`tel:${settings?.phone_number || ''}`}
+              href={`tel:${settings?.phone_number || '+994 50 210 79 20'}`}
               className="hidden md:flex items-center gap-1.5 text-sm text-medium-gray hover:text-deep-charcoal transition-colors"
             >
               <Phone className="w-4 h-4" />
-              <span>{settings?.phone_number || '+994 XX XXX XX XX'}</span>
+              <span>{settings?.phone_number || '+994 50 210 79 20'}</span>
             </a>
 
-            {settings?.whatsapp_number && (
+            {true && (
               <a
-                href={`https://wa.me/${settings.whatsapp_number.replace(/[^\d]/g, '')}`}
+                href={`https://wa.me/${(settings?.whatsapp_number || '+994 50 210 79 20').replace(/[^\d]/g, '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden sm:inline-flex items-center gap-1.5 bg-whatsapp text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#1ebe5a] transition-colors"
@@ -129,11 +129,11 @@ export function Header({ locale, dictionary, settings }: HeaderProps) {
             );
           })}
           <a
-            href={`tel:${settings?.phone_number || ''}`}
+            href={`tel:${settings?.phone_number || '+994 50 210 79 20'}`}
             className="flex items-center gap-2 px-3 py-2.5 text-base text-medium-gray hover:text-deep-charcoal"
           >
             <Phone className="w-4 h-4" />
-            {settings?.phone_number || '+994 XX XXX XX XX'}
+            {settings?.phone_number || '+994 50 210 79 20'}
           </a>
         </nav>
       </div>

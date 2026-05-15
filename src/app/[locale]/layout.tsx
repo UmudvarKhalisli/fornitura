@@ -37,7 +37,7 @@ export default async function LocaleLayout({
         <Header locale={locale} dictionary={dictionary} settings={settings} />
         <main className="flex-1">{children}</main>
         <Footer locale={locale} dictionary={dictionary} settings={settings} />
-        <WhatsAppButton phone={settings?.whatsapp_number || ''} />
+        <WhatsAppButton phone={settings?.whatsapp_number || '+994 50 210 79 20'} />
         <OrganizationSchema />
       </body>
       {process.env.NEXT_PUBLIC_GA_ID && (

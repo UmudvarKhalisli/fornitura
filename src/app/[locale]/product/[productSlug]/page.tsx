@@ -216,7 +216,7 @@ export default async function ProductDetailPage({
               {/* CTA */}
               <div className="border-t border-light-gray pt-6 mt-6">
                 <WhatsAppInquiryButton
-                  phone={settings?.whatsapp_number || ''}
+                  phone={settings?.whatsapp_number || '+994 50 210 79 20'}
                   productName={name}
                   partNumber={product.part_number}
                   productUrl={productUrl}
