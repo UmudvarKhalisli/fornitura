@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X, Phone, MessageCircle } from 'lucide-react';
@@ -16,6 +17,7 @@ const navKeys = ['home', 'spare_parts', 'repair_service', 'about', 'contact', 'b
 
 export function Header({ locale, dictionary, settings }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   const navLinks = navKeys.map((key) => ({
     label: dictionary.nav[key],
@@ -37,20 +39,30 @@ export function Header({ locale, dictionary, settings }: HeaderProps) {
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="relative inline-flex items-center justify-center overflow-hidden px-3 py-2 group text-sm font-medium rounded-md"
-              >
-                <span className="block transition-transform duration-700 ease-in-out group-hover:-translate-y-[150%] text-medium-gray group-hover:text-deep-charcoal">
-                  {link.label}
-                </span>
-                <span className="absolute inset-0 flex items-center justify-center transition-transform duration-700 ease-in-out translate-y-[150%] group-hover:translate-y-0 text-muted-gold font-bold">
-                  {link.label}
-                </span>
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href || (link.href !== `/${locale}` && pathname.startsWith(link.href));
+              
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="relative inline-flex items-center justify-center overflow-hidden px-3 py-2 group text-sm font-medium rounded-md"
+                >
+                  <span className={cn(
+                    "block transition-transform duration-700 ease-in-out group-hover:-translate-y-[150%]",
+                    isActive ? "text-muted-gold" : "text-medium-gray group-hover:text-deep-charcoal"
+                  )}>
+                    {link.label}
+                  </span>
+                  <span className={cn(
+                    "absolute inset-0 flex items-center justify-center transition-transform duration-700 ease-in-out translate-y-[150%] group-hover:translate-y-0 font-bold",
+                    isActive ? "text-muted-gold" : "text-muted-gold"
+                  )}>
+                    {link.label}
+                  </span>
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Right side */}
@@ -97,16 +109,25 @@ export function Header({ locale, dictionary, settings }: HeaderProps) {
         )}
       >
         <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileOpen(false)}
-              className="px-3 py-2.5 text-base font-medium text-medium-gray hover:text-deep-charcoal hover:bg-off-white rounded-md transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href || (link.href !== `/${locale}` && pathname.startsWith(link.href));
+            
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className={cn(
+                  "px-3 py-2.5 text-base font-medium rounded-md transition-colors",
+                  isActive 
+                    ? "text-muted-gold bg-off-white" 
+                    : "text-medium-gray hover:text-deep-charcoal hover:bg-off-white"
+                )}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
           <a
             href={`tel:${settings?.phone_number || ''}`}
             className="flex items-center gap-2 px-3 py-2.5 text-base text-medium-gray hover:text-deep-charcoal"

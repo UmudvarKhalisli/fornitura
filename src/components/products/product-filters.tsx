@@ -65,28 +65,30 @@ export function ProductFilters({
   return (
     <div className="mb-8">
       {/* Desktop filters */}
-      <div className="hidden md:flex items-center gap-4">
+      <div className="hidden md:flex items-center gap-4 bg-off-white p-3 rounded-2xl border border-light-gray/50 shadow-sm">
         <form onSubmit={handleSearch} className="relative flex-1 max-w-md">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-medium-gray" />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-medium-gray" />
           <Input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder={dictionary.catalog.search_placeholder}
-            className="pl-9 pr-4 h-10"
+            className="pl-10 pr-4 h-11 bg-white border-none shadow-sm rounded-xl focus-visible:ring-1 focus-visible:ring-muted-gold"
           />
         </form>
+
+        <div className="w-px h-8 bg-light-gray mx-2" />
 
         <Select
           value={currentCategory || 'all'}
           onValueChange={(v) => updateFilter('category', v === 'all' ? null : v)}
         >
-          <SelectTrigger className="w-[200px]">
+          <SelectTrigger className="w-[200px] h-11 bg-white border-none shadow-sm rounded-xl focus:ring-1 focus:ring-muted-gold">
             <SelectValue placeholder={dictionary.catalog.all_categories} />
           </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">{dictionary.catalog.all_categories}</SelectItem>
+          <SelectContent className="rounded-xl">
+            <SelectItem value="all" className="rounded-lg">{dictionary.catalog.all_categories}</SelectItem>
             {categories.map((cat) => (
-              <SelectItem key={cat.id} value={cat.slug_en}>
+              <SelectItem key={cat.id} value={cat.slug_en} className="rounded-lg">
                 {cat[`name_${locale}` as keyof typeof cat] as string}
               </SelectItem>
             ))}
@@ -97,13 +99,13 @@ export function ProductFilters({
           value={currentBrand || 'all'}
           onValueChange={(v) => updateFilter('brand', v === 'all' ? null : v)}
         >
-          <SelectTrigger className="w-[200px]">
+          <SelectTrigger className="w-[200px] h-11 bg-white border-none shadow-sm rounded-xl focus:ring-1 focus:ring-muted-gold">
             <SelectValue placeholder={dictionary.catalog.all_brands} />
           </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">{dictionary.catalog.all_brands}</SelectItem>
+          <SelectContent className="rounded-xl">
+            <SelectItem value="all" className="rounded-lg">{dictionary.catalog.all_brands}</SelectItem>
             {brands.map((brand) => (
-              <SelectItem key={brand.id} value={brand.slug}>
+              <SelectItem key={brand.id} value={brand.slug} className="rounded-lg">
                 {brand.name}
               </SelectItem>
             ))}
@@ -111,7 +113,7 @@ export function ProductFilters({
         </Select>
 
         {hasFilters && (
-          <Button variant="ghost" onClick={clearFilters} className="text-sm gap-1">
+          <Button variant="ghost" onClick={clearFilters} className="text-sm gap-1 h-11 px-4 hover:bg-light-gray/20 rounded-xl text-medium-gray hover:text-deep-charcoal">
             <X className="w-4 h-4" />
             {dictionary.catalog.clear_filters}
           </Button>
@@ -122,21 +124,24 @@ export function ProductFilters({
       <div className="md:hidden space-y-3">
         <div className="flex items-center gap-2">
           <form onSubmit={handleSearch} className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-medium-gray" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-medium-gray" />
             <Input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder={dictionary.catalog.search_placeholder}
-              className="pl-9 pr-4 h-10"
+              className="pl-10 pr-4 h-12 bg-white border-light-gray/50 shadow-sm rounded-xl focus-visible:ring-1 focus-visible:ring-muted-gold"
             />
           </form>
           <Button
             variant="outline"
             size="icon"
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={cn(mobileOpen && 'bg-off-white')}
+            className={cn(
+              "h-12 w-12 rounded-xl border-light-gray/50 shadow-sm transition-colors",
+              mobileOpen ? "bg-muted-gold text-white border-muted-gold" : "bg-white text-deep-charcoal"
+            )}
           >
-            <SlidersHorizontal className="w-4 h-4" />
+            <SlidersHorizontal className="w-5 h-5" />
           </Button>
         </div>
 

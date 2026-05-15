@@ -76,7 +76,7 @@ export default async function SparePartsPage({
           src="/catalog-bg.png"
           alt="Spare Parts Catalog"
           fill
-          className="object-cover opacity-30 mix-blend-overlay"
+          className="object-cover opacity-50 mix-blend-overlay"
           priority
           sizes="100vw"
         />
