@@ -6,7 +6,6 @@ import { searchProducts } from '@/lib/db/queries/products';
 import { getSiteSettings } from '@/lib/db/queries/settings';
 import { generateSEOMetadata } from '@/lib/seo/generate-metadata';
 import { Container } from '@/components/shared/container';
-import { SectionTitle } from '@/components/shared/section-title';
 import { ProductGrid } from '@/components/products/product-grid';
 import { ProductGridSkeleton } from '@/components/shared/loading';
 import { Pagination } from '@/components/shared/pagination';
@@ -70,10 +69,32 @@ export default async function SparePartsPage({
     <>
       <BreadcrumbSchema items={breadcrumbItems} locale={locale} />
 
-      <section className="py-12 md:py-16 bg-white">
-        <Container>
-          <SectionTitle title={dictionary.catalog.title} subtitle={dictionary.catalog.subtitle} />
+      {/* Premium Page Header */}
+      <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 flex items-center bg-deep-charcoal overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-deep-charcoal via-deep-charcoal/80 to-deep-charcoal/20 z-10" />
+        <div className="absolute inset-0 opacity-[0.03] z-10" style={{
+          backgroundImage: `radial-gradient(circle at 25px 25px, white 1px, transparent 0)`,
+          backgroundSize: '50px 50px',
+        }} />
+        <div className="absolute top-0 left-0 w-24 h-1 bg-muted-gold z-20" />
+        
+        <Container className="relative z-20">
+          <div className="max-w-3xl">
+            <span className="inline-block text-muted-gold text-sm font-semibold uppercase tracking-[0.2em] mb-4">
+              {dictionary.nav.spare_parts}
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+              {dictionary.catalog.title}
+            </h1>
+            <p className="text-base md:text-lg text-metallic-silver leading-relaxed max-w-xl">
+              {dictionary.catalog.subtitle}
+            </p>
+          </div>
+        </Container>
+      </section>
 
+      <section className="py-12 md:py-16 bg-off-white">
+        <Container>
           <Suspense fallback={<ProductGridSkeleton count={12} />}>
             <ProductFilters
               categories={categories}
