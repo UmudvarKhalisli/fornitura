@@ -59,8 +59,8 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-10">
           {/* Logo & Description */}
           <div className="lg:pr-8">
-            <Link href={`/${locale}`} className="inline-block mb-6">
-              <img src="/logo.png" alt="Fornitura Logo" className="h-16 md:h-20 w-auto object-contain brightness-0 invert" />
+            <Link href={`/${locale}`} className="inline-block mb-8">
+              <img src="/logo.png" alt="Fornitura Logo" className="h-20 md:h-28 w-auto object-contain brightness-0 invert" />
             </Link>
             <p className="text-metallic-silver text-sm leading-relaxed mb-8">
               {dictionary.hero.subtitle}
