@@ -130,7 +130,7 @@ export default async function AboutPage({
             <div className="lg:col-span-7">
               <div className="bg-white p-8 md:p-12 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-light-gray/40">
                 <div className="prose prose-lg max-w-none text-medium-gray leading-loose">
-                  {content.split('\n').map((paragraph, idx) => (
+                  {String(content).split('\n').map((paragraph: string, idx: number) => (
                     paragraph.trim() ? <p key={idx} className="mb-6 last:mb-0">{paragraph}</p> : null
                   ))}
                 </div>
