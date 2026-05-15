@@ -208,6 +208,7 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
 
           <p className="text-xs text-metallic-silver text-center md:text-right">
             {settings?.footer_text_az || settings?.footer_text_en || ''}
+            <span className="ml-2">ESTABLISHED by UMUDVAR KHALISLI</span>
           </p>
         </div>
       </div>
