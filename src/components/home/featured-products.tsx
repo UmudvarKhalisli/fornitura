@@ -23,16 +23,17 @@ export function FeaturedProducts({ products, locale, dictionary, settings, siteU
           title={dictionary.product.featured_title}
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          {products.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              locale={locale}
-              dictionary={dictionary}
-              settings={settings}
-              siteUrl={siteUrl}
-            />
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          {products.slice(0, 4).map((product, index) => (
+            <div key={product.id} className={index === 3 ? "hidden lg:block" : ""}>
+              <ProductCard
+                product={product}
+                locale={locale}
+                dictionary={dictionary}
+                settings={settings}
+                siteUrl={siteUrl}
+              />
+            </div>
           ))}
         </div>
 
