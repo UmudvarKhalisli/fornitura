@@ -197,20 +197,7 @@ export default async function RepairServicePage({
       {/* Contact Section */}
       <section className="py-20 md:py-28 bg-off-white">
         <Container>
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-deep-charcoal mb-4">
-                {dictionary.home.cta_section_title}
-              </h2>
-              <p className="text-lg text-medium-gray">
-                {dictionary.home.cta_section_desc}
-              </p>
-            </div>
-            
-            <div className="bg-white p-6 md:p-10 rounded-3xl shadow-sm border border-light-gray/50">
-              <ContactForm dictionary={dictionary} locale={locale} settings={settings} showContactInfo />
-            </div>
-          </div>
+          <ContactForm dictionary={dictionary} locale={locale} settings={settings} showContactInfo />
         </Container>
       </section>
     </>

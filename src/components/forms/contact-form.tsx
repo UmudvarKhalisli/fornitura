@@ -44,101 +44,97 @@ export function ContactForm({ dictionary, locale, settings, showContactInfo }: C
   const formContent = (
     <div className="flex-1">
       {state === 'success' ? (
-        <div className="flex flex-col items-center justify-center h-full text-center p-10 rounded-2xl border border-green-200 bg-green-50/50">
+        <div className="flex flex-col items-center justify-center h-full text-center py-16">
           <CheckCircle className="w-16 h-16 text-success mb-4" />
-          <h3 className="text-xl font-bold text-deep-charcoal mb-2">
-            {dictionary.contact.success}
+          <h3 className="text-2xl font-bold text-deep-charcoal mb-2">
+            Təşəkkür edirik!
           </h3>
-          <p className="text-medium-gray leading-relaxed">{dictionary.contact.success_desc}</p>
+          <p className="text-medium-gray text-lg">Mesajınız uğurla göndərildi. Tezliklə sizinlə əlaqə saxlayacağıq.</p>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <h2 className="text-2xl font-bold text-deep-charcoal mb-6">{dictionary.contact.form_title || 'Bizə Mesaj Göndərin'}</h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-semibold text-deep-charcoal mb-2">
-                {dictionary.contact.name} <span className="text-error">*</span>
+              <label className="block text-[11px] font-bold text-medium-gray uppercase tracking-wider mb-2">
+                Ad, Soyad <span className="text-error">*</span>
               </label>
               <Input
                 required
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                placeholder={dictionary.contact.name}
-                className="h-12 px-4 rounded-xl border-light-gray bg-off-white focus-visible:ring-1 focus-visible:ring-muted-gold shadow-sm"
+                placeholder="Məs: Eldəniz Niftəliyev"
+                className="h-12 px-4 rounded-xl border-light-gray/60 bg-off-white focus-visible:ring-1 focus-visible:ring-muted-gold shadow-sm text-sm"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-deep-charcoal mb-2">
-                {dictionary.contact.email} <span className="text-error">*</span>
-              </label>
-              <Input
-                type="email"
-                required
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-                placeholder={dictionary.contact.email}
-                className="h-12 px-4 rounded-xl border-light-gray bg-off-white focus-visible:ring-1 focus-visible:ring-muted-gold shadow-sm"
-              />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div>
-              <label className="block text-sm font-semibold text-deep-charcoal mb-2">
-                {dictionary.contact.phone}
+              <label className="block text-[11px] font-bold text-medium-gray uppercase tracking-wider mb-2">
+                Telefon
               </label>
               <Input
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                placeholder={dictionary.contact.phone}
-                className="h-12 px-4 rounded-xl border-light-gray bg-off-white focus-visible:ring-1 focus-visible:ring-muted-gold shadow-sm"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold text-deep-charcoal mb-2">
-                {dictionary.contact.subject}
-              </label>
-              <Input
-                value={form.subject}
-                onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                placeholder={dictionary.contact.subject}
-                className="h-12 px-4 rounded-xl border-light-gray bg-off-white focus-visible:ring-1 focus-visible:ring-muted-gold shadow-sm"
+                placeholder="Məs: +994 50 000 00 00"
+                className="h-12 px-4 rounded-xl border-light-gray/60 bg-off-white focus-visible:ring-1 focus-visible:ring-muted-gold shadow-sm text-sm"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-deep-charcoal mb-2">
-              {dictionary.contact.message} <span className="text-error">*</span>
+            <label className="block text-[11px] font-bold text-medium-gray uppercase tracking-wider mb-2">
+              E-poçt (İxtiyari)
+            </label>
+            <Input
+              type="email"
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              placeholder="Məs: numune@mail.com"
+              className="h-12 px-4 rounded-xl border-light-gray/60 bg-off-white focus-visible:ring-1 focus-visible:ring-muted-gold shadow-sm text-sm"
+            />
+          </div>
+
+          <div>
+            <label className="block text-[11px] font-bold text-medium-gray uppercase tracking-wider mb-2">
+              Texnika növü / Mövzu <span className="text-error">*</span>
+            </label>
+            <Input
+              required
+              value={form.subject}
+              onChange={(e) => setForm({ ...form, subject: e.target.value })}
+              placeholder="Kateqoriya və ya mövzu qeyd edin"
+              className="h-12 px-4 rounded-xl border-light-gray/60 bg-off-white focus-visible:ring-1 focus-visible:ring-muted-gold shadow-sm text-sm"
+            />
+          </div>
+
+          <div>
+            <label className="block text-[11px] font-bold text-medium-gray uppercase tracking-wider mb-2">
+              Mesaj (İxtiyari)
             </label>
             <Textarea
-              required
-              rows={5}
+              rows={4}
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
-              placeholder={dictionary.contact.message}
-              className="p-4 rounded-xl border-light-gray bg-off-white focus-visible:ring-1 focus-visible:ring-muted-gold shadow-sm resize-none"
+              placeholder="Əlavə qeydləriniz və ya tələbləriniz..."
+              className="p-4 rounded-xl border-light-gray/60 bg-off-white focus-visible:ring-1 focus-visible:ring-muted-gold shadow-sm resize-none text-sm"
             />
           </div>
 
           {state === 'error' && (
             <div className="flex items-center gap-3 text-sm text-error bg-red-50 p-4 rounded-xl border border-red-100">
               <AlertCircle className="w-5 h-5 shrink-0" />
-              {dictionary.contact.error_desc}
+              Səhv baş verdi. Zəhmət olmasa yenidən cəhd edin.
             </div>
           )}
 
-          <Button type="submit" disabled={state === 'loading'} className="w-full h-12 text-base font-semibold rounded-xl gap-2 bg-deep-charcoal hover:bg-muted-gold text-white transition-all shadow-md">
+          <Button type="submit" disabled={state === 'loading'} className="w-full h-14 text-sm font-bold uppercase tracking-wider rounded-xl gap-3 bg-[#0a0a0a] hover:bg-muted-gold text-white transition-all shadow-md mt-2">
             {state === 'loading' ? (
               <span className="flex items-center gap-2">
                 <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                {dictionary.common.loading}
+                Göndərilir...
               </span>
             ) : (
               <>
-                <Send className="w-5 h-5" />
-                {dictionary.contact.submit}
+                <Send className="w-4 h-4" />
+                Sifariş Formunu Göndər
               </>
             )}
           </Button>
@@ -148,68 +144,100 @@ export function ContactForm({ dictionary, locale, settings, showContactInfo }: C
   );
 
   if (!showContactInfo) {
-    return formContent;
+    return (
+      <div className="bg-white p-6 md:p-8 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-light-gray/30 max-w-2xl mx-auto">
+        <div className="mb-8">
+          <span className="text-muted-gold text-[10px] font-bold uppercase tracking-[0.2em] mb-2 block">
+            Sürətli Müraciət
+          </span>
+          <h3 className="text-2xl font-bold text-deep-charcoal mb-4">
+            Buradan müraciət edə bilərsiniz
+          </h3>
+          <div className="w-12 h-1 bg-deep-charcoal" />
+        </div>
+        {formContent}
+      </div>
+    );
   }
 
   return (
-    <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
-      <div className="lg:col-span-3">
-        {formContent}
-      </div>
-      
-      <div className="lg:col-span-2 bg-deep-charcoal rounded-2xl p-8 md:p-10 text-white relative overflow-hidden shadow-lg flex flex-col justify-center">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-muted-gold/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -ml-10 -mb-10 pointer-events-none" />
+    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      {/* Left Column - Contact Info */}
+      <div className="space-y-8 pt-4">
+        <div>
+          <span className="text-muted-gold text-[10px] font-bold uppercase tracking-[0.2em] mb-3 block">
+            Əlaqə Məlumatları
+          </span>
+          <h2 className="text-4xl lg:text-5xl font-extrabold text-deep-charcoal mb-5 tracking-tight leading-tight">
+            Bizimlə əlaqə<br />Saxlayın
+          </h2>
+          <p className="text-medium-gray text-lg max-w-md leading-relaxed">
+            Hər hansı bir sualınız və ya xüsusi tələbiniz varsa, bizə birbaşa yazın və ya zəng edin.
+          </p>
+        </div>
         
-        <h3 className="text-2xl font-bold mb-8 relative z-10">{dictionary.contact.title || 'Bizimlə Əlaqə'}</h3>
-        
-        <div className="space-y-8 relative z-10">
+        <div className="grid sm:grid-cols-2 gap-x-8 gap-y-10 pt-8 border-t border-light-gray/40">
           {settings?.phone_number && (
             <a href={`tel:${settings.phone_number}`} className="flex items-start gap-4 group">
-              <div className="w-12 h-12 rounded-xl bg-white/10 group-hover:bg-muted-gold/20 flex items-center justify-center shrink-0 transition-colors">
-                <Phone className="w-6 h-6 text-muted-gold" />
+              <div className="w-10 h-10 rounded-full border border-light-gray/50 flex items-center justify-center shrink-0 group-hover:border-muted-gold transition-colors">
+                <Phone className="w-4 h-4 text-deep-charcoal group-hover:text-muted-gold transition-colors" />
               </div>
               <div>
-                <p className="text-xs uppercase tracking-wider text-metallic-silver mb-1">{dictionary.contact.call_us}</p>
-                <p className="text-lg font-medium">{settings.phone_number}</p>
+                <p className="text-[10px] uppercase font-bold tracking-widest text-medium-gray mb-1">Zəng Edin</p>
+                <p className="text-base font-bold text-deep-charcoal">{settings.phone_number}</p>
               </div>
             </a>
           )}
 
           {settings?.whatsapp_number && (
             <a href={`https://wa.me/${settings.whatsapp_number.replace(/[^\d]/g, '')}`} target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group">
-              <div className="w-12 h-12 rounded-xl bg-white/10 group-hover:bg-[#1ebe5a]/20 flex items-center justify-center shrink-0 transition-colors">
-                <MessageCircle className="w-6 h-6 text-[#1ebe5a]" />
+              <div className="w-10 h-10 rounded-full border border-light-gray/50 flex items-center justify-center shrink-0 group-hover:border-[#1ebe5a] transition-colors">
+                <MessageCircle className="w-4 h-4 text-deep-charcoal group-hover:text-[#1ebe5a] transition-colors" />
               </div>
               <div>
-                <p className="text-xs uppercase tracking-wider text-metallic-silver mb-1">{dictionary.contact.write_us}</p>
-                <p className="text-lg font-medium">{settings.whatsapp_number}</p>
+                <p className="text-[10px] uppercase font-bold tracking-widest text-medium-gray mb-1">WhatsApp</p>
+                <p className="text-base font-bold text-deep-charcoal">{settings.whatsapp_number}</p>
               </div>
             </a>
           )}
 
           {settings?.email && (
             <a href={`mailto:${settings.email}`} className="flex items-start gap-4 group">
-              <div className="w-12 h-12 rounded-xl bg-white/10 group-hover:bg-muted-gold/20 flex items-center justify-center shrink-0 transition-colors">
-                <Mail className="w-6 h-6 text-muted-gold" />
+              <div className="w-10 h-10 rounded-full border border-light-gray/50 flex items-center justify-center shrink-0 group-hover:border-muted-gold transition-colors">
+                <Mail className="w-4 h-4 text-deep-charcoal group-hover:text-muted-gold transition-colors" />
               </div>
               <div>
-                <p className="text-xs uppercase tracking-wider text-metallic-silver mb-1">{dictionary.contact.email_us}</p>
-                <p className="text-lg font-medium">{settings.email}</p>
+                <p className="text-[10px] uppercase font-bold tracking-widest text-medium-gray mb-1">E-poçt</p>
+                <p className="text-base font-bold text-deep-charcoal">{settings.email}</p>
               </div>
             </a>
           )}
 
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
-              <Clock className="w-6 h-6 text-muted-gold" />
+            <div className="w-10 h-10 rounded-full border border-light-gray/50 flex items-center justify-center shrink-0">
+              <Clock className="w-4 h-4 text-deep-charcoal" />
             </div>
             <div>
-              <p className="text-xs uppercase tracking-wider text-metallic-silver mb-1">{dictionary.footer.working_hours}</p>
-              <p className="text-lg font-medium">{dictionary.footer.working_hours_text}</p>
+              <p className="text-[10px] uppercase font-bold tracking-widest text-medium-gray mb-1">İş Saatları</p>
+              <p className="text-base font-bold text-deep-charcoal">09:00 — 18:00</p>
+              <p className="text-xs text-medium-gray mt-1">Bazar ertəsi — Şənbə</p>
             </div>
           </div>
         </div>
+      </div>
+      
+      {/* Right Column - Form */}
+      <div className="bg-white p-8 md:p-12 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-light-gray/30">
+        <div className="mb-8">
+          <span className="text-muted-gold text-[10px] font-bold uppercase tracking-[0.2em] mb-2 block">
+            Sürətli Müraciət
+          </span>
+          <h3 className="text-2xl font-bold text-deep-charcoal mb-4">
+            Buradan sifariş edə bilərsiniz
+          </h3>
+          <div className="w-12 h-1 bg-deep-charcoal" />
+        </div>
+        {formContent}
       </div>
     </div>
   );
