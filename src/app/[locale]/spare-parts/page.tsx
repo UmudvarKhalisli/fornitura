@@ -76,11 +76,11 @@ export default async function SparePartsPage({
           src="/catalog-bg.png"
           alt="Spare Parts Catalog"
           fill
-          className="object-cover opacity-50 mix-blend-overlay"
+          className="object-cover opacity-70"
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-deep-charcoal via-deep-charcoal/80 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-deep-charcoal/95 via-deep-charcoal/50 to-transparent z-10" />
         <div className="absolute inset-0 opacity-[0.03] z-10" style={{
           backgroundImage: `radial-gradient(circle at 25px 25px, white 1px, transparent 0)`,
           backgroundSize: '50px 50px',
