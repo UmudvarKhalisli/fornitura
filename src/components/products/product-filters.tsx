@@ -85,7 +85,7 @@ export function ProductFilters({
         <div className="w-px h-8 bg-light-gray mx-2" />
 
         <Select
-          value={currentCategory || 'all'}
+          value={currentCategory || undefined}
           onValueChange={(v) => updateFilter('category', v === 'all' ? null : v)}
         >
           <SelectTrigger className="w-[200px] h-11 bg-white border-none shadow-sm rounded-xl focus:ring-1 focus:ring-muted-gold">
@@ -143,7 +143,7 @@ export function ProductFilters({
         {mobileOpen && (
           <div className="space-y-3 p-4 bg-off-white rounded-lg border border-light-gray">
             <Select
-              value={currentCategory || 'all'}
+              value={currentCategory || undefined}
               onValueChange={(v) => updateFilter('category', v === 'all' ? null : v)}
             >
               <SelectTrigger>
