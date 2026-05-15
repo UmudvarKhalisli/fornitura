@@ -257,13 +257,13 @@ export default async function ProductDetailPage({
         '@type': 'Product',
         name,
         description,
-        image: product.image_url || undefined,
+        image: product.main_image || undefined,
         sku: product.part_number || undefined,
         offers: {
            '@type': 'Offer',
            priceCurrency: 'AZN',
            price: '0.00',
-           availability: product.in_stock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock'
+           availability: product.stock_status === 'in_stock' ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock'
         }
       }} />
     </>
