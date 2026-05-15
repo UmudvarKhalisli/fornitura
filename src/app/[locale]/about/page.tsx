@@ -34,7 +34,7 @@ export default async function AboutPage({
 
   const content =
     (settings as any)?.[`about_content_${locale}`] ||
-    'Fornitura is a reliable partner in heavy machinery spare parts. With years of experience in the industry, we provide high-quality spare parts and professional repair services for excavators, cranes, bulldozers, loaders and other heavy equipment.';
+    'Fornitura ağır texnika ehtiyat hissələri və avadanlıqları sahəsində sizin etibarlı tərəfdaşınızdır. Biz ekskavatorlar, kranlar, buldozerlər, yükləyicilər və digər ağır texnikalar üçün həm yüksək keyfiyyətli orijinal ehtiyat hissələrinin satışını, həm də peşəkar təmir xidmətlərini həyata keçiririk.\n\nMəqsədimiz müştərilərimizin texnikalarının kəsintisiz və təhlükəsiz fəaliyyətini təmin etmək, ən çətin anlarda belə onlara operativ texniki dəstək göstərməkdir.';
   
   const breadcrumbItems = [
     { name: dictionary.nav.home, path: '' },
@@ -65,10 +65,10 @@ export default async function AboutPage({
   ];
 
   const stats = [
-    { number: '500+', label: dictionary.product.featured_title || 'Ehtiyat Hissəsi' },
-    { number: '50+', label: dictionary.brands.title || 'Partnyor Marka' },
-    { number: '1000+', label: 'Razı Müştəri' },
-    { number: '10+', label: dictionary.home.experience || 'İllik Təcrübə' },
+    { number: '100%', label: 'Orijinal Hissələr' },
+    { number: '7/24', label: 'Texniki Dəstək' },
+    { number: '1 İl', label: 'Rəsmi Zəmanət' },
+    { number: 'Operativ', label: 'Çatdırılma' },
   ];
 
   return (
