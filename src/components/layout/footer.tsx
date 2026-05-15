@@ -191,11 +191,22 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
 
       {/* Bottom bar */}
       <div className="border-t border-dark-graphite/50 bg-deep-charcoal/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-xs text-metallic-silver">
-            &copy; {currentYear} Fornitura. {dictionary.footer.rights}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-metallic-silver text-center md:text-left">
+            &copy; {currentYear} Fornitura. {dictionary.footer?.rights || 'Bütün hüquqlar qorunur.'}
           </p>
-          <p className="text-xs text-metallic-silver">
+          
+          <div className="flex items-center gap-4 text-xs text-metallic-silver">
+            <Link href={`/${locale}/privacy-policy`} className="hover:text-muted-gold transition-colors">
+              Məxfilik Siyasəti
+            </Link>
+            <span className="w-1 h-1 rounded-full bg-dark-graphite" />
+            <Link href={`/${locale}/terms-of-service`} className="hover:text-muted-gold transition-colors">
+              İstifadə Şərtləri
+            </Link>
+          </div>
+
+          <p className="text-xs text-metallic-silver text-center md:text-right">
             {settings?.footer_text_az || settings?.footer_text_en || ''}
           </p>
         </div>
