@@ -62,7 +62,7 @@ export function ContactForm({ dictionary, locale, settings, showContactInfo }: C
                 required
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                placeholder="Məs: Eldəniz Niftəliyev"
+                placeholder="Ad və soyadınızı daxil edin"
                 className="h-12 px-4 rounded-xl border-light-gray/60 bg-off-white focus-visible:ring-1 focus-visible:ring-muted-gold shadow-sm text-sm"
               />
             </div>
@@ -81,33 +81,33 @@ export function ContactForm({ dictionary, locale, settings, showContactInfo }: C
 
           <div>
             <label className="block text-[11px] font-bold text-medium-gray uppercase tracking-wider mb-2">
-              E-poçt (İxtiyari)
+              E-poçt
             </label>
             <Input
               type="email"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              placeholder="Məs: numune@mail.com"
+              placeholder="E-poçt ünvanınızı daxil edin"
               className="h-12 px-4 rounded-xl border-light-gray/60 bg-off-white focus-visible:ring-1 focus-visible:ring-muted-gold shadow-sm text-sm"
             />
           </div>
 
           <div>
             <label className="block text-[11px] font-bold text-medium-gray uppercase tracking-wider mb-2">
-              Texnika növü / Mövzu <span className="text-error">*</span>
+              Ehtiyat hissəsinin növü / Mövzu <span className="text-error">*</span>
             </label>
             <Input
               required
               value={form.subject}
               onChange={(e) => setForm({ ...form, subject: e.target.value })}
-              placeholder="Kateqoriya və ya mövzu qeyd edin"
+              placeholder="Hansı ehtiyat hissəsi ilə maraqlanırsınız?"
               className="h-12 px-4 rounded-xl border-light-gray/60 bg-off-white focus-visible:ring-1 focus-visible:ring-muted-gold shadow-sm text-sm"
             />
           </div>
 
           <div>
             <label className="block text-[11px] font-bold text-medium-gray uppercase tracking-wider mb-2">
-              Mesaj (İxtiyari)
+              Mesaj
             </label>
             <Textarea
               rows={4}
@@ -160,6 +160,11 @@ export function ContactForm({ dictionary, locale, settings, showContactInfo }: C
     );
   }
 
+  const phoneNum = settings?.phone_number || '+994 50 000 00 00';
+  const whatsappNum = settings?.whatsapp_number || '+994 50 000 00 00';
+  const emailAddr = settings?.email || 'info@fornitura.az';
+  const address = settings?.address_az || 'Bakı, Azərbaycan';
+
   return (
     <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
       {/* Left Column - Contact Info */}
@@ -177,41 +182,35 @@ export function ContactForm({ dictionary, locale, settings, showContactInfo }: C
         </div>
         
         <div className="grid sm:grid-cols-2 gap-x-8 gap-y-10 pt-8 border-t border-light-gray/40">
-          {settings?.phone_number && (
-            <a href={`tel:${settings.phone_number}`} className="flex items-start gap-4 group">
-              <div className="w-10 h-10 rounded-full border border-light-gray/50 flex items-center justify-center shrink-0 group-hover:border-muted-gold transition-colors">
-                <Phone className="w-4 h-4 text-deep-charcoal group-hover:text-muted-gold transition-colors" />
-              </div>
-              <div>
-                <p className="text-[10px] uppercase font-bold tracking-widest text-medium-gray mb-1">Zəng Edin</p>
-                <p className="text-base font-bold text-deep-charcoal">{settings.phone_number}</p>
-              </div>
-            </a>
-          )}
+          <a href={`tel:${phoneNum}`} className="flex items-start gap-4 group">
+            <div className="w-10 h-10 rounded-full border border-light-gray/50 flex items-center justify-center shrink-0 group-hover:border-muted-gold transition-colors">
+              <Phone className="w-4 h-4 text-deep-charcoal group-hover:text-muted-gold transition-colors" />
+            </div>
+            <div>
+              <p className="text-[10px] uppercase font-bold tracking-widest text-medium-gray mb-1">Zəng Edin</p>
+              <p className="text-base font-bold text-deep-charcoal">{phoneNum}</p>
+            </div>
+          </a>
 
-          {settings?.whatsapp_number && (
-            <a href={`https://wa.me/${settings.whatsapp_number.replace(/[^\d]/g, '')}`} target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group">
-              <div className="w-10 h-10 rounded-full border border-light-gray/50 flex items-center justify-center shrink-0 group-hover:border-[#1ebe5a] transition-colors">
-                <MessageCircle className="w-4 h-4 text-deep-charcoal group-hover:text-[#1ebe5a] transition-colors" />
-              </div>
-              <div>
-                <p className="text-[10px] uppercase font-bold tracking-widest text-medium-gray mb-1">WhatsApp</p>
-                <p className="text-base font-bold text-deep-charcoal">{settings.whatsapp_number}</p>
-              </div>
-            </a>
-          )}
+          <a href={`https://wa.me/${whatsappNum.replace(/[^\d]/g, '')}`} target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group">
+            <div className="w-10 h-10 rounded-full border border-light-gray/50 flex items-center justify-center shrink-0 group-hover:border-[#1ebe5a] transition-colors">
+              <MessageCircle className="w-4 h-4 text-deep-charcoal group-hover:text-[#1ebe5a] transition-colors" />
+            </div>
+            <div>
+              <p className="text-[10px] uppercase font-bold tracking-widest text-medium-gray mb-1">WhatsApp</p>
+              <p className="text-base font-bold text-deep-charcoal">{whatsappNum}</p>
+            </div>
+          </a>
 
-          {settings?.email && (
-            <a href={`mailto:${settings.email}`} className="flex items-start gap-4 group">
-              <div className="w-10 h-10 rounded-full border border-light-gray/50 flex items-center justify-center shrink-0 group-hover:border-muted-gold transition-colors">
-                <Mail className="w-4 h-4 text-deep-charcoal group-hover:text-muted-gold transition-colors" />
-              </div>
-              <div>
-                <p className="text-[10px] uppercase font-bold tracking-widest text-medium-gray mb-1">E-poçt</p>
-                <p className="text-base font-bold text-deep-charcoal">{settings.email}</p>
-              </div>
-            </a>
-          )}
+          <a href={`mailto:${emailAddr}`} className="flex items-start gap-4 group">
+            <div className="w-10 h-10 rounded-full border border-light-gray/50 flex items-center justify-center shrink-0 group-hover:border-muted-gold transition-colors">
+              <Mail className="w-4 h-4 text-deep-charcoal group-hover:text-muted-gold transition-colors" />
+            </div>
+            <div>
+              <p className="text-[10px] uppercase font-bold tracking-widest text-medium-gray mb-1">E-poçt</p>
+              <p className="text-base font-bold text-deep-charcoal break-all">{emailAddr}</p>
+            </div>
+          </a>
 
           <div className="flex items-start gap-4">
             <div className="w-10 h-10 rounded-full border border-light-gray/50 flex items-center justify-center shrink-0">
@@ -221,6 +220,16 @@ export function ContactForm({ dictionary, locale, settings, showContactInfo }: C
               <p className="text-[10px] uppercase font-bold tracking-widest text-medium-gray mb-1">İş Saatları</p>
               <p className="text-base font-bold text-deep-charcoal">09:00 — 18:00</p>
               <p className="text-xs text-medium-gray mt-1">Bazar ertəsi — Şənbə</p>
+            </div>
+          </div>
+          
+          <div className="flex items-start gap-4 sm:col-span-2">
+            <div className="w-10 h-10 rounded-full border border-light-gray/50 flex items-center justify-center shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-deep-charcoal"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
+            <div>
+              <p className="text-[10px] uppercase font-bold tracking-widest text-medium-gray mb-1">Ünvan</p>
+              <p className="text-base font-bold text-deep-charcoal">{address}</p>
             </div>
           </div>
         </div>
