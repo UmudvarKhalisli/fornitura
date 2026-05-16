@@ -162,7 +162,7 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
                 </a>
               )}
               {true && (
-                <a href={settings?.facebook_url || "https://www.facebook.com/fornitura.az"} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-dark-graphite rounded-lg flex items-center justify-center hover:bg-muted-gold hover:text-deep-charcoal transition-all hover:-translate-y-1 shadow-lg" aria-label="Facebook">
+                <a href={settings?.facebook_url || "https://www.facebook.com/profile.php?id=61589671533760"} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-dark-graphite rounded-lg flex items-center justify-center hover:bg-muted-gold hover:text-deep-charcoal transition-all hover:-translate-y-1 shadow-lg" aria-label="Facebook">
                   <FacebookIcon className="w-5 h-5" />
                 </a>
               )}

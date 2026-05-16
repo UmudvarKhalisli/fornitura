@@ -159,7 +159,7 @@ export function Header({ locale, dictionary, settings }: HeaderProps) {
             <a href={settings?.instagram_url || "https://www.instagram.com/fornitura.az?igsh=MW5zYzVqczI3eHBsMA%3D%3D&utm_source=qr"} target="_blank" rel="noopener noreferrer" className="p-2 -ml-2 rounded-md hover:text-deep-charcoal hover:bg-light-gray transition-colors" aria-label="Instagram">
               <InstagramIcon className="w-5 h-5" />
             </a>
-            <a href={settings?.facebook_url || "https://www.facebook.com/fornitura.az"} target="_blank" rel="noopener noreferrer" className="p-2 rounded-md hover:text-deep-charcoal hover:bg-light-gray transition-colors" aria-label="Facebook">
+            <a href={settings?.facebook_url || "https://www.facebook.com/profile.php?id=61589671533760"} target="_blank" rel="noopener noreferrer" className="p-2 rounded-md hover:text-deep-charcoal hover:bg-light-gray transition-colors" aria-label="Facebook">
               <FacebookIcon className="w-5 h-5" />
             </a>
             <a href={settings?.tiktok_url || "https://www.tiktok.com/@fornitura.az?_r=1&_t=ZS-96P9wpY1fBA"} target="_blank" rel="noopener noreferrer" className="p-2 rounded-md hover:text-deep-charcoal hover:bg-light-gray transition-colors" aria-label="TikTok">
