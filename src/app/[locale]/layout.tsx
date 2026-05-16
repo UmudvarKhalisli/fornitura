@@ -60,7 +60,10 @@ export default async function LocaleLayout({
         <Header locale={locale} dictionary={dictionary} settings={settings} />
         <main className="flex-1">{children}</main>
         <Footer locale={locale} dictionary={dictionary} settings={settings} />
-        <WhatsAppButton phone={settings?.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP || ''} />
+        <WhatsAppButton 
+          phone={settings?.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP || ''} 
+          message="Salam! Fornitura.az saytından yazıram. Ehtiyat hissələri və servis xidmətləri barədə məlumat almaq istəyirdim."
+        />
         <ScrollToTop />
         <OrganizationSchema />
       </body>
