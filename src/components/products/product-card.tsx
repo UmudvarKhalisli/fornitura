@@ -23,12 +23,9 @@ export function ProductCard({ product, locale, dictionary, settings, siteUrl }: 
   const productUrl = `${siteUrl}${localizedProductUrl}`;
 
   return (
-    <Link
-      href={localizedProductUrl}
-      className="group flex flex-col bg-white rounded-xl border border-light-gray/50 overflow-hidden shadow-sm hover:shadow-xl hover:shadow-muted-gold/5 hover:-translate-y-1 hover:border-muted-gold/30 transition-all duration-300"
-    >
+    <div className="group flex flex-col bg-white rounded-xl border border-light-gray/50 overflow-hidden shadow-sm hover:shadow-xl hover:shadow-muted-gold/5 hover:-translate-y-1 hover:border-muted-gold/30 transition-all duration-300">
       {/* Image Container */}
-      <div className="relative aspect-[4/3] bg-off-white overflow-hidden w-full">
+      <Link href={localizedProductUrl} className="relative aspect-[4/3] bg-off-white overflow-hidden w-full block">
         {product.main_image ? (
           <Image
             src={product.main_image}
@@ -53,7 +50,7 @@ export function ProductCard({ product, locale, dictionary, settings, siteUrl }: 
             outOfStockLabel={dictionary.product.out_of_stock}
           />
         </div>
-      </div>
+      </Link>
 
       {/* Content */}
       <div className="flex flex-col flex-1 p-5">
@@ -62,9 +59,11 @@ export function ProductCard({ product, locale, dictionary, settings, siteUrl }: 
             <span className="w-4 h-[1px] bg-muted-gold inline-block"></span>
             {product.part_number}
           </p>
-          <h3 className="text-base font-semibold text-deep-charcoal group-hover:text-muted-gold transition-colors line-clamp-2 leading-tight mb-2">
-            {name}
-          </h3>
+          <Link href={localizedProductUrl}>
+            <h3 className="text-base font-semibold text-deep-charcoal group-hover:text-muted-gold transition-colors line-clamp-2 leading-tight mb-2">
+              {name}
+            </h3>
+          </Link>
           {shortDesc && (
             <p className="text-sm text-medium-gray line-clamp-2 leading-relaxed">
               {shortDesc}
@@ -72,7 +71,13 @@ export function ProductCard({ product, locale, dictionary, settings, siteUrl }: 
           )}
         </div>
 
-        <div className="mt-auto pt-4 border-t border-light-gray/30">
+        <div className="mt-auto pt-4 border-t border-light-gray/30 grid grid-cols-2 gap-2">
+          <Link 
+            href={localizedProductUrl}
+            className="flex items-center justify-center px-3 py-2 text-[13px] font-semibold text-deep-charcoal bg-off-white hover:bg-light-gray/50 rounded-lg transition-colors border border-light-gray/50"
+          >
+            {dictionary.product.learn_more}
+          </Link>
           <WhatsAppInquiryButton
             phone={settings?.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP || ''}
             productName={name}
@@ -81,10 +86,10 @@ export function ProductCard({ product, locale, dictionary, settings, siteUrl }: 
             locale={locale}
             label={dictionary.product.ask_price_whatsapp}
             variant="small"
-            className="w-full bg-off-white text-deep-charcoal hover:bg-muted-gold hover:text-white border-none shadow-sm transition-all duration-300"
+            className="w-full bg-muted-gold text-deep-charcoal hover:bg-deep-charcoal hover:text-white border-none shadow-sm transition-all duration-300 py-2 h-auto text-[13px] font-bold"
           />
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
