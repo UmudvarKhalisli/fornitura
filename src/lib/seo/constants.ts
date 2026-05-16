@@ -57,6 +57,11 @@ export const PATH_MAP: Record<string, Record<Locale, string>> = {
     en: 'product',
     ru: 'tovar',
   },
+  'info': {
+    az: 'melumat',
+    en: 'info',
+    ru: 'informaciya',
+  },
   'privacy-policy': {
     az: 'mexfilik-siyaseti',
     en: 'privacy-policy',

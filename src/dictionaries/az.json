@@ -25,7 +25,9 @@
     "no_results": "Heç bir məhsul tapılmadı",
     "no_results_desc": "Axtarış kriteriyalarınız uyğun məhsul tapılmadı. Fərqli sözlərlə yenidən cəhd edin.",
     "results_count": "{count} məhsul tapıldı",
-    "page": "Səhifə {page}"
+    "page": "Səhifə {page}",
+    "info_title": "Ehtiyat hissələri haqqında ətraflı məlumat",
+    "info_subtitle": "Ağır texnikanızın ömrünü uzadan orijinal və keyfiyyətli detallar"
   },
   "product": {
     "part_number": "Kod",

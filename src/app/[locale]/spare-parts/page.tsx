@@ -13,6 +13,8 @@ import { Pagination } from '@/components/shared/pagination';
 import { ProductFilters } from '@/components/products/product-filters';
 import { BreadcrumbSchema } from '@/components/seo';
 import type { Locale } from '@/lib/seo/constants';
+import Link from 'next/link';
+import { getLocalizedPath } from '@/lib/utils/routes';
 
 export async function generateMetadata({
   params,
@@ -95,9 +97,20 @@ export default async function SparePartsPage({
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
               {dictionary.catalog.title}
             </h1>
-            <p className="text-base md:text-lg text-metallic-silver leading-relaxed max-w-xl">
+            <p className="text-base md:text-lg text-metallic-silver leading-relaxed max-w-xl mb-8">
               {dictionary.catalog.subtitle}
             </p>
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href={getLocalizedPath('spare-parts/info', locale as Locale)}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-muted-gold text-deep-charcoal font-semibold rounded-lg hover:bg-[#e6b800] transition-all duration-300 shadow-lg hover:shadow-muted-gold/20"
+              >
+                {dictionary.repair_service.learn_more}
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </Container>
       </section>
