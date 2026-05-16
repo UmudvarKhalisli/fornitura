@@ -57,7 +57,7 @@ export function Header({ locale, dictionary, settings }: HeaderProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href={`/${locale}`} className="flex items-center shrink-0">
+          <Link prefetch={true} href={`/${locale}`} className="flex items-center shrink-0">
             <img 
               src="/logo.png" 
               alt="Fornitura Logo" 
@@ -176,10 +176,10 @@ export function Header({ locale, dictionary, settings }: HeaderProps) {
           </div>
 
           <div className="flex flex-col px-3 gap-3 text-sm text-medium-gray pb-6">
-            <Link href={`/${locale}/privacy-policy`} onClick={() => setMobileOpen(false)} className="hover:text-deep-charcoal transition-colors">
+            <Link prefetch={true} href={`/${locale}/privacy-policy`} onClick={() => setMobileOpen(false)} className="hover:text-deep-charcoal transition-colors">
               {dictionary.footer?.privacy || "Məxfilik siyasəti"}
             </Link>
-            <Link href={`/${locale}/terms-of-service`} onClick={() => setMobileOpen(false)} className="hover:text-deep-charcoal transition-colors">
+            <Link prefetch={true} href={`/${locale}/terms-of-service`} onClick={() => setMobileOpen(false)} className="hover:text-deep-charcoal transition-colors">
               {dictionary.footer?.terms || "İstifadə şərtləri"}
             </Link>
           </div>        </nav>

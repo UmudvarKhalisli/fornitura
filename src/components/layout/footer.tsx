@@ -57,7 +57,7 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-10">
           {/* Logo & Description */}
           <div className="lg:pr-8">
-            <Link href={`/${locale}`} className="inline-block mb-4 -mt-2 md:-mt-3">
+            <Link prefetch={true} href={`/${locale}`} className="inline-block mb-4 -mt-2 md:-mt-3">
               <img src="/logo.png" alt="Fornitura Logo" className="h-20 md:h-24 w-auto object-contain object-left-top brightness-0 invert" />
             </Link>
             <p className="text-metallic-silver text-sm leading-relaxed mb-8">
@@ -73,12 +73,12 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link href={`/${locale}/spare-parts`} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
+                <Link prefetch={true} href={`/${locale}/spare-parts`} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
                   {dictionary.nav.spare_parts}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/repair-service`} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
+                <Link prefetch={true} href={`/${locale}/repair-service`} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
                   {dictionary.nav.repair_service}
                 </Link>
               </li>
@@ -93,22 +93,22 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link href={`/${locale}`} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
+                <Link prefetch={true} href={`/${locale}`} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
                   {dictionary.nav.home}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/about`} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
+                <Link prefetch={true} href={`/${locale}/about`} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
                   {dictionary.nav.about}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/blog`} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
+                <Link prefetch={true} href={`/${locale}/blog`} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
                   {dictionary.nav.blog}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/contact`} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
+                <Link prefetch={true} href={`/${locale}/contact`} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
                   {dictionary.nav.contact}
                 </Link>
               </li>
@@ -195,11 +195,11 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
           </p>
           
           <div className="flex items-center gap-4 text-xs text-metallic-silver">
-            <Link href={`/${locale}/privacy-policy`} className="hover:text-muted-gold transition-colors">
+            <Link prefetch={true} href={`/${locale}/privacy-policy`} className="hover:text-muted-gold transition-colors">
               Məxfilik Siyasəti
             </Link>
             <span className="w-1 h-1 rounded-full bg-dark-graphite" />
-            <Link href={`/${locale}/terms-of-service`} className="hover:text-muted-gold transition-colors">
+            <Link prefetch={true} href={`/${locale}/terms-of-service`} className="hover:text-muted-gold transition-colors">
               İstifadə Şərtləri
             </Link>
           </div>
