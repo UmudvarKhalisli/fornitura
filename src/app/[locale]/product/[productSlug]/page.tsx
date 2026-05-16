@@ -12,6 +12,7 @@ import { getLocalizedField } from '@/lib/db/helpers';
 import { ArrowLeft, Share2, Package } from 'lucide-react';
 import Link from 'next/link';
 import type { Locale } from '@/lib/seo/constants';
+import { ShareButton } from '@/components/products/share-button';
 
 export async function generateMetadata({
   params,
@@ -240,13 +241,7 @@ export default async function ProductDetailPage({
 
               {/* Share */}
               <div className="border-t border-light-gray pt-4 mt-6">
-                <button
-                  onClick={() => navigator.clipboard.writeText(productUrl)}
-                  className="inline-flex items-center gap-1.5 text-sm text-medium-gray hover:text-deep-charcoal transition-colors"
-                >
-                  <Share2 className="w-4 h-4" />
-                  {dictionary.product.share}
-                </button>
+                <ShareButton url={productUrl} label={dictionary.product.share} />
               </div>
             </div>
           </div>

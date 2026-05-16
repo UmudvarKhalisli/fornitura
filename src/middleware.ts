@@ -34,7 +34,8 @@ export function middleware(request: NextRequest) {
       const internalSegments = remainingSegments.map(segment => {
         // Find if this segment is a localized version of an internal path
         for (const [key, mapping] of Object.entries(PATH_MAP)) {
-          if (mapping[locale] === segment) {
+          // Only rewrite if the segment matches the localized version AND it's different from the internal key
+          if (mapping[locale] === segment && segment !== key) {
             needsRewrite = true;
             return key;
           }
