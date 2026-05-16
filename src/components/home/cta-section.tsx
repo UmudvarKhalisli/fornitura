@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Container } from '@/components/shared/container';
-import { MessageCircle, ArrowRight, Wrench } from 'lucide-react';
+import { ArrowRight, Wrench } from 'lucide-react';
+import { OfficialWhatsAppIcon } from '@/components/shared/icons';
 
 interface CTASectionProps {
   dictionary: any;
@@ -61,7 +62,7 @@ export function CTASection({ dictionary, settings, locale }: CTASectionProps) {
               className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/5 border border-white/10 text-white font-medium rounded-xl hover:bg-[#25D366]/10 hover:border-[#25D366]/50 hover:text-[#25D366] transition-all duration-300 text-base md:text-lg hover:-translate-y-1 w-full sm:w-auto"
               aria-label="WhatsApp"
             >
-              <MessageCircle className="w-5 h-5 text-[#25D366] group-hover:scale-110 transition-transform" />
+              <OfficialWhatsAppIcon className="w-6 h-6 text-[#25D366] group-hover:scale-110 transition-transform" />
               <span>WhatsApp</span>
             </a>
           </div>

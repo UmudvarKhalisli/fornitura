@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X, Phone, MessageCircle } from 'lucide-react';
 import { LanguageSwitcher } from './language-switcher';
+import { OfficialWhatsAppIcon } from '@/components/shared/icons';
 
 const InstagramIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -166,7 +167,7 @@ export function Header({ locale, dictionary, settings }: HeaderProps) {
               <TiktokIcon className="w-5 h-5" />
             </a>
             <a href={`https://wa.me/${(settings?.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP || "").replace(/[^\\d]/g, "")}`} target="_blank" rel="noopener noreferrer" className="p-2 rounded-md hover:text-deep-charcoal hover:bg-light-gray transition-colors" aria-label="WhatsApp">
-              <WhatsappIcon className="w-5 h-5" />
+              <OfficialWhatsAppIcon className="w-5 h-5" />
             </a>
           </div>
 

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react';
+import { OfficialWhatsAppIcon } from '@/components/shared/icons';
 
 const InstagramIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -173,7 +174,7 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
               )}
               {true && (
                 <a href={`https://wa.me/${(settings?.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP || "").replace(/[^\\d]/g, "")}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-dark-graphite rounded-lg flex items-center justify-center hover:bg-muted-gold hover:text-deep-charcoal transition-all hover:-translate-y-1 shadow-lg" aria-label="Youtube">
-                  <WhatsappIcon className="w-5 h-5" />
+                  <OfficialWhatsAppIcon className="w-5 h-5" />
                 </a>
               )}
             </div>

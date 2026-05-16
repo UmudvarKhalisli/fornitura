@@ -1,6 +1,6 @@
 'use client';
 
-import { MessageCircle } from 'lucide-react';
+import { OfficialWhatsAppIcon } from '@/components/shared/icons';
 import { cn } from '@/lib/utils';
 
 interface WhatsAppButtonProps {
@@ -32,7 +32,7 @@ export function WhatsAppButton({
         )}
         aria-label="WhatsApp"
       >
-        <MessageCircle className="w-7 h-7" />
+        <OfficialWhatsAppIcon className="w-8 h-8" />
       </a>
     );
   }
@@ -50,7 +50,7 @@ export function WhatsAppButton({
         className
       )}
     >
-      <MessageCircle className="w-4 h-4" />
+      <OfficialWhatsAppIcon className="w-5 h-5" />
       {label || 'WhatsApp'}
     </a>
   );
