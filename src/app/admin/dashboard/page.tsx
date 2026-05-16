@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { isAdminAuthenticated } from '@/lib/supabase/admin';
 import { createAdminClient } from '@/lib/supabase/server';
-import { Package, FolderKanban, Tags, MessageSquare, Newspaper, Plus, ArrowUpRight, Clock } from 'lucide-react';
+import { Package, FolderKanban, Tags, MessageSquare, Newspaper, Plus, ArrowUpRight, Clock, Settings } from 'lucide-react';
 import Link from 'next/link';
 
 async function getStats() {

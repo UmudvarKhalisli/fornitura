@@ -4,14 +4,15 @@ import { createAdminClient } from '@/lib/supabase/server';
 import { Mail, Phone, Calendar, Trash2, Eye, MessageSquare, CheckCircle2 } from 'lucide-react';
 import { format } from 'date-fns';
 import { az } from 'date-fns/locale';
+import type { SiteMessage } from '@/types';
 
-async function getMessages() {
+async function getMessages(): Promise<SiteMessage[]> {
   const supabase = createAdminClient();
   const { data } = await supabase
     .from('messages')
     .select('*')
     .order('created_at', { ascending: false });
-  return data || [];
+  return (data as SiteMessage[]) || [];
 }
 
 export default async function AdminMessagesPage() {
@@ -53,7 +54,7 @@ export default async function AdminMessagesPage() {
                   </td>
                 </tr>
               ) : (
-                messages.map((msg) => (
+                messages.map((msg: SiteMessage) => (
                   <tr key={msg.id} className="hover:bg-off-white transition-colors group">
                     <td className="px-6 py-4">
                       <div className="flex flex-col">

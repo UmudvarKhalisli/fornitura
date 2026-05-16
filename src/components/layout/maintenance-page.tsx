@@ -1,6 +1,6 @@
 'use client';
 
-import { Settings, Tooltip } from 'lucide-react';
+import { Settings } from 'lucide-react';
 import { Container } from '@/components/shared/container';
 
 export function MaintenancePage() {
