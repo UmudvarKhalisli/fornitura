@@ -157,17 +157,17 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
             {/* Social & Hours */}
             <div className="flex flex-wrap gap-3 mb-6">
               {true && (
-                <a href={settings?.instagram_url || "#"} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-dark-graphite rounded-lg flex items-center justify-center hover:bg-muted-gold hover:text-deep-charcoal transition-all hover:-translate-y-1 shadow-lg" aria-label="Instagram">
+                <a href={settings?.instagram_url || "https://www.instagram.com/fornitura.az?igsh=MW5zYzVqczI3eHBsMA%3D%3D&utm_source=qr"} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-dark-graphite rounded-lg flex items-center justify-center hover:bg-muted-gold hover:text-deep-charcoal transition-all hover:-translate-y-1 shadow-lg" aria-label="Instagram">
                   <InstagramIcon className="w-5 h-5" />
                 </a>
               )}
               {true && (
-                <a href={settings?.facebook_url || "#"} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-dark-graphite rounded-lg flex items-center justify-center hover:bg-muted-gold hover:text-deep-charcoal transition-all hover:-translate-y-1 shadow-lg" aria-label="Facebook">
+                <a href={settings?.facebook_url || "https://www.facebook.com/fornitura.az"} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-dark-graphite rounded-lg flex items-center justify-center hover:bg-muted-gold hover:text-deep-charcoal transition-all hover:-translate-y-1 shadow-lg" aria-label="Facebook">
                   <FacebookIcon className="w-5 h-5" />
                 </a>
               )}
               {true && (
-                <a href={settings?.tiktok_url || "#"} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-dark-graphite rounded-lg flex items-center justify-center hover:bg-muted-gold hover:text-deep-charcoal transition-all hover:-translate-y-1 shadow-lg" aria-label="TikTok">
+                <a href={settings?.tiktok_url || "https://www.tiktok.com/@fornitura.az?_r=1&_t=ZS-96P9wpY1fBA"} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-dark-graphite rounded-lg flex items-center justify-center hover:bg-muted-gold hover:text-deep-charcoal transition-all hover:-translate-y-1 shadow-lg" aria-label="TikTok">
                   <TiktokIcon className="w-5 h-5" />
                 </a>
               )}

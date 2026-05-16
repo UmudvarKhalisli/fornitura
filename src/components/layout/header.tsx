@@ -156,13 +156,13 @@ export function Header({ locale, dictionary, settings }: HeaderProps) {
 
           {/* Social Icons inside Mobile Menu */}
           <div className="flex items-center gap-4 px-3 py-1 mb-2 text-medium-gray">
-            <a href={settings?.instagram_url || "#"} target="_blank" rel="noopener noreferrer" className="p-2 -ml-2 rounded-md hover:text-deep-charcoal hover:bg-light-gray transition-colors" aria-label="Instagram">
+            <a href={settings?.instagram_url || "https://www.instagram.com/fornitura.az?igsh=MW5zYzVqczI3eHBsMA%3D%3D&utm_source=qr"} target="_blank" rel="noopener noreferrer" className="p-2 -ml-2 rounded-md hover:text-deep-charcoal hover:bg-light-gray transition-colors" aria-label="Instagram">
               <InstagramIcon className="w-5 h-5" />
             </a>
-            <a href={settings?.facebook_url || "#"} target="_blank" rel="noopener noreferrer" className="p-2 rounded-md hover:text-deep-charcoal hover:bg-light-gray transition-colors" aria-label="Facebook">
+            <a href={settings?.facebook_url || "https://www.facebook.com/fornitura.az"} target="_blank" rel="noopener noreferrer" className="p-2 rounded-md hover:text-deep-charcoal hover:bg-light-gray transition-colors" aria-label="Facebook">
               <FacebookIcon className="w-5 h-5" />
             </a>
-            <a href={settings?.tiktok_url || "#"} target="_blank" rel="noopener noreferrer" className="p-2 rounded-md hover:text-deep-charcoal hover:bg-light-gray transition-colors" aria-label="TikTok">
+            <a href={settings?.tiktok_url || "https://www.tiktok.com/@fornitura.az?_r=1&_t=ZS-96P9wpY1fBA"} target="_blank" rel="noopener noreferrer" className="p-2 rounded-md hover:text-deep-charcoal hover:bg-light-gray transition-colors" aria-label="TikTok">
               <TiktokIcon className="w-5 h-5" />
             </a>
             <a href={`https://wa.me/${(settings?.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP || "").replace(/[^\\d]/g, "")}`} target="_blank" rel="noopener noreferrer" className="p-2 rounded-md hover:text-deep-charcoal hover:bg-light-gray transition-colors" aria-label="WhatsApp">
