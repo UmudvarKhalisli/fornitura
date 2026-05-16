@@ -25,7 +25,10 @@
     "no_results": "No products found",
     "no_results_desc": "No products match your search criteria. Try different keywords.",
     "results_count": "{count} products found",
-    "page": "Page {page}"
+    "page": "Page {page}",
+    "info_title": "Detailed Information About Spare Parts",
+    "info_subtitle": "Original and quality parts that extend the life of your heavy machinery",
+    "info_desc": "Detailed information about heavy machinery spare parts. High quality and certified products."
   },
   "product": {
     "part_number": "Part Number",
