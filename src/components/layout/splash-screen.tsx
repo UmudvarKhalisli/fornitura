@@ -47,14 +47,14 @@ export function SplashScreen() {
           'relative w-36 h-36 md:w-48 md:h-48 transition-all duration-700 ease-in-out',
           isZooming 
             ? 'scale-[4] md:scale-[5] opacity-0 blur-sm' 
-            : 'scale-100 opacity-100 animate-pulse' // Əvvəlcə xəfif döyünmə animasiyası edir
+            : 'scale-100 opacity-100 animate-pulse'
         )}
       >
         <Image
           src="/splash-logo.png"
           alt="Fornitura Loading"
           fill
-          className="object-contain drop-shadow-xl"
+          className="object-contain mix-blend-multiply"
           priority
         />
       </div>
