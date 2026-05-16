@@ -6,6 +6,8 @@ import type { Product } from '@/types';
 import { getLocalizedField } from '@/lib/db/helpers';
 import type { Locale } from '@/lib/seo/constants';
 
+import { getProductUrl } from '@/lib/utils/url';
+
 interface ProductCardProps {
   product: Product;
   locale: Locale;
@@ -17,11 +19,12 @@ interface ProductCardProps {
 export function ProductCard({ product, locale, dictionary, settings, siteUrl }: ProductCardProps) {
   const name = getLocalizedField(product, 'name', locale) || product.name_en;
   const shortDesc = getLocalizedField(product, 'short_description', locale);
-  const productUrl = `${siteUrl}/${locale}/product/${product.slug}`;
+  const localizedProductUrl = getProductUrl(locale, product.slug);
+  const productUrl = `${siteUrl}${localizedProductUrl}`;
 
   return (
     <Link
-      href={`/${locale}/product/${product.slug}`}
+      href={localizedProductUrl}
       className="group flex flex-col bg-white rounded-xl border border-light-gray/50 overflow-hidden shadow-sm hover:shadow-xl hover:shadow-muted-gold/5 hover:-translate-y-1 hover:border-muted-gold/30 transition-all duration-300"
     >
       {/* Image Container */}

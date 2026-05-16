@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@/components/shared/container';
+import { getLocalizedPath } from '@/lib/utils/routes';
+import type { Locale } from '@/lib/seo/constants';
 
 interface RepairIntroProps {
   dictionary: any;
@@ -32,7 +34,7 @@ export function RepairIntro({ dictionary, locale, settings }: RepairIntroProps) 
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                href={`/${locale}/repair-service`}
+                href={getLocalizedPath('repair-service', locale as Locale)}
                 className="inline-flex items-center justify-center px-8 py-3.5 bg-deep-charcoal text-white font-medium rounded-md hover:bg-muted-gold hover:text-deep-charcoal transition-all duration-300 text-sm shadow-lg hover:shadow-xl hover:-translate-y-0.5"
               >
                 {dictionary.repair_service.learn_more}

@@ -10,6 +10,8 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
+import { translateUrl } from '@/lib/utils/routes';
+
 const labels: Record<Locale, string> = { az: 'AZ', en: 'EN', ru: 'RU' };
 
 export function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {
@@ -17,13 +19,8 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {
   const router = useRouter();
 
   const switchLanguage = (locale: string) => {
-    const segments = pathname.split('/').filter(Boolean);
-    if (SUPPORTED_LOCALES.includes(segments[0] as Locale)) {
-      segments[0] = locale;
-    } else {
-      segments.unshift(locale);
-    }
-    router.push(`/${segments.join('/')}`);
+    const newPath = translateUrl(pathname, currentLocale as Locale, locale as Locale);
+    router.push(newPath);
   };
 
   return (

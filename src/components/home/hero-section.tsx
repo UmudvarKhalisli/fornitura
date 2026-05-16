@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@/components/shared/container';
+import { getLocalizedPath } from '@/lib/utils/routes';
+import type { Locale } from '@/lib/seo/constants';
 
 interface HeroSectionProps {
   dictionary: any;
@@ -48,7 +50,7 @@ export function HeroSection({ dictionary, locale, settings }: HeroSectionProps) 
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href={`/${locale}/spare-parts`}
+              href={getLocalizedPath('spare-parts', locale as Locale)}
               className="inline-flex items-center justify-center px-8 py-3.5 bg-muted-gold text-deep-charcoal font-semibold rounded-md hover:bg-[#B8943A] transition-colors text-sm md:text-base"
             >
               {dictionary.hero.cta_primary}

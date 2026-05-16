@@ -34,6 +34,8 @@ const WhatsappIcon = ({ className }: { className?: string }) => (
 );
 
 import { cn } from '@/lib/utils';
+import { getLocalizedPath } from '@/lib/utils/routes';
+import type { Locale } from '@/lib/seo/constants';
 
 interface HeaderProps {
   locale: string;
@@ -49,7 +51,7 @@ export function Header({ locale, dictionary, settings }: HeaderProps) {
 
   const navLinks = navKeys.map((key) => ({
     label: dictionary.nav[key],
-    href: key === 'home' ? `/${locale}` : `/${locale}/${key.replace('_', '-')}`,
+    href: key === 'home' ? `/${locale}` : getLocalizedPath(key.replace('_', '-'), locale as Locale),
   }));
 
   return (

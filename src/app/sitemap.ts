@@ -1,16 +1,18 @@
 import type { MetadataRoute } from 'next';
+import { getLocalizedPath, getProductUrl, getCategoryUrl, getBlogUrl } from '@/lib/utils/url';
+import type { Locale } from '@/lib/seo/constants';
 
 const locales = ['az', 'en', 'ru'] as const;
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://fornitura.vercel.app';
 
 const staticPages = [
   { path: '', changefreq: 'weekly' as const, priority: 1.0 },
-  { path: '/spare-parts', changefreq: 'daily' as const, priority: 0.9 },
-  { path: '/repair-service', changefreq: 'monthly' as const, priority: 0.7 },
-  { path: '/about', changefreq: 'monthly' as const, priority: 0.6 },
-  { path: '/brands', changefreq: 'weekly' as const, priority: 0.7 },
-  { path: '/contact', changefreq: 'monthly' as const, priority: 0.5 },
-  { path: '/blog', changefreq: 'weekly' as const, priority: 0.6 },
+  { path: 'spare-parts', changefreq: 'daily' as const, priority: 0.9 },
+  { path: 'repair-service', changefreq: 'monthly' as const, priority: 0.7 },
+  { path: 'about', changefreq: 'monthly' as const, priority: 0.6 },
+  { path: 'brands', changefreq: 'weekly' as const, priority: 0.7 },
+  { path: 'contact', changefreq: 'monthly' as const, priority: 0.5 },
+  { path: 'blog', changefreq: 'weekly' as const, priority: 0.6 },
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -19,14 +21,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static pages for all locales
   for (const locale of locales) {
     for (const page of staticPages) {
+      const localizedPath = getLocalizedPath(locale, page.path);
       entries.push({
-        url: `${siteUrl}/${locale}${page.path}`,
+        url: `${siteUrl}${localizedPath}`,
         lastModified: new Date(),
         changeFrequency: page.changefreq,
         priority: page.priority,
         alternates: {
           languages: Object.fromEntries(
-            locales.map((l) => [l, `${siteUrl}/${l}${page.path}`])
+            locales.map((l) => [l, `${siteUrl}${getLocalizedPath(l, page.path)}`])
           ),
         },
       });
@@ -49,14 +52,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     if (products) {
       for (const locale of locales) {
         for (const product of products) {
+          const productPath = getProductUrl(locale, product.slug);
           entries.push({
-            url: `${siteUrl}/${locale}/product/${product.slug}`,
+            url: `${siteUrl}${productPath}`,
             lastModified: new Date(product.updated_at),
             changeFrequency: 'weekly' as const,
             priority: 0.8,
             alternates: {
               languages: Object.fromEntries(
-                locales.map((l) => [l, `${siteUrl}/${l}/product/${product.slug}`])
+                locales.map((l) => [l, `${siteUrl}${getProductUrl(l, product.slug)}`])
               ),
             },
           });
@@ -77,7 +81,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           const slug = cat[slugKey] as string;
           if (slug) {
             entries.push({
-              url: `${siteUrl}/${l}/spare-parts/${slug}`,
+              url: `${siteUrl}${getCategoryUrl(l, slug)}`,
               lastModified: new Date(cat.updated_at),
               changeFrequency: 'weekly' as const,
               priority: 0.7,
@@ -99,8 +103,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         for (const post of posts) {
           const slug = post[slugKey] as string;
           if (slug) {
+            const blogPath = getBlogUrl(locale, slug);
             entries.push({
-              url: `${siteUrl}/${locale}/blog/${slug}`,
+              url: `${siteUrl}${blogPath}`,
               lastModified: new Date(post.updated_at),
               changeFrequency: 'monthly' as const,
               priority: 0.5,
@@ -108,7 +113,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
                 languages: Object.fromEntries(
                   locales.map((l) => {
                     const s = post[`slug_${l}` as keyof typeof post] as string;
-                    return [l, `${siteUrl}/${l}/blog/${s}`];
+                    return [l, `${siteUrl}${getBlogUrl(l, s)}`];
                   })
                 ),
               },

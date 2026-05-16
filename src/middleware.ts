@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-
-const SUPPORTED_LOCALES = ['az', 'en', 'ru'];
-const DEFAULT_LOCALE = 'az';
+import { PATH_MAP, SUPPORTED_LOCALES, DEFAULT_LOCALE, type Locale } from '@/lib/seo/constants';
 
 const LOCALE_COOKIE = 'NEXT_LOCALE';
 
@@ -26,6 +24,33 @@ export function middleware(request: NextRequest) {
   );
 
   if (pathLocale) {
+    // Check if we need to rewrite a localized path to an internal path
+    const segments = pathname.split('/').filter(Boolean);
+    const locale = segments[0] as Locale;
+    const remainingSegments = segments.slice(1);
+
+    if (remainingSegments.length > 0) {
+      let needsRewrite = false;
+      const internalSegments = remainingSegments.map(segment => {
+        // Find if this segment is a localized version of an internal path
+        for (const [key, mapping] of Object.entries(PATH_MAP)) {
+          if (mapping[locale] === segment) {
+            needsRewrite = true;
+            return key;
+          }
+        }
+        return segment;
+      });
+
+      if (needsRewrite) {
+        const internalPath = `/${locale}/${internalSegments.join('/')}`;
+        // Preserve query parameters
+        const url = new URL(internalPath, request.url);
+        url.search = request.nextUrl.search;
+        return NextResponse.rewrite(url);
+      }
+    }
+
     const response = NextResponse.next();
     response.cookies.set(LOCALE_COOKIE, pathLocale);
     return response;

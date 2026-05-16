@@ -20,3 +20,51 @@ export const LOCALE_PATHS: Record<Locale, string> = {
   en: '/en',
   ru: '/ru',
 };
+
+export const PATH_MAP: Record<string, Record<Locale, string>> = {
+  'spare-parts': {
+    az: 'ehtiyat-hisseleri',
+    en: 'spare-parts',
+    ru: 'zapasnye-chasti',
+  },
+  'repair-service': {
+    az: 'temir-xidmeti',
+    en: 'repair-service',
+    ru: 'remont-servisi',
+  },
+  'about': {
+    az: 'haqqimizda',
+    en: 'about',
+    ru: 'o-nas',
+  },
+  'contact': {
+    az: 'elaqe',
+    en: 'contact',
+    ru: 'kontakty',
+  },
+  'blog': {
+    az: 'bloq',
+    en: 'blog',
+    ru: 'blog',
+  },
+  'brands': {
+    az: 'brendler',
+    en: 'brands',
+    ru: 'brendy',
+  },
+  'product': {
+    az: 'mehsul',
+    en: 'product',
+    ru: 'tovar',
+  },
+  'privacy-policy': {
+    az: 'mexfilik-siyaseti',
+    en: 'privacy-policy',
+    ru: 'politika-konfidencialnosti',
+  },
+  'terms-of-service': {
+    az: 'istifade-shertleri',
+    en: 'terms-of-service',
+    ru: 'usloviya-ispolzovaniya',
+  }
+};

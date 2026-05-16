@@ -1,15 +1,18 @@
+import { getLocalizedPath as getPath } from './routes';
+import type { Locale } from '@/lib/seo/constants';
+
 export function getLocalizedPath(locale: string, path: string): string {
-  return `/${locale}${path.startsWith('/') ? '' : '/'}${path}`;
+  return getPath(path, locale as Locale);
 }
 
 export function getProductUrl(locale: string, slug: string): string {
-  return `/${locale}/product/${slug}`;
+  return getPath(`product/${slug}`, locale as Locale);
 }
 
 export function getCategoryUrl(locale: string, slug: string): string {
-  return `/${locale}/spare-parts/${slug}`;
+  return getPath(`spare-parts/${slug}`, locale as Locale);
 }
 
 export function getBlogUrl(locale: string, slug: string): string {
-  return `/${locale}/blog/${slug}`;
+  return getPath(`blog/${slug}`, locale as Locale);
 }

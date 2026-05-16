@@ -28,6 +28,9 @@ const WhatsappIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+import { getLocalizedPath } from '@/lib/utils/routes';
+import type { Locale } from '@/lib/seo/constants';
+
 interface FooterProps {
   locale: string;
   dictionary: any;
@@ -39,11 +42,11 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
 
   const navLinks = [
     { label: dictionary.nav.home, href: `/${locale}` },
-    { label: dictionary.nav.spare_parts, href: `/${locale}/spare-parts` },
-    { label: dictionary.nav.repair_service, href: `/${locale}/repair-service` },
-    { label: dictionary.nav.about, href: `/${locale}/about` },
-    { label: dictionary.nav.contact, href: `/${locale}/contact` },
-    { label: dictionary.nav.blog, href: `/${locale}/blog` },
+    { label: dictionary.nav.spare_parts, href: getLocalizedPath('spare-parts', locale as Locale) },
+    { label: dictionary.nav.repair_service, href: getLocalizedPath('repair-service', locale as Locale) },
+    { label: dictionary.nav.about, href: getLocalizedPath('about', locale as Locale) },
+    { label: dictionary.nav.contact, href: getLocalizedPath('contact', locale as Locale) },
+    { label: dictionary.nav.blog, href: getLocalizedPath('blog', locale as Locale) },
   ];
 
   const address = settings?.[`address_${locale}`] || settings?.address_en || 'Bakı, Azərbaycan';
@@ -73,12 +76,12 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link prefetch={true} href={`/${locale}/spare-parts`} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
+                <Link prefetch={true} href={getLocalizedPath('spare-parts', locale as Locale)} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
                   {dictionary.nav.spare_parts}
                 </Link>
               </li>
               <li>
-                <Link prefetch={true} href={`/${locale}/repair-service`} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
+                <Link prefetch={true} href={getLocalizedPath('repair-service', locale as Locale)} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
                   {dictionary.nav.repair_service}
                 </Link>
               </li>
@@ -98,17 +101,17 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
                 </Link>
               </li>
               <li>
-                <Link prefetch={true} href={`/${locale}/about`} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
+                <Link prefetch={true} href={getLocalizedPath('about', locale as Locale)} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
                   {dictionary.nav.about}
                 </Link>
               </li>
               <li>
-                <Link prefetch={true} href={`/${locale}/blog`} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
+                <Link prefetch={true} href={getLocalizedPath('blog', locale as Locale)} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
                   {dictionary.nav.blog}
                 </Link>
               </li>
               <li>
-                <Link prefetch={true} href={`/${locale}/contact`} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
+                <Link prefetch={true} href={getLocalizedPath('contact', locale as Locale)} className="text-sm text-metallic-silver hover:text-white hover:translate-x-1 inline-block transition-all duration-300">
                   {dictionary.nav.contact}
                 </Link>
               </li>
@@ -195,11 +198,11 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
           </p>
           
           <div className="flex items-center gap-4 text-xs text-metallic-silver">
-            <Link prefetch={true} href={`/${locale}/privacy-policy`} className="hover:text-muted-gold transition-colors">
+            <Link prefetch={true} href={getLocalizedPath('privacy-policy', locale as Locale)} className="hover:text-muted-gold transition-colors">
               Məxfilik Siyasəti
             </Link>
             <span className="w-1 h-1 rounded-full bg-dark-graphite" />
-            <Link prefetch={true} href={`/${locale}/terms-of-service`} className="hover:text-muted-gold transition-colors">
+            <Link prefetch={true} href={getLocalizedPath('terms-of-service', locale as Locale)} className="hover:text-muted-gold transition-colors">
               İstifadə Şərtləri
             </Link>
           </div>
