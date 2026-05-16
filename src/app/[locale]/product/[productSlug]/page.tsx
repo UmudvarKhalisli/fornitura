@@ -13,6 +13,7 @@ import { ArrowLeft, Share2, Package } from 'lucide-react';
 import Link from 'next/link';
 import type { Locale } from '@/lib/seo/constants';
 import { ShareButton } from '@/components/products/share-button';
+import { getLocalizedPath } from '@/lib/utils/routes';
 
 export async function generateMetadata({
   params,
@@ -49,7 +50,7 @@ export default async function ProductDetailPage({
   const dictionary = await getDictionary(locale);
   const settings = await getSiteSettings();
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://fornitura.com';
-  const productUrl = `${siteUrl}/${locale}/product/${product.slug}`;
+  const productUrl = `${siteUrl}${getLocalizedPath(`product/${product.slug}`, locale as Locale)}`;
 
   const name = getLocalizedField(product, 'name', locale as Locale) as string;
   const description = getLocalizedField(product, 'description', locale as Locale) as string;
