@@ -2,7 +2,8 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { isAdminAuthenticated } from '@/lib/supabase/admin';
 import { getAllCategories } from '@/lib/db/queries/categories';
-import { Plus, Edit, Eye } from 'lucide-react';
+import { Plus, Edit, Eye, FolderKanban, Search, Trash2 } from 'lucide-react';
+import Image from 'next/image';
 
 export default async function AdminCategoriesPage() {
   const admin = await isAdminAuthenticated();
@@ -11,55 +12,107 @@ export default async function AdminCategoriesPage() {
   const categories = await getAllCategories();
 
   return (
-    <div className="p-6">
-      <div className="flex items-center justify-between mb-6">
+    <div className="space-y-6 animate-in fade-in duration-500">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-deep-charcoal">Categories</h1>
-          <p className="text-sm text-medium-gray">{categories.length} total</p>
+          <h1 className="text-3xl font-bold text-deep-charcoal tracking-tight">Kateqoriyalar</h1>
+          <p className="text-medium-gray mt-1">Məhsul növlərini və kataloq bölmələrini idarə edin.</p>
         </div>
         <Link
           href="/admin/categories/new"
-          className="inline-flex items-center gap-2 px-4 py-2 bg-deep-charcoal text-white text-sm rounded-md hover:bg-dark-graphite transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-deep-charcoal text-white rounded-xl font-semibold shadow-lg shadow-deep-charcoal/10 hover:bg-muted-gold hover:text-deep-charcoal transition-all"
         >
           <Plus className="w-4 h-4" />
-          Add Category
+          Yeni Kateqoriya
         </Link>
       </div>
 
-      <div className="bg-white rounded-lg border border-light-gray overflow-hidden">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="bg-off-white border-b border-light-gray">
-              <th className="text-left py-3 px-4 font-medium">Name (EN)</th>
-              <th className="text-left py-3 px-4 font-medium">Slug (EN)</th>
-              <th className="text-left py-3 px-4 font-medium">Order</th>
-              <th className="text-left py-3 px-4 font-medium">Active</th>
-              <th className="text-right py-3 px-4 font-medium">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {categories.map((cat) => (
-              <tr key={cat.id} className="border-b border-light-gray hover:bg-off-white/50">
-                <td className="py-3 px-4 font-medium">{cat.name_en}</td>
-                <td className="py-3 px-4 text-medium-gray">{cat.slug_en}</td>
-                <td className="py-3 px-4 text-medium-gray">{cat.display_order}</td>
-                <td className="py-3 px-4">
-                  <span className={`text-xs px-2 py-0.5 rounded-full ${cat.is_active ? 'bg-green-50 text-success' : 'bg-red-50 text-error'}`}>
-                    {cat.is_active ? 'Active' : 'Inactive'}
-                  </span>
-                </td>
-                <td className="py-3 px-4 text-right">
-                  <Link href={`/admin/categories/${cat.id}/edit`} className="inline-flex p-1.5 rounded hover:bg-off-white text-medium-gray hover:text-deep-charcoal">
-                    <Edit className="w-4 h-4" />
-                  </Link>
-                </td>
+      <div className="bg-white rounded-3xl border border-light-gray overflow-hidden shadow-sm">
+        <div className="p-4 border-b border-light-gray bg-off-white/50 flex items-center justify-between">
+          <div className="text-xs font-bold text-medium-gray uppercase tracking-widest ml-2">
+            {categories.length} KATEQORİYA
+          </div>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="bg-off-white/30 border-b border-light-gray">
+                <th className="px-6 py-4 text-xs font-bold text-medium-gray uppercase tracking-wider">Kateqoriya</th>
+                <th className="px-6 py-4 text-xs font-bold text-medium-gray uppercase tracking-wider">Link (AZ)</th>
+                <th className="px-6 py-4 text-xs font-bold text-medium-gray uppercase tracking-wider">Sıra</th>
+                <th className="px-6 py-4 text-xs font-bold text-medium-gray uppercase tracking-wider">Status</th>
+                <th className="px-6 py-4 text-xs font-bold text-medium-gray uppercase tracking-wider text-right">Əməliyyat</th>
               </tr>
-            ))}
-            {categories.length === 0 && (
-              <tr><td colSpan={5} className="py-12 text-center text-medium-gray">No categories yet.</td></tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="divide-y divide-light-gray/50">
+              {categories.length === 0 ? (
+                <tr>
+                  <td colSpan={5} className="px-6 py-12 text-center text-medium-gray italic">
+                    Hələ heç bir kateqoriya əlavə edilməyib.
+                  </td>
+                </tr>
+              ) : (
+                categories.map((cat) => (
+                  <tr key={cat.id} className="hover:bg-off-white/50 transition-colors group">
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-4">
+                        <div className="relative w-12 h-12 rounded-xl overflow-hidden border border-light-gray bg-off-white shrink-0 shadow-sm">
+                          {cat.image ? (
+                            <Image src={cat.image} alt={cat.name_az} fill className="object-cover" />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center">
+                              <FolderKanban className="w-6 h-6 text-light-gray" />
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex flex-col min-w-0">
+                          <span className="font-bold text-deep-charcoal truncate max-w-[200px]">{cat.name_az}</span>
+                          <span className="text-xs text-medium-gray truncate max-w-[200px]">{cat.name_en}</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-medium-gray">
+                      /{cat.slug_az}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-deep-charcoal">
+                      #{cat.display_order}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <span className={`inline-flex px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase border ${
+                        cat.is_active
+                          ? 'bg-green-50 text-green-600 border-green-100'
+                          : 'bg-red-50 text-red-600 border-red-100'
+                      }`}>
+                        {cat.is_active ? 'Aktiv' : 'Passiv'}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 text-right">
+                      <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <Link
+                          href={`/az/spare-parts/${cat.slug_az}`}
+                          target="_blank"
+                          className="p-2 hover:bg-light-gray rounded-xl transition-colors text-deep-charcoal"
+                        >
+                          <Eye className="w-4 h-4" />
+                        </Link>
+                        <Link
+                          href={`/admin/categories/${cat.id}/edit`}
+                          className="p-2 hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-colors"
+                        >
+                          <Edit className="w-4 h-4" />
+                        </Link>
+                        <button className="p-2 hover:bg-red-50 hover:text-red-600 rounded-xl transition-colors">
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

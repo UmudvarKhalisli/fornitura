@@ -1,7 +1,8 @@
 import { redirect } from 'next/navigation';
 import { isAdminAuthenticated } from '@/lib/supabase/admin';
 import { getSiteSettings } from '@/lib/db/queries/settings';
-import { SettingsForm } from './settings-form';
+import { SettingsForm } from '@/components/admin/settings-form';
+import { Settings } from 'lucide-react';
 
 export default async function AdminSettingsPage() {
   const admin = await isAdminAuthenticated();
@@ -10,8 +11,12 @@ export default async function AdminSettingsPage() {
   const settings = await getSiteSettings();
 
   return (
-    <div className="p-6 max-w-4xl">
-      <h1 className="text-2xl font-bold text-deep-charcoal mb-6">Site Settings</h1>
+    <div className="space-y-8 animate-in fade-in duration-500">
+      <div>
+        <h1 className="text-3xl font-bold text-deep-charcoal tracking-tight">Sayt Tənzimləmələri</h1>
+        <p className="text-medium-gray mt-1">Saytın ümumi məlumatlarını və texniki vəziyyətini buradan idarə edin.</p>
+      </div>
+
       <SettingsForm settings={settings} />
     </div>
   );

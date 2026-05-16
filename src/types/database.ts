@@ -165,6 +165,7 @@ export interface SiteSetting {
   footer_text_az: string;
   footer_text_en: string;
   footer_text_ru: string;
+  is_maintenance: boolean;
   updated_at: string;
 }
 

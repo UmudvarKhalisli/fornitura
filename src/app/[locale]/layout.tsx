@@ -11,6 +11,7 @@ import { OrganizationSchema } from '@/components/seo';
 import { getDictionary } from '@/i18n';
 import { getSiteSettings } from '@/lib/db/queries/settings';
 import { isValidLocale } from '@/i18n';
+import { MaintenancePage } from '@/components/layout/maintenance-page';
 import '@/app/globals.css';
 
 const outfit = Outfit({ variable: '--font-outfit', subsets: ['latin'] });
@@ -54,6 +55,16 @@ export default async function LocaleLayout({
 
   const dictionary = await getDictionary(locale);
   const settings = await getSiteSettings();
+
+  if (settings?.is_maintenance) {
+    return (
+      <html lang={locale} className={`${outfit.variable} h-full antialiased`}>
+        <body className="h-full">
+          <MaintenancePage />
+        </body>
+      </html>
+    );
+  }
 
   return (
     <html lang={locale} className={`${outfit.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
