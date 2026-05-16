@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { WhatsAppButton } from '@/components/layout/whatsapp-button';
+import { ScrollToTop } from '@/components/layout/scroll-to-top';
 import { OrganizationSchema } from '@/components/seo';
 import { getDictionary } from '@/i18n';
 import { getSiteSettings } from '@/lib/db/queries/settings';
@@ -60,6 +61,7 @@ export default async function LocaleLayout({
         <main className="flex-1">{children}</main>
         <Footer locale={locale} dictionary={dictionary} settings={settings} />
         <WhatsAppButton phone={settings?.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP || ''} />
+        <ScrollToTop />
         <OrganizationSchema />
       </body>
       {process.env.NEXT_PUBLIC_GA_ID && (
