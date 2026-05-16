@@ -55,7 +55,7 @@ export function CTASection({ dictionary, settings, locale }: CTASectionProps) {
 
             {/* Secondary Modern WhatsApp Button */}
             <a
-              href={`https://wa.me/${settings?.whatsapp_number?.replace(/[^\d]/g, '') || ''}`}
+              href={`https://wa.me/${settings?.whatsapp_number?.replace(/[^\d]/g, '') || ''}?text=${encodeURIComponent("Salam! Fornitura.az saytından yazıram. Ehtiyat hissələri və servis xidmətləri barədə məlumat almaq istəyirdim.")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/5 border border-white/10 text-white font-medium rounded-xl hover:bg-[#25D366]/10 hover:border-[#25D366]/50 hover:text-[#25D366] transition-all duration-300 text-base md:text-lg hover:-translate-y-1 w-full sm:w-auto"
