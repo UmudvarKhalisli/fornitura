@@ -36,7 +36,7 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {
           <DropdownMenuItem
             key={locale}
             onClick={() => switchLanguage(locale)}
-            className={`cursor-pointer justify-center text-sm rounded-sm py-1.5 ${currentLocale === locale ? 'font-bold text-muted-gold bg-off-white' : 'text-deep-charcoal hover:bg-off-white/50'}`}
+            className={`cursor-pointer justify-center text-sm rounded-sm py-1.5 focus:bg-muted-gold focus:text-deep-charcoal transition-colors ${currentLocale === locale ? 'font-bold text-muted-gold bg-off-white' : 'text-deep-charcoal hover:bg-off-white'}`}
           >
             {labels[locale]}
           </DropdownMenuItem>
