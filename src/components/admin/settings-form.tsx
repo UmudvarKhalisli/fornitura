@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Save, AlertTriangle, ShieldCheck, Globe, MessageCircle, Phone, Mail, MapPin } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { updateSiteSettings } from '@/lib/db/queries/settings';
+import { updateSettingsAction } from '@/app/admin/settings/actions';
 import { toast } from 'sonner';
 
 export function SettingsForm({ settings }: { settings: any }) {
@@ -15,8 +15,12 @@ export function SettingsForm({ settings }: { settings: any }) {
     e.preventDefault();
     setLoading(true);
     try {
-      await updateSiteSettings(form);
-      toast.success('Tənzimləmələr uğurla yadda saxlanıldı');
+      const result = await updateSettingsAction(form);
+      if (result.success) {
+        toast.success('Tənzimləmələr uğurla yadda saxlanıldı');
+      } else {
+        toast.error(result.error || 'Xəta baş verdi');
+      }
     } catch (error) {
       console.error(error);
       toast.error('Xəta baş verdi');
