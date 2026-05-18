@@ -112,8 +112,7 @@ export default async function AboutPage({
             <div className="lg:col-span-5 relative">
               <div className="sticky top-32">
                 <h2 className="text-3xl md:text-4xl font-bold text-deep-charcoal mb-6 leading-tight">
-                  Biznesinizin kəsintisiz işləməsi üçün çalışırıq.
-                </{dictionary.about.intro_title}
+                  {dictionary.about.intro_title}
                 </h2>
                 <div className="w-16 h-1.5 bg-muted-gold mb-8" />
                 <div className="space-y-4">
@@ -122,7 +121,8 @@ export default async function AboutPage({
                     dictionary.about.feature_service,
                     dictionary.about.feature_delivery,
                     dictionary.about.feature_price
-                  
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3">
                       <CheckCircle2 className="w-5 h-5 text-muted-gold" />
                       <span className="text-deep-charcoal font-semibold">{item}</span>
                     </div>
@@ -144,15 +144,15 @@ export default async function AboutPage({
         </Container>
       </section>
 
-      {/* Core{dictionary.about.values_badge}
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-deep-charcoal">
-              {dictionary.about.values_title}-3xl mx-auto mb-16 md:mb-24">
+      {/* Core Values Section */}
+      <section className="py-20 md:py-32 bg-white">
+        <Container>
+          <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
             <span className="text-muted-gold text-[10px] font-bold uppercase tracking-[0.2em] mb-4 block">
-              Üstünlüklərimiz
+              {dictionary.about.values_badge}
             </span>
             <h2 className="text-3xl md:text-5xl font-bold text-deep-charcoal">
-              Dəyərlərimiz və Məqsədlərimiz
+              {dictionary.about.values_title}
             </h2>
           </div>
 
