@@ -62,7 +62,7 @@ export function Header({ locale, dictionary, settings }: HeaderProps) {
           <Link prefetch={true} href={`/${locale}`} className="flex items-center shrink-0">
             <img 
               src="/logo.png" 
-              alt="Fornitura loqosu" 
+              alt={dictionary.home.logo_alt} 
               className="h-16 md:h-20 w-auto object-contain scale-[1.2] md:scale-[1.4] origin-left" 
             />
           </Link>

@@ -72,7 +72,7 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
           <div>
             <h3 className="text-sm font-bold uppercase tracking-widest text-muted-gold mb-6 flex items-center gap-2">
               <div className="w-4 h-[2px] bg-muted-gold" />
-              Xidmətlər
+              {dictionary.home.services}
             </h3>
             <ul className="space-y-3">
               <li>
@@ -92,7 +92,7 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
           <div>
             <h3 className="text-sm font-bold uppercase tracking-widest text-muted-gold mb-6 flex items-center gap-2">
               <div className="w-4 h-[2px] bg-muted-gold" />
-              Şirkət
+              {dictionary.home.company}
             </h3>
             <ul className="space-y-3">
               <li>
@@ -122,7 +122,7 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
           <div>
             <h3 className="text-sm font-bold uppercase tracking-widest text-muted-gold mb-6 flex items-center gap-2">
               <div className="w-4 h-[2px] bg-muted-gold" />
-              Əlaqə
+              {dictionary.nav.contact}
             </h3>
             <ul className="space-y-4 mb-8">
               {true && (

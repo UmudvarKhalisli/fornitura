@@ -73,8 +73,8 @@ export function RepairIntro({ dictionary, locale, settings }: RepairIntroProps) 
                 </svg>
               </div>
               <div>
-                <p className="text-sm font-bold text-deep-charcoal">Peşəkar Təmir</p>
-                <p className="text-xs text-medium-gray">Zəmanətli Xidmət</p>
+                <p className="text-sm font-bold text-deep-charcoal">{dictionary.home.professional_repair}</p>
+                <p className="text-xs text-medium-gray">{dictionary.home.guaranteed_service}</p>
               </div>
             </div>
           </div>

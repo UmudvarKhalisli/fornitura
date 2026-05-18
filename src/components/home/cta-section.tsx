@@ -17,7 +17,7 @@ export function CTASection({ dictionary, settings, locale }: CTASectionProps) {
       <div className="absolute inset-0 bg-deep-charcoal" />
       <Image
         src="/repair-bg.png"
-        alt="Fornitura ehtiyat hissələri"
+        alt={dictionary.home.cta_img_alt}
         fill
         className="object-cover opacity-20 mix-blend-overlay"
       />

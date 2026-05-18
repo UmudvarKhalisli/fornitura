@@ -20,7 +20,7 @@ export function HeroSection({ dictionary, locale, settings }: HeroSectionProps) 
       {/* Background image or gradient */}
       <Image
         src={heroImage || "/hero-bg.png"}
-        alt="Ağır texnika avadanlıqları"
+        alt={dictionary.home.hero_img_alt}
         fill
         className="object-cover opacity-60"
         priority

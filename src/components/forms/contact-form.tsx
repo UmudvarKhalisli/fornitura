@@ -47,33 +47,33 @@ export function ContactForm({ dictionary, locale, settings, showContactInfo }: C
         <div className="flex flex-col items-center justify-center h-full text-center py-16">
           <CheckCircle className="w-16 h-16 text-success mb-4" />
           <h3 className="text-2xl font-bold text-deep-charcoal mb-2">
-            Təşəkkür edirik!
+            {dictionary.contact.success_title || "Təşəkkür edirik!"}
           </h3>
-          <p className="text-medium-gray text-lg">Mesajınız uğurla göndərildi. Tezliklə sizinlə əlaqə saxlayacağıq.</p>
+          <p className="text-medium-gray text-lg">{dictionary.contact.success}</p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
               <label className="block text-[11px] font-bold text-medium-gray uppercase tracking-wider mb-2">
-                Ad, Soyad <span className="text-error">*</span>
+                {dictionary.contact.name} <span className="text-error">*</span>
               </label>
               <Input
                 required
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                placeholder="Ad və soyadınızı daxil edin"
+                placeholder={dictionary.contact.name_placeholder || "Ad və soyadınızı daxil edin"}
                 className="h-12 px-4 rounded-xl border-light-gray/60 bg-off-white focus-visible:ring-1 focus-visible:ring-muted-gold shadow-sm text-sm"
               />
             </div>
             <div>
               <label className="block text-[11px] font-bold text-medium-gray uppercase tracking-wider mb-2">
-                Telefon
+                {dictionary.contact.phone}
               </label>
               <Input
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                placeholder="Məs: +994 50 000 00 00"
+                placeholder={dictionary.contact.phone_placeholder || "Məs: +994 50 000 00 00"}
                 className="h-12 px-4 rounded-xl border-light-gray/60 bg-off-white focus-visible:ring-1 focus-visible:ring-muted-gold shadow-sm text-sm"
               />
             </div>
@@ -81,20 +81,20 @@ export function ContactForm({ dictionary, locale, settings, showContactInfo }: C
 
           <div>
             <label className="block text-[11px] font-bold text-medium-gray uppercase tracking-wider mb-2">
-              E-poçt
+              {dictionary.contact.email}
             </label>
             <Input
               type="email"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              placeholder="E-poçt ünvanınızı daxil edin"
+              placeholder={dictionary.contact.email_placeholder || "E-poçt ünvanınızı daxil edin"}
               className="h-12 px-4 rounded-xl border-light-gray/60 bg-off-white focus-visible:ring-1 focus-visible:ring-muted-gold shadow-sm text-sm"
             />
           </div>
 
           <div>
             <label className="block text-[11px] font-bold text-medium-gray uppercase tracking-wider mb-2">
-              Ehtiyat hissəsinin növü / Mövzu <span className="text-error">*</span>
+              {dictionary.contact.subject} <span className="text-error">*</span>
             </label>
             <Input
               required
