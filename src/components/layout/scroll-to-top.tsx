@@ -34,8 +34,8 @@ export function ScrollToTop() {
       onClick={scrollToTop}
       aria-label="Scroll to top"
       className={cn(
-        'fixed bottom-6 left-6 z-50 p-3 rounded-full bg-deep-charcoal text-muted-gold shadow-xl border border-muted-gold/20 backdrop-blur-sm transition-all duration-500 hover:bg-muted-gold hover:text-deep-charcoal hover:-translate-y-2 hover:shadow-muted-gold/30',
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
+        'fixed bottom-6 right-6 z-50 p-3.5 rounded-full bg-deep-charcoal text-muted-gold shadow-xl border border-muted-gold/20 backdrop-blur-sm transition-all duration-500 hover:bg-muted-gold hover:text-deep-charcoal hover:-translate-y-2 hover:shadow-muted-gold/30',
+        isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-0 pointer-events-none'
       )}
     >
       <ArrowUp className="w-5 h-5 animate-pulse" />
