@@ -64,26 +64,22 @@ export default async function SparePartsInfoPage({
             <div className="space-y-8">
               <div>
                 <h2 className="text-3xl font-bold text-deep-charcoal mb-6">
-                  {locale === 'az' ? 'Niyə bizim ehtiyat hissələrini seçməli?' : 'Why choose our spare parts?'}
+                  {dictionary.catalog.why_choose_title}
                 </h2>
                 <p className="text-medium-gray text-lg leading-relaxed mb-6">
-                  {locale === 'az' 
-                    ? 'Fornitura olaraq biz ağır texnika üçün ehtiyat hissələrinin seçimində keyfiyyət və davamlılığa xüsusi önəm veririk. Sizin texnikanızın fasiləsiz işləməsi bizim üçün prioritetdir.'
-                    : 'At Fornitura, we place special emphasis on quality and durability in the selection of spare parts for heavy machinery. Your equipment\'s continuous operation is our priority.'}
+                  {dictionary.catalog.why_choose_desc_1}
                 </p>
                 <p className="text-medium-gray text-lg leading-relaxed">
-                  {locale === 'az'
-                    ? 'Bizim təqdim etdiyimiz bütün detallar beynəlxalq standartlara cavab verir və istehsalçı tərəfindən zəmanətlidir.'
-                    : 'All the parts we provide meet international standards and are guaranteed by the manufacturer.'}
+                  {dictionary.catalog.why_choose_desc_2}
                 </p>
               </div>
 
               <div className="grid sm:grid-cols-2 gap-6">
                 {[
-                  { icon: CheckCircle2, title: locale === 'az' ? 'Orijinal Keyfiyyət' : 'Original Quality', desc: locale === 'az' ? 'Hər bir detal sınaqdan keçirilmişdir.' : 'Each part has been tested.' },
-                  { icon: ShieldCheck, title: locale === 'az' ? 'Zəmanət' : 'Warranty', desc: locale === 'az' ? 'Məhsullarımıza tam zəmanət veririk.' : 'We provide a full warranty.' },
-                  { icon: Truck, title: locale === 'az' ? 'Sürətli Çatdırılma' : 'Fast Delivery', desc: locale === 'az' ? 'Sifarişləriniz qısa zamanda qapınızda.' : 'Orders at your door soon.' },
-                  { icon: Clock, title: locale === 'az' ? '7/24 Dəstək' : '24/7 Support', desc: locale === 'az' ? 'Mütəxəssislərimiz hər zaman köməyə hazırdır.' : 'Our experts are always ready to help.' }
+                  { icon: CheckCircle2, title: dictionary.catalog.original_quality, desc: dictionary.catalog.original_quality_desc },
+                  { icon: ShieldCheck, title: dictionary.catalog.warranty, desc: dictionary.catalog.warranty_desc },
+                  { icon: Truck, title: dictionary.catalog.fast_delivery, desc: dictionary.catalog.fast_delivery_desc },
+                  { icon: Clock, title: dictionary.catalog.support_24_7, desc: dictionary.catalog.support_24_7_desc }
                 ].map((item, i) => (
                   <div key={i} className="p-6 bg-off-white rounded-2xl border border-light-gray/50 hover:border-muted-gold/30 transition-colors">
                     <item.icon className="w-8 h-8 text-muted-gold mb-4" />
@@ -98,7 +94,7 @@ export default async function SparePartsInfoPage({
               <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl">
                 <Image
                   src="/repair-bg.png"
-                  alt="Engine parts"
+                  alt={dictionary.catalog.original_assurance}
                   fill
                   className="object-cover"
                 />
@@ -106,7 +102,7 @@ export default async function SparePartsInfoPage({
               <div className="absolute -bottom-6 -right-6 bg-muted-gold text-deep-charcoal p-8 rounded-3xl shadow-xl max-w-xs hidden sm:block">
                 <p className="text-3xl font-bold mb-2">100%</p>
                 <p className="text-sm font-semibold uppercase tracking-wider leading-tight">
-                  {locale === 'az' ? 'Orijinal Ehtiyat Hissələri Təminatı' : 'Original Spare Parts Assurance'}
+                  {dictionary.catalog.original_assurance}
                 </p>
               </div>
             </div>
@@ -118,17 +114,13 @@ export default async function SparePartsInfoPage({
       <section className="py-16 bg-off-white border-t border-light-gray/50">
         <Container>
           <div className="max-w-4xl mx-auto prose prose-gold lg:prose-lg">
-            <h2 className="text-deep-charcoal">{locale === 'az' ? 'Ağır Texnika Ehtiyat Hissələrinin Satışı' : 'Sale of Heavy Machinery Spare Parts'}</h2>
+            <h2 className="text-deep-charcoal">{dictionary.catalog.seo_title}</h2>
             <p className="text-medium-gray">
-              {locale === 'az' 
-                ? 'Azərbaycanda ağır texnika ehtiyat hissələri bazarında Fornitura lider mövqelərdən birini tutur. Biz Caterpillar, Komatsu, Volvo, JCB və digər məşhur brendlər üçün geniş çeşiddə detallar təqdim edirik. Hidravlik sistemlər, mühərrik detalları, asqı sistemləri və süzgəclər - hamısı bir ünvanda.'
-                : 'Fornitura holds one of the leading positions in the heavy machinery spare parts market in Azerbaijan. We provide a wide range of parts for Caterpillar, Komatsu, Volvo, JCB and other famous brands. Hydraulic systems, engine parts, suspension systems and filters - all in one place.'}
+              {dictionary.catalog.seo_desc_1}
             </p>
-            <h3 className="text-deep-charcoal">{locale === 'az' ? 'Ehtiyat hissələrinin sifarişi qaydası' : 'How to order spare parts'}</h3>
+            <h3 className="text-deep-charcoal">{dictionary.catalog.seo_title_2}</h3>
             <p className="text-medium-gray">
-              {locale === 'az'
-                ? 'İstədiyiniz detalı kataloqumuzdan tapa bilərsiniz. Əgər axtardığınız məhsul siyahıda yoxdursa, narahat olmayın. WhatsApp vasitəsilə detalı şəkli və ya kodu ilə bizə göndərin, mütəxəssislərimiz dərhal axtarışa başlasın.'
-                : 'You can find the part you want from our catalog. If the product you are looking for is not on the list, don\'t worry. Send us the part with its photo or code via WhatsApp, and our experts will start searching immediately.'}
+              {dictionary.catalog.seo_desc_2}
             </p>
           </div>
         </Container>
