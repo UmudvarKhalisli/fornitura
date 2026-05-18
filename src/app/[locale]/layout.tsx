@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     shortcut: '/favicon-16x16.png',
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || '',
+    google: 'rD2Jj0fWPx229uVYNuivAp4y3rJKHBFN8k17NIAlCPQ',
   },
   alternates: {
     canonical: '/',
