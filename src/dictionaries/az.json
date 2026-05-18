@@ -206,6 +206,10 @@
     "contact_title": "Əlaqə",
     "contact_desc": "Fornitura ilə əlaqə saxlayın.",
     "blog_title": "Bloq",
-    "blog_desc": "Sənaye xəbərləri, məqalələr və yeniliklər."
+    "blog_desc": "Sənaye xəbərləri, məqalələr və yeniliklər.",
+    "privacy_title": "Məxfilik Siyasəti",
+    "privacy_desc": "Fornitura MMC-nin məxfilik siyasəti. Şəxsi məlumatların qorunması qaydaları.",
+    "terms_title": "İstifadə Şərtləri",
+    "terms_desc": "Fornitura MMC veb-saytının istifadə şərtləri və qaydaları."
   }
 }

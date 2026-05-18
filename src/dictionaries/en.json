@@ -193,6 +193,10 @@
     "contact_title": "Contact",
     "contact_desc": "Get in touch with Fornitura.",
     "blog_title": "Blog",
-    "blog_desc": "Industry news, articles and updates."
+    "blog_desc": "Industry news, articles and updates.",
+    "privacy_title": "Privacy Policy",
+    "privacy_desc": "Privacy policy of Fornitura LLC. Rules for the protection of personal data.",
+    "terms_title": "Terms of Service",
+    "terms_desc": "Terms and conditions of use of the Fornitura LLC website."
   }
 }
