@@ -78,7 +78,33 @@
   },
   "about": {
     "title": "About Us",
-    "subtitle": "About Fornitura"
+    "subtitle": "About Fornitura",
+    "hero_title_1": "For Your Heavy Machinery",
+    "hero_title_2": "Your Reliable Partner",
+    "hero_subtitle": "With years of experience, we provide the highest quality spare parts and repair services in the oil equipment and heavy machinery sector in Azerbaijan.",
+    "intro_title": "We work to ensure your business runs smoothly.",
+    "feature_parts": "Original Spare Parts",
+    "feature_service": "Guaranteed Service",
+    "feature_delivery": "Operative Delivery",
+    "feature_price": "Reasonable Prices",
+    "values_badge": "Our Advantages",
+    "values_title": "Our Values and Goals",
+    "quality_title": "High Quality",
+    "quality_desc": "Sale of original and fully guaranteed spare parts.",
+    "delivery_title": "Fast Delivery",
+    "delivery_desc": "Delivery of orders in the shortest time and to a safe address.",
+    "repair_title": "Professional Repair",
+    "repair_desc": "Operative repair of your heavy machinery with our experienced masters.",
+    "support_title": "24/7 Support",
+    "support_desc": "Support for our customers' technical needs at any time.",
+    "stat_parts": "Original Parts",
+    "stat_support": "Technical Support",
+    "stat_warranty": "Official Warranty",
+    "stat_delivery": "Delivery",
+    "stat_delivery_val": "Prompt",
+    "cta_title": "Ready to Cooperate with Us?",
+    "cta_desc": "Contact us now to get more information about ordering spare parts or our repair services.",
+    "cta_btn": "Apply Now"
   },
   "contact": {
     "title": "Contact",
@@ -94,10 +120,17 @@
     "success_desc": "We will get back to you as soon as possible.",
     "error": "Something went wrong",
     "error_desc": "Your message could not be sent. Please try again.",
-    "call_us": "Call Us",
-    "write_us": "WhatsApp",
     "email_us": "Send Email",
-    "visit_us": "Visit Us"
+    "visit_us": "Visit Us",
+    "info_title": "Contact Information",
+    "call_label": "Call Us",
+    "quick_request": "Quick Request",
+    "order_here": "You can order here",
+    "send_form": "Send Order Form",
+    "sending": "Sending...",
+    "map_title": "Find Us on Map",
+    "map_badge": "Our Address",
+    "working_days": "Monday — Saturday"
   },
   "blog": {
     "title": "Blog",
@@ -105,7 +138,9 @@
     "read_more": "Read More",
     "no_posts": "No articles yet",
     "back_to_blog": "Back to Blog",
-    "published_at": "Published"
+    "published_at": "Published",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
   },
   "home": {
     "why_choose_us": "Why Fornitura?",

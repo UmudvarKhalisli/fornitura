@@ -199,11 +199,11 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
           
           <div className="flex items-center gap-4 text-xs text-metallic-silver">
             <Link prefetch={true} href={getLocalizedPath('privacy-policy', locale as Locale)} className="hover:text-muted-gold transition-colors">
-              Məxfilik Siyasəti
+              {dictionary.footer.privacy}
             </Link>
             <span className="w-1 h-1 rounded-full bg-dark-graphite" />
             <Link prefetch={true} href={getLocalizedPath('terms-of-service', locale as Locale)} className="hover:text-muted-gold transition-colors">
-              İstifadə Şərtləri
+              {dictionary.footer.terms}
             </Link>
           </div>
 

@@ -44,31 +44,31 @@ export default async function AboutPage({
   const values = [
     {
       icon: Shield,
-      title: 'Yüksək Keyfiyyət',
-      desc: 'Orijinal və tam zəmanətli ehtiyat hissələrinin satışı.',
+      title: dictionary.about.quality_title,
+      desc: dictionary.about.quality_desc,
     },
     {
       icon: Truck,
-      title: 'Sürətli Çatdırılma',
-      desc: 'Sifarişlərin ən qısa zamanda və təhlükəsiz ünvana çatdırılması.',
+      title: dictionary.about.delivery_title,
+      desc: dictionary.about.delivery_desc,
     },
     {
       icon: Award,
-      title: 'Peşəkar Təmir',
-      desc: 'Təcrübəli ustalarımızla ağır texnikanızın operativ təmiri.',
+      title: dictionary.about.repair_title,
+      desc: dictionary.about.repair_desc,
     },
     {
       icon: HeadphonesIcon,
-      title: '7/24 Dəstək',
-      desc: 'İstənilən vaxt müştərilərimizin texniki ehtiyaclarına dəstək.',
+      title: dictionary.about.support_title,
+      desc: dictionary.about.support_desc,
     },
   ];
 
   const stats = [
-    { number: '100%', label: 'Orijinal Hissələr' },
-    { number: '7/24', label: 'Texniki Dəstək' },
-    { number: '1 İl', label: 'Rəsmi Zəmanət' },
-    { number: 'Operativ', label: 'Çatdırılma' },
+    { number: '100%', label: dictionary.about.stat_parts },
+    { number: '7/24', label: dictionary.about.stat_support },
+    { number: locale === 'az' ? '1 İl' : locale === 'ru' ? '1 Год' : '1 Year', label: dictionary.about.stat_warranty },
+    { number: dictionary.about.stat_delivery_val, label: dictionary.about.stat_delivery },
   ];
 
   return (
@@ -95,12 +95,11 @@ export default async function AboutPage({
               {dictionary.nav.about}
             </span>
             <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6 leading-tight">
-              Ağır Texnikanız Üçün <br />
-              <span className="text-muted-gold">Etibarlı Tərəfdaşınız</span>
+              {dictionary.about.hero_title_1} <br />
+              <span className="text-muted-gold">{dictionary.about.hero_title_2}</span>
             </h1>
             <p className="text-lg md:text-xl text-metallic-silver leading-relaxed max-w-2xl">
-              İllərin təcrübəsi ilə Azərbaycanda neft avadanlıqları və ağır texnika sektorunda 
-              ən keyfiyyətli ehtiyat hissələri və təmir xidmətlərini təqdim edirik.
+              {dictionary.about.hero_subtitle}
             </p>
           </div>
         </Container>
@@ -114,11 +113,16 @@ export default async function AboutPage({
               <div className="sticky top-32">
                 <h2 className="text-3xl md:text-4xl font-bold text-deep-charcoal mb-6 leading-tight">
                   Biznesinizin kəsintisiz işləməsi üçün çalışırıq.
+                </{dictionary.about.intro_title}
                 </h2>
                 <div className="w-16 h-1.5 bg-muted-gold mb-8" />
                 <div className="space-y-4">
-                  {['Orijinal Ehtiyat Hissələri', 'Zəmanətli Xidmət', 'Operativ Çatdırılma', 'Münasib Qiymətlər'].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3">
+                  {[
+                    dictionary.about.feature_parts,
+                    dictionary.about.feature_service,
+                    dictionary.about.feature_delivery,
+                    dictionary.about.feature_price
+                  
                       <CheckCircle2 className="w-5 h-5 text-muted-gold" />
                       <span className="text-deep-charcoal font-semibold">{item}</span>
                     </div>
@@ -140,10 +144,10 @@ export default async function AboutPage({
         </Container>
       </section>
 
-      {/* Core Values Section */}
-      <section className="py-20 md:py-32 bg-white">
-        <Container>
-          <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+      {/* Core{dictionary.about.values_badge}
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-deep-charcoal">
+              {dictionary.about.values_title}-3xl mx-auto mb-16 md:mb-24">
             <span className="text-muted-gold text-[10px] font-bold uppercase tracking-[0.2em] mb-4 block">
               Üstünlüklərimiz
             </span>
@@ -194,16 +198,16 @@ export default async function AboutPage({
             <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent pointer-events-none" />
             <div className="relative z-10">
               <h2 className="text-3xl md:text-5xl font-bold text-deep-charcoal mb-6">
-                Bizimlə Əməkdaşlığa Hazırsınız?
+                {dictionary.about.cta_title}
               </h2>
               <p className="text-lg md:text-xl text-medium-gray mb-10 max-w-2xl mx-auto">
-                Ehtiyat hissələri sifarişi və ya təmir xidmətlərimiz haqqında daha ətraflı məlumat almaq üçün elə indi bizimlə əlaqə saxlayın.
+                {dictionary.about.cta_desc}
               </p>
               <Link 
                 href={`/${locale}/contact`}
                 className="inline-flex items-center gap-3 bg-deep-charcoal hover:bg-muted-gold text-white px-8 py-4 rounded-xl font-bold uppercase tracking-wider transition-all shadow-md group"
               >
-                Müraciət Edin
+                {dictionary.about.cta_btn}
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>

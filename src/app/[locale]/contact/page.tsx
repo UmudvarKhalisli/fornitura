@@ -49,10 +49,10 @@ export default async function ContactPage({
           {settings?.google_maps_url && (
             <div className="mt-16 md:mt-24">
               <span className="text-muted-gold text-[10px] font-bold uppercase tracking-[0.2em] mb-4 block text-center">
-                Ünvanımız
+                {dictionary.contact.map_badge}
               </span>
               <h3 className="text-2xl md:text-3xl font-bold text-deep-charcoal mb-8 text-center">
-                Bizi Xəritədə Tapın
+                {dictionary.contact.map_title}
               </h3>
               <div className="w-full h-[400px] md:h-[500px] rounded-3xl overflow-hidden border border-light-gray/40 shadow-lg bg-white p-2">
                 <iframe
