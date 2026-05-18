@@ -85,6 +85,17 @@ export default async function LocaleLayout({
         />
         <ScrollToTop />
         <OrganizationSchema />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-VP03YFHTSV"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-VP03YFHTSV');
+            `,
+          }}
+        />
       </body>
       {process.env.NEXT_PUBLIC_GA_ID && (
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
