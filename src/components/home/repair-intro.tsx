@@ -56,7 +56,7 @@ export function RepairIntro({ dictionary, locale, settings }: RepairIntroProps) 
             <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-2xl group">
               <Image
                 src={image || "/repair-bg.png"}
-                alt="Heavy Machinery Repair"
+                alt="Ağır texnika təmir xidməti"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"

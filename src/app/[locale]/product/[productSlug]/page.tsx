@@ -78,17 +78,24 @@ export default async function ProductDetailPage({
     '@type': 'Product',
     name,
     description: description || name,
-    sku: product.part_number,
-    ...(brandName ? { brand: { '@type': 'Brand', name: brandName } } : {}),
-    ...(categoryName ? { category: categoryName } : {}),
     image: product.main_image || undefined,
+    sku: product.part_number,
+    brand: {
+      '@type': 'Brand',
+      name: "Fornitura"
+    },
     offers: {
       '@type': 'Offer',
       url: productUrl,
+      priceCurrency: "AZN",
       availability:
         product.stock_status === 'in_stock'
           ? 'https://schema.org/InStock'
           : 'https://schema.org/OutOfStock',
+      seller: {
+        '@type': 'Organization',
+        name: 'Fornitura'
+      }
     },
   };
 

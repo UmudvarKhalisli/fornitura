@@ -62,7 +62,7 @@ export function Header({ locale, dictionary, settings }: HeaderProps) {
           <Link prefetch={true} href={`/${locale}`} className="flex items-center shrink-0">
             <img 
               src="/logo.png" 
-              alt="Fornitura Logo" 
+              alt="Fornitura loqosu" 
               className="h-16 md:h-20 w-auto object-contain scale-[1.2] md:scale-[1.4] origin-left" 
             />
           </Link>
@@ -98,7 +98,7 @@ export function Header({ locale, dictionary, settings }: HeaderProps) {
           {/* Right side */}
           <div className="flex items-center gap-3">
             <a
-              href={`tel:${settings?.phone_number || process.env.NEXT_PUBLIC_PHONE || ''}`}
+              href={`tel:+${settings?.phone_number || process.env.NEXT_PUBLIC_PHONE || ''}`}
               className="hidden md:flex items-center gap-1.5 text-sm text-medium-gray hover:text-deep-charcoal transition-colors"
             >
               <Phone className="w-4 h-4" />
@@ -149,7 +149,7 @@ export function Header({ locale, dictionary, settings }: HeaderProps) {
             );
           })}
           <a
-            href={`tel:${settings?.phone_number || process.env.NEXT_PUBLIC_PHONE || ''}`}
+            href={`tel:+${settings?.phone_number || process.env.NEXT_PUBLIC_PHONE || ''}`}
             className="flex items-center gap-2 px-3 py-2.5 text-base text-medium-gray hover:text-deep-charcoal"
           >
             <Phone className="w-4 h-4" />
@@ -168,7 +168,7 @@ export function Header({ locale, dictionary, settings }: HeaderProps) {
             <a href={settings?.tiktok_url || "https://www.tiktok.com/@fornitura.az?_r=1&_t=ZS-96P9wpY1fBA"} target="_blank" rel="noopener noreferrer" className="p-2 rounded-md hover:text-deep-charcoal hover:bg-light-gray transition-colors" aria-label="TikTok">
               <TiktokIcon className="w-5 h-5" />
             </a>
-            <a href={`https://wa.me/${(settings?.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP || "").replace(/[^\\d]/g, "")}?text=${encodeURIComponent("Salam! Fornitura.az saytından yazıram. Ehtiyat hissələri və servis xidmətləri barədə məlumat almaq istəyirdim.")}`} target="_blank" rel="noopener noreferrer" className="p-2 rounded-md hover:text-deep-charcoal hover:bg-light-gray transition-colors" aria-label="WhatsApp">
+            <a href={`https://wa.me/${(settings?.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP || "").replace(/[^\d]/g, "")}?text=${encodeURIComponent("Salam, məhsul haqqında məlumat almaq istəyirəm")}`} target="_blank" rel="noopener noreferrer" className="p-2 rounded-md hover:text-deep-charcoal hover:bg-light-gray transition-colors" aria-label="WhatsApp">
               <OfficialWhatsAppIcon className="w-5 h-5" />
             </a>
           </div>

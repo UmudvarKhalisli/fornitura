@@ -3,7 +3,7 @@ import { getLocalizedPath, getProductUrl, getCategoryUrl, getBlogUrl } from '@/l
 import type { Locale } from '@/lib/seo/constants';
 
 const locales = ['az', 'en', 'ru'] as const;
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://fornitura.vercel.app';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://fornitura.az';
 
 const staticPages = [
   { path: '', changefreq: 'weekly' as const, priority: 1.0 },

@@ -22,18 +22,24 @@ export async function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://fornitura.vercel.app'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://fornitura.az'),
   openGraph: {
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Fornitura' }]
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Fornitura - Ağır texnika ehtiyat hissələri' }]
   },
   twitter: {
     card: 'summary_large_image',
     images: ['/og-image.jpg']
   },
   icons: {
-    icon: '/favicon.ico'
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+    shortcut: '/favicon-16x16.png',
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || '',
   },
   alternates: {
+    canonical: '/',
     languages: {
       az: '/az',
       en: '/en',
