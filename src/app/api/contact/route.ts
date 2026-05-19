@@ -19,7 +19,7 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    console.log('Incoming contact body:', body);
+    console.log('CONTACT_FORM_BODY:', body);
 
     // Validate
     const parsed = contactFormSchema.safeParse(body);
@@ -44,12 +44,17 @@ export async function POST(request: Request) {
 
     console.log('Sanitized contact data:', sanitized);
 
+    // Check environment variables
+    if (!process.env.RESEND_API_KEY) {
+      console.error('MISSING_RESEND_API_KEY');
+    }
+
     // Insert to database
     const supabase = createAdminClient();
     const { error: dbError } = await supabase.from('messages').insert(sanitized);
 
     if (dbError) {
-      console.error('Database insert error:', dbError);
+      console.error('DATABASE_INSERT_ERROR:', dbError);
       return NextResponse.json(
         { error: `Database error: ${dbError.message}`, details: dbError },
         { status: 500 }
@@ -60,7 +65,7 @@ export async function POST(request: Request) {
     try {
       console.log('Attempting to send email via Resend...');
       const emailResult = await resend.emails.send({
-        from: 'Fornitura Contact <onboarding@resend.dev>',
+        from: 'Fornitura <onboarding@resend.dev>',
         to: process.env.CONTACT_EMAIL_TO || 'forniturammc@gmail.com',
         subject: `Yeni müraciət: ${sanitized.subject}`,
         html: `
@@ -77,14 +82,14 @@ export async function POST(request: Request) {
       });
       console.log('Resend API result:', emailResult);
     } catch (emailError) {
-      console.error('Email sending failed:', emailError);
+      console.error('RESEND_EMAIL_FAILED:', emailError);
     }
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
-    console.error('Contact form error:', error);
+    console.error('CONTACT_FORM_API_ERROR:', error);
     return NextResponse.json(
-      { error: error.message || 'Internal server error', stack: error.stack },
+      { error: error.message || 'Internal server error' },
       { status: 500 }
     );
   }

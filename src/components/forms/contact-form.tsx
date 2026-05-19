@@ -33,15 +33,15 @@ export function ContactForm({ dictionary, locale, settings, showContactInfo }: C
 
       if (!res.ok) {
         const errorData = await res.json();
-        console.error('Contact form submission error:', errorData);
+        console.error('CONTACT_FORM_SUBMIT_FAILED:', errorData);
         throw new Error(errorData.error || 'Failed to submit contact form');
       }
 
       trackContactFormSubmit();
       
       // WhatsApp redirect if successful
-      const whatsappNum = (settings?.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP || '994502107920').replace(/[^\d]/g, '');
-      const waMessage = encodeURIComponent(`Yeni müraciət:\nAd: ${form.name}\nTelefon: ${form.phone}\nMövzu: ${form.subject}\nMesaj: ${form.message}`);
+      const whatsappNum = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '994502107920').replace(/[^\d]/g, '');
+      const waMessage = encodeURIComponent(`Yeni müraciət:\nAd: ${form.name}\nTelefon: ${form.phone}\nE-poçt: ${form.email}\nMövzu: ${form.subject}\nMesaj: ${form.message}`);
       window.open(`https://wa.me/${whatsappNum}?text=${waMessage}`, '_blank');
 
       setState('success');
