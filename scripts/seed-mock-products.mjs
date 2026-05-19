@@ -213,11 +213,109 @@ const mockParts = [
     description_en: 'Heavy-duty rotary drive spindle built to withstand significant radial and thrust continuous loads.',
     description_az: 'Əhəmiyyətli radial və ox yüklərinə tab gətirmək üçün qurulmuş ağır iş fırlanma ötürücü mili.',
     description_ru: 'Мощный приводной шпиндель, созданный для выдерживания значительных радиальных и осевых непрерывных нагрузок.'
+  },
+  {
+    name_en: 'Wellhead Flanged Cross',
+    name_az: 'Quyuüstü Flanslı Xaç',
+    name_ru: 'Устьевая Фланцевая Крестовина',
+    part_number: 'WHC-10M',
+    description_en: 'High-pressure flanged cross manifold component for wellhead and frac tree assemblies.',
+    description_az: 'Quyuüstü avadanlıqlar və atqı manifoldları üçün yüksək təzyiqli flanslı xaç.',
+    description_ru: 'Высоконапорная фланцевая крестовина манифольда для устьевого оборудования и фонтанной арматуры.'
+  },
+  {
+    name_en: 'Mud Pump Pulsation Dampener',
+    name_az: 'Palçıq Pompası Pulsasiya Söndürücüsü',
+    name_ru: 'Гаситель Пульсаций Бурового Насоса',
+    part_number: 'PD-20V',
+    description_en: 'Spherical pulsation dampener designed to minimize pressure variations and protect mud pump discharge lines.',
+    description_az: 'Təzyiq dəyişikliklərini minimuma endirmək və palçıq pompası xətlərini qorumaq üçün sferik pulsasiya söndürücü.',
+    description_ru: 'Сферический гаситель пульсаций, предназначенный для минимизации перепадов давления и защиты линий нагнетания бурового насоса.'
+  },
+  {
+    name_en: 'Sucker Rod Pumping Unit',
+    name_az: 'Mancanaq Dəzgahı (Nasos Ştanqı)',
+    name_ru: 'Станок-Качалка',
+    part_number: 'SRPU-320',
+    description_en: 'Reliable sucker rod pumping unit for artificial lift in onshore oil and gas production.',
+    description_az: 'Qurudakı neft və qaz hasilatında süni qaldırma prosesi üçün etibarlı mancanaq dəzgahı.',
+    description_ru: 'Надежный станок-качалка для механизированной добычи на наземных нефтяных и газовых месторождениях.'
+  },
+  {
+    name_en: 'Heavy Weight Drill Pipe',
+    name_az: 'Ağır Qazma Borusu',
+    name_ru: 'Утяжеленная Бурильная Труба',
+    part_number: 'HWDP-50',
+    description_en: 'Premium heavy weight drill pipe to provide optimal weight to the drill bit during drilling operations.',
+    description_az: 'Qazma əməliyyatları zamanı qazma baltasına optimal çəki vermək üçün premium ağır qazma borusu.',
+    description_ru: 'Премиальная утяжеленная бурильная труба для обеспечения оптимальной нагрузки на долото во время буровых работ.'
+  },
+  {
+    name_en: 'Industrial Duplex Mud Pump',
+    name_az: 'İkiporşenli Palçıq Pompası',
+    name_ru: 'Двухпоршневой Буровой Насос',
+    part_number: 'DMP-800',
+    description_en: 'Robust duplex mud pump ensuring continuous circulation of drilling fluid under high pressure.',
+    description_az: 'Yüksək təzyiq altında qazma məhlulunun davamlı sirkulyasiyasını təmin edən dözümlü ikiporşenli palçıq pompası.',
+    description_ru: 'Прочный двухпоршневой буровой насос, обеспечивающий непрерывную циркуляцию бурового раствора под высоким давлением.'
+  },
+  {
+    name_en: 'Manual Drill Pipe Tongs',
+    name_az: 'Qazma Borusu üçün Mexaniki Açar',
+    name_ru: 'Механический Ключ для Бурильных Труб',
+    part_number: 'MPT-75',
+    description_en: 'Heavy-duty manual tongs for secure making up and breaking out of drill pipe threaded connections.',
+    description_az: 'Qazma borusu yivli birləşmələrini etibarlı şəkildə bağlamaq və açmaq üçün gücləndirilmiş mexaniki açar.',
+    description_ru: 'Сверхмощный механический ключ для надежного свинчивания и развинчивания резьбовых соединений бурильных труб.'
+  },
+  {
+    name_en: 'Drilling Rotary Swivel',
+    name_az: 'Rotor Fırlanma Vertlyuqu',
+    name_ru: 'Буровой Роторный Вертлюг',
+    part_number: 'RS-400T',
+    description_en: 'High-capacity rotary swivel facilitating pipe rotation while simultaneously permitting drilling fluid flow.',
+    description_az: 'Qazma məhlulunun axışına imkan verərkən eyni zamanda borunun fırlanmasını asanlaşdıran yüksək tutumlu rotor vertlyuqu.',
+    description_ru: 'Высокопроизводительный роторный вертлюг, облегчающий вращение трубы с одновременным обеспечением потока бурового раствора.'
+  },
+  {
+    name_en: 'Mud Pump Power End Assembly',
+    name_az: 'Palçıq Pompası Güc Bölməsi',
+    name_ru: 'Приводная Часть Бурового Насоса',
+    part_number: 'PEA-1000',
+    description_en: 'Durable power end assembly with reduction gearing for triplex and duplex drilling mud pumps.',
+    description_az: 'Üçporşenli və ikiporşenli palçıq nasosları üçün sürət azaldıcı (reduktor) sistemi ilə təchiz olunmuş dözümlü güc bölməsi.',
+    description_ru: 'Надежная приводная часть с понижающим редуктором для трехпоршневых и двухпоршневых буровых насосов.'
+  },
+  {
+    name_en: 'Industrial Gear Reducer',
+    name_az: 'Sənaye Sürətlər Qutusu (Reduktor)',
+    name_ru: 'Промышленный Редуктор',
+    part_number: 'IGR-250',
+    description_en: 'High-torque industrial gear reducer optimized for heavy machinery and conveyor drive systems.',
+    description_az: 'Ağır maşınlar və konveyer idarəetmə sistemləri üçün optimallaşdırılmış yüksək fırlanma anlı sənaye reduktoru.',
+    description_ru: 'Высокомоментный промышленный редуктор, оптимизированный для тяжелого машиностроения и приводных систем конвейеров.'
+  },
+  {
+    name_en: 'V-Belt Drive Pulley',
+    name_az: 'V-Kəmərli Ötürücü Qasnaq (Şkiv)',
+    name_ru: 'Клиноременный Шкив',
+    part_number: 'VDP-05',
+    description_en: 'Precision-balanced multi-groove V-belt pulley ensuring efficient power transmission without slippage.',
+    description_az: 'Sürüşmədən səmərəli güc ötürülməsini təmin edən dəqiq balanslaşdırılmış çoxkanallı V-kəmər qasnağı.',
+    description_ru: 'Точно сбалансированный многоручьевой клиноременный шкив, обеспечивающий эффективную передачу мощности без проскальзывания.'
   }
 ];
 
 async function seed() {
   await signIn();
+  
+  console.log('Deleting all existing products...');
+  // Delete all existing products so we only keep this fresh batch of 30
+  const { error: delErr } = await supabase.from('products').delete().neq('id', '00000000-0000-0000-0000-000000000000');
+  if (delErr) {
+    console.error('Error clearing old products:', delErr);
+  }
+
   console.log('Fetching categories and brands...');
   const { data: categories } = await supabase.from('categories').select('id, name_en');
   const { data: brands } = await supabase.from('brands').select('id, name');
