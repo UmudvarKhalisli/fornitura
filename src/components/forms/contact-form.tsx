@@ -33,6 +33,7 @@ export function ContactForm({ dictionary, locale, settings, showContactInfo }: C
 
       if (!res.ok) throw new Error('Failed');
       trackContactFormSubmit();
+      
       setState('success');
       setForm({ name: '', email: '', phone: '', subject: '', message: '' });
       setTimeout(() => setState('idle'), 5000);
