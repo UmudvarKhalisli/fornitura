@@ -121,6 +121,7 @@ export async function updateProduct(id: string, values: Record<string, unknown>)
 
 export async function deleteProduct(id: string) {
   const supabase = createAdminClient();
-  const { error } = await supabase.from('products').update({ is_active: false }).eq('id', id);
+  // Burada is_active=false etmek evezine, admin paneldenden de tamam silinmesi ucun birbasa delete istifade edirik
+  const { error } = await supabase.from('products').delete().eq('id', id);
   if (error) throw error;
 }

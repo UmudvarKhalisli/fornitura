@@ -20,6 +20,7 @@ export default function EditProductPage() {
     short_description_az: '', short_description_en: '', short_description_ru: '',
     stock_status: 'in_stock',
     is_featured: false,
+    is_active: true,
     main_image: '',
   });
 
@@ -86,58 +87,60 @@ export default function EditProductPage() {
     }
   };
 
-  if (fetching) return <div className="p-6 text-medium-gray">Loading...</div>;
+  if (fetching) return <div className="p-6 text-medium-gray">Yüklənir...</div>;
 
   return (
     <div className="p-6 max-w-4xl">
-      <h1 className="text-2xl font-bold text-deep-charcoal mb-6">Edit Product</h1>
+      <h1 className="text-2xl font-bold text-deep-charcoal mb-6">Məhsulu Redaktə Et</h1>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-3 gap-4">
           <div>
-            <label className="text-sm font-medium">Name (AZ)</label>
+            <label className="text-sm font-medium">Ad (AZ)</label>
             <Input required value={form.name_az} onChange={(e) => setForm({...form, name_az: e.target.value})} />
           </div>
           <div>
-            <label className="text-sm font-medium">Name (EN)</label>
+            <label className="text-sm font-medium">Ad (EN)</label>
             <Input required value={form.name_en} onChange={(e) => setForm({...form, name_en: e.target.value})} />
           </div>
           <div>
-            <label className="text-sm font-medium">Name (RU)</label>
+            <label className="text-sm font-medium">Ad (RU)</label>
             <Input required value={form.name_ru} onChange={(e) => setForm({...form, name_ru: e.target.value})} />
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="text-sm font-medium">Slug</label>
+            <label className="text-sm font-medium">Link (Slug)</label>
             <Input required value={form.slug} onChange={(e) => setForm({...form, slug: e.target.value})} />
           </div>
           <div>
-            <label className="text-sm font-medium">Part Number</label>
+            <label className="text-sm font-medium">Model / Kod (Part Number)</label>
             <Input required value={form.part_number} onChange={(e) => setForm({...form, part_number: e.target.value})} />
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-3 gap-4">
           <div>
-            <label className="text-sm font-medium">Stock Status</label>
+            <label className="text-sm font-medium">Anbar Statusu</label>
             <Select value={form.stock_status} onValueChange={(v) => setForm({...form, stock_status: v})}>
               <SelectTrigger><SelectValue /></SelectTrigger>
               <SelectContent>
-                <SelectItem value="in_stock">In Stock</SelectItem>
-                <SelectItem value="out_of_stock">Out of Stock</SelectItem>
+                <SelectItem value="in_stock">Anbarda var</SelectItem>
+                <SelectItem value="out_of_stock">Anbarda yoxdur</SelectItem>
               </SelectContent>
             </Select>
           </div>
-          <div className="flex items-end pb-2">
-            <label className="flex items-center gap-2 text-sm">
-              <input type="checkbox" checked={form.is_featured} onChange={(e) => setForm({...form, is_featured: e.target.checked})} />
-              Featured Product
-            </label>
+          <div className="flex items-center gap-2 pt-6">
+            <input type="checkbox" id="is_featured" checked={form.is_featured} onChange={(e) => setForm({...form, is_featured: e.target.checked})} className="w-4 h-4" />
+            <label htmlFor="is_featured" className="text-sm font-medium">Ön Plana Çıxar (Featured)</label>
+          </div>
+          <div className="flex items-center gap-2 pt-6">
+            <input type="checkbox" id="is_active" checked={form.is_active} onChange={(e) => setForm({...form, is_active: e.target.checked})} className="w-4 h-4" />
+            <label htmlFor="is_active" className="text-sm font-medium text-green-700">Saytda Göstərilir (Aktivdir)</label>
           </div>
         </div>
 
         {/* Image Upload */}
         <div className="space-y-2 border p-4 rounded-lg bg-light-gray/5">
-          <label className="text-sm font-medium">Main Image</label>
+          <label className="text-sm font-medium">Əsas Şəkil (Main Image)</label>
           <div className="flex items-center gap-4">
             <Input 
               type="file" 
@@ -146,7 +149,7 @@ export default function EditProductPage() {
               disabled={uploadingImage}
               className="max-w-sm"
             />
-            {uploadingImage && <span className="text-sm text-muted-gold">Uploading...</span>}
+            {uploadingImage && <span className="text-sm text-muted-gold">Yüklənir...</span>}
           </div>
           {form.main_image && (
             <div className="mt-4">
@@ -157,23 +160,37 @@ export default function EditProductPage() {
 
         <div className="grid grid-cols-3 gap-4">
           <div>
-            <label className="text-sm font-medium">Description (AZ)</label>
+            <label className="text-sm font-medium">Qısa Təsvir (AZ)</label>
+            <Textarea rows={2} value={form.short_description_az} onChange={(e) => setForm({...form, short_description_az: e.target.value})} />
+          </div>
+          <div>
+            <label className="text-sm font-medium">Qısa Təsvir (EN)</label>
+            <Textarea rows={2} value={form.short_description_en} onChange={(e) => setForm({...form, short_description_en: e.target.value})} />
+          </div>
+          <div>
+            <label className="text-sm font-medium">Qısa Təsvir (RU)</label>
+            <Textarea rows={2} value={form.short_description_ru} onChange={(e) => setForm({...form, short_description_ru: e.target.value})} />
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-4">
+          <div>
+            <label className="text-sm font-medium">Tam Təsvir (AZ)</label>
             <Textarea rows={5} value={form.description_az} onChange={(e) => setForm({...form, description_az: e.target.value})} />
           </div>
           <div>
-            <label className="text-sm font-medium">Description (EN)</label>
+            <label className="text-sm font-medium">Tam Təsvir (EN)</label>
             <Textarea rows={5} value={form.description_en} onChange={(e) => setForm({...form, description_en: e.target.value})} />
           </div>
           <div>
-            <label className="text-sm font-medium">Description (RU)</label>
+            <label className="text-sm font-medium">Tam Təsvir (RU)</label>
             <Textarea rows={5} value={form.description_ru} onChange={(e) => setForm({...form, description_ru: e.target.value})} />
           </div>
         </div>
         <div className="flex gap-3">
           <Button type="submit" disabled={loading} className="bg-deep-charcoal hover:bg-dark-graphite">
-            {loading ? 'Saving...' : 'Save Changes'}
+            {loading ? 'Yadda saxlanılır...' : 'Dəyişiklikləri Yadda Saxla'}
           </Button>
-          <Button type="button" variant="outline" onClick={() => router.back()}>Cancel</Button>
+          <Button type="button" variant="outline" onClick={() => router.back()}>Ləğv Et</Button>
         </div>
       </form>
     </div>

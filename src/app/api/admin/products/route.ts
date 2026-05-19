@@ -1,7 +1,26 @@
 import { NextResponse } from 'next/server';
 import { getAdminUserId } from '@/lib/supabase/admin';
 import { productSchema } from '@/lib/validation/schemas';
-import { createProduct, updateProduct, deleteProduct } from '@/lib/db/queries/products';
+import { createProduct, updateProduct, deleteProduct, getProductById } from '@/lib/db/queries/products';
+
+export async function GET(request: Request) {
+  const adminId = await getAdminUserId();
+  if (!adminId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+    if (!id) return NextResponse.json({ error: 'Product ID required' }, { status: 400 });
+
+    const product = await getProductById(id);
+    if (!product) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+
+    return NextResponse.json(product);
+  } catch (error) {
+    console.error('Fetch product error:', error);
+    return NextResponse.json({ error: 'Failed to fetch product' }, { status: 500 });
+  }
+}
 
 export async function POST(request: Request) {
   const adminId = await getAdminUserId();
