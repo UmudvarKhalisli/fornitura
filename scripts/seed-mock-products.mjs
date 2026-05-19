@@ -123,6 +123,96 @@ const mockParts = [
     description_en: 'Efficient and durable high pressure hydraulic pump to supply consistent operational fluid power.',
     description_az: 'Ardıcıl hidravlik güc təmin etmək üçün səmərəli və dözümlü yüksək təzyiqli hidravlik nasos.',
     description_ru: 'Эффективный и долговечный гидравлический насос высокого давления для обеспечения стабильной гидравлической мощности.'
+  },
+  {
+    name_en: 'Steel Threaded Coupling',
+    name_az: 'Cilalanmış Dişli Mufta',
+    name_ru: 'Стальная Резьбовая Муфта',
+    part_number: 'TC-500',
+    description_en: 'High-strength steel threaded coupling for secure and leak-proof pipe joint connections.',
+    description_az: 'Etibarlı və sızdırmaz boru birləşmələri üçün yüksək möhkəmlikli polad dişli mufta.',
+    description_ru: 'Высокопрочная стальная резьбовая муфта для надежных и герметичных трубных соединений.'
+  },
+  {
+    name_en: 'Hydraulic Valve Manifold',
+    name_az: 'Hidravlik Klapan Bloku',
+    name_ru: 'Гидравлический Блок Клапанов',
+    part_number: 'HVB-850',
+    description_en: 'Heavy-duty hydraulic control manifold block for precise fluid distribution in industrial machinery.',
+    description_az: 'Sənaye maşınlarında dəqiq maye paylanması üçün ağır iş şəraitinə davamlı hidravlik nəzarət bloku.',
+    description_ru: 'Сверхмощный гидравлический блок управления для точного распределения жидкости в промышленном оборудовании.'
+  },
+  {
+    name_en: 'Splined Drive Shaft',
+    name_az: 'Şlisli Ötürücü Mil',
+    name_ru: 'Шлицевой Вал Привода',
+    part_number: 'SDS-920',
+    description_en: 'Precision-engineered splined drive shaft for optimal torque transmission in heavy-duty gearboxes.',
+    description_az: 'Ağır iş sürətlər qutularında optimal fırlanma anı ötürməsi üçün dəqiq işlənmiş şlisli ötürücü mil.',
+    description_ru: 'Высокоточный шлицевой вал для оптимальной передачи крутящего момента в тяжелонагруженных редукторах.'
+  },
+  {
+    name_en: 'Bearing Housing Assembly',
+    name_az: 'Podşipnik Korpusu (Yatağı)',
+    name_ru: 'Корпус Подшипника',
+    part_number: 'PBH-300',
+    description_en: 'Rugged cast iron bearing housing designed to support heavy rotating loads with maximum stability.',
+    description_az: 'Ağır fırlanan yükləri maksimum sabitliklə dəstəkləmək üçün dizayn edilmiş dözümlü çuqun podşipnik korpusu.',
+    description_ru: 'Прочный чугунный корпус подшипника, предназначенный для поддержания тяжелых вращающихся нагрузок с максимальной стабильностью.'
+  },
+  {
+    name_en: 'Forged Steel 90° Elbow',
+    name_az: 'Döymə Polad 90° Dirşək',
+    name_ru: 'Кованый Стальной Отвод 90°',
+    part_number: 'FSE-90',
+    description_en: 'High-pressure forged steel pipe elbow for changing fluid direction in demanding piping systems.',
+    description_az: 'Tələbkar boru sistemlərində mayenin stiqamətini dəyişmək üçün yüksək təzyiqli döymə polad dirşək.',
+    description_ru: 'Высоконапорный кованый стальной отвод для изменения направления потока в сложных трубопроводных системах.'
+  },
+  {
+    name_en: 'Hydraulic Piston Pump',
+    name_az: 'Hidravlik Porşenli Nasos',
+    name_ru: 'Гидравлический Поршневой Насос',
+    part_number: 'HPP-V2',
+    description_en: 'High-efficiency axial piston pump delivering reliable hydraulic power for mobile and industrial applications.',
+    description_az: 'Mobil və sənaye tətbiqlərində etibarlı hidravlik güc təmin edən yüksək səmərəli porşenli nasos.',
+    description_ru: 'Высокоэффективный аксиально-поршневой насос, обеспечивающий надежную гидравлическую мощность для мобильных и промышленных применений.'
+  },
+  {
+    name_en: 'Flanged Gate Valve',
+    name_az: 'Flanslı Siyirtmə Klapan',
+    name_ru: 'Фланцевая Задвижка',
+    part_number: 'FGV-400',
+    description_en: 'Industrial-grade flanged gate valve providing reliable on/off control in high-capacity fluid pipelines.',
+    description_az: 'Yüksək tutumlu maye boru kəmərlərində etibarlı açma/bağlama nəzarəti təmin edən sənaye tipli flanslı siyirtmə klapan.',
+    description_ru: 'Промышленная фланцевая задвижка, обеспечивающая надежное управление открытием/закрытием в высокопроизводительных трубопроводах.'
+  },
+  {
+    name_en: 'Flanged Pipe Spool',
+    name_az: 'Flanslı Boru Ara Qatı (Spul)',
+    name_ru: 'Фланцевая Катушка (Проставка)',
+    part_number: 'FPS-150',
+    description_en: 'Durable flanged pipe spool for extending or adapting connections in major industrial piping networks.',
+    description_az: 'Böyük sənaye boru şəbəkələrində birləşmələri uzatmaq və ya uyğunlaşdırmaq üçün dözümlü flanslı boru.',
+    description_ru: 'Прочная фланцевая катушка для удлинения или адаптации соединений в крупных промышленных трубопроводных сетях.'
+  },
+  {
+    name_en: 'Mechanical Seal Cartridge',
+    name_az: 'Mexaniki Kipgəc Dəsti',
+    name_ru: 'Механическое Торцевое Уплотнение',
+    part_number: 'MSA-77',
+    description_en: 'Advanced cartridge mechanical seal preventing fluid leakage in high-speed rotary pumps and compressors.',
+    description_az: 'Yüksək sürətli fırlanan nasoslarda və kompressorlarda maye sızmasının qarşısını alan qabaqcıl mexaniki kipgəc.',
+    description_ru: 'Усовершенствованное картриджное торцевое уплотнение, предотвращающее утечку жидкости в высокоскоростных вращающихся насосах и компрессорах.'
+  },
+  {
+    name_en: 'Rotary Drive Spindle',
+    name_az: 'Fırlanma Ötürücü Mili (Şpindel)',
+    name_ru: 'Приводной Шпиндель',
+    part_number: 'RDA-610',
+    description_en: 'Heavy-duty rotary drive spindle built to withstand significant radial and thrust continuous loads.',
+    description_az: 'Əhəmiyyətli radial və ox yüklərinə tab gətirmək üçün qurulmuş ağır iş fırlanma ötürücü mili.',
+    description_ru: 'Мощный приводной шпиндель, созданный для выдерживания значительных радиальных и осевых непрерывных нагрузок.'
   }
 ];
 
