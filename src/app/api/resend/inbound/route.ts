@@ -30,10 +30,14 @@ export async function POST(request: Request) {
     const createdAt = emailData?.created_at || new Date().toISOString();
     const contentHtml = emailData?.html || (emailData?.text ? `<pre style="white-space: pre-wrap;">${emailData.text}</pre>` : '<p>Mesaj mətni tapılmadı.</p>');
 
+    const forwardFrom = 'Fornitura <info@fornitura.az>';
+    console.log('RESEND_FORWARD_FROM_ATTEMPT_1:', forwardFrom);
+
     // Email-i yönləndir
-    const forwardResult = await resend.emails.send({
-      from: 'Fornitura <info@fornitura.az>',
+    let result = await resend.emails.send({
+      from: forwardFrom,
       to: FORWARD_TO,
+      replyTo: fromAddress,
       subject: `Yeni email: ${originalSubject}`,
       html: `
         <div style="font-family: sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #eee; padding: 20px; border-radius: 10px;">
@@ -47,15 +51,39 @@ export async function POST(request: Request) {
             <strong>Mesaj:</strong><br />
             ${contentHtml}
           </div>
+          <p style="font-size: 12px; color: #888; margin-top: 20px;">
+            Qeyd: Cavab yazmaq üçün birbaşa bu emaili cavablandıra bilərsiniz (Reply-To aktivdir).
+          </p>
         </div>
       `,
     });
 
-    console.log('RESEND_FORWARD_RESULT:', forwardResult);
+    // Əgər 403 xətası (domain icazəsi) olarsa, fallback olaraq onboarding ünvanını yoxla
+    if (result.error && (result.error as any).statusCode === 403) {
+      console.warn('RESEND_FORWARDING_403_DETECTED, trying fallback address...');
+      const fallbackFrom = 'Fornitura <onboarding@resend.dev>';
+      console.log('RESEND_FORWARD_FROM_ATTEMPT_2:', fallbackFrom);
+      
+      result = await resend.emails.send({
+        from: fallbackFrom,
+        to: FORWARD_TO,
+        replyTo: fromAddress,
+        subject: `Yeni email: ${originalSubject}`,
+        html: `<p><strong>Domen hələ təsdiqlənməyib.</strong></p>` + contentHtml, // Sadələşdirilmiş mesaj
+      });
+    }
 
-    if (forwardResult.error) {
-      console.error('RESEND_FORWARDING_ERROR:', forwardResult.error);
-      return NextResponse.json({ success: false, error: forwardResult.error.message }, { status: 500 });
+    console.log('RESEND_FORWARD_RESULT:', result);
+
+    if (result.error) {
+      console.error('RESEND_FORWARDING_ERROR_FULL:', {
+        statusCode: (result.error as any)?.statusCode,
+        name: result.error.name,
+        message: result.error.message,
+        from: forwardFrom,
+        to: FORWARD_TO,
+      });
+      return NextResponse.json({ success: false, error: result.error.message }, { status: 500 });
     }
 
     return NextResponse.json({ success: true });
