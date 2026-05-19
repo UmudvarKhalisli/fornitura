@@ -2,8 +2,9 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { isAdminAuthenticated } from '@/lib/supabase/admin';
 import { getAllProducts } from '@/lib/db/queries/products';
-import { Plus, Edit, Eye, Trash2, Package, Search, Filter } from 'lucide-react';
+import { Plus, Edit, Eye, Package, Search, Filter } from 'lucide-react';
 import Image from 'next/image';
+import { DeleteProductButton } from './delete-button';
 
 export default async function AdminProductsPage() {
   const admin = await isAdminAuthenticated();
@@ -123,12 +124,11 @@ export default async function AdminProductsPage() {
                         <Link
                           href={`/admin/products/${product.id}/edit`}
                           className="p-2 hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-colors"
+                          title="Redaktə et"
                         >
                           <Edit className="w-4 h-4" />
                         </Link>
-                        <button className="p-2 hover:bg-red-50 hover:text-red-600 rounded-xl transition-colors">
-                          <Trash2 className="w-4 h-4" />
-                        </button>
+                        <DeleteProductButton productId={product.id} />
                       </div>
                     </td>
                   </tr>
