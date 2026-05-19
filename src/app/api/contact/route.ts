@@ -36,6 +36,8 @@ export async function POST(request: Request) {
       phone: sanitizeInput(parsed.data.phone),
       subject: sanitizeInput(parsed.data.subject),
       message: sanitizeInput(parsed.data.message),
+      product_name: body.product_name ? sanitizeInput(String(body.product_name)) : null,
+      product_url: body.product_url ? sanitizeInput(String(body.product_url)) : null,
     };
 
     console.log('Sanitized contact data:', sanitized);
