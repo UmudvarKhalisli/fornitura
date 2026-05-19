@@ -12,6 +12,7 @@ export default function EditProductPage() {
   const params = useParams();
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
+  const [uploadingImage, setUploadingImage] = useState(false);
   const [form, setForm] = useState<any>({
     name_az: '', name_en: '', name_ru: '',
     slug: '', part_number: '',
@@ -19,7 +20,33 @@ export default function EditProductPage() {
     short_description_az: '', short_description_en: '', short_description_ru: '',
     stock_status: 'in_stock',
     is_featured: false,
+    main_image: '',
   });
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingImage(true);
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('folder', 'fornitura/products');
+
+    try {
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Upload failed');
+      
+      setForm((prev: any) => ({ ...prev, main_image: data.url }));
+    } catch (err: any) {
+      alert(err.message || 'Error uploading image');
+    } finally {
+      setUploadingImage(false);
+    }
+  };
 
   useEffect(() => {
     fetch(`/api/admin/products?id=${params.id}`)
@@ -90,7 +117,34 @@ export default function EditProductPage() {
               </SelectContent>
             </Select>
           </div>
+          <div className="flex items-end pb-2">
+            <label className="flex items-center gap-2 text-sm">
+              <input type="checkbox" checked={form.is_featured} onChange={(e) => setForm({...form, is_featured: e.target.checked})} />
+              Featured Product
+            </label>
+          </div>
         </div>
+
+        {/* Image Upload */}
+        <div className="space-y-2 border p-4 rounded-lg bg-light-gray/5">
+          <label className="text-sm font-medium">Main Image</label>
+          <div className="flex items-center gap-4">
+            <Input 
+              type="file" 
+              accept="image/jpeg, image/png, image/webp, image/avif" 
+              onChange={handleImageUpload} 
+              disabled={uploadingImage}
+              className="max-w-sm"
+            />
+            {uploadingImage && <span className="text-sm text-muted-gold">Uploading...</span>}
+          </div>
+          {form.main_image && (
+            <div className="mt-4">
+              <img src={form.main_image} alt="Preview" className="w-32 h-32 object-cover rounded shadow-sm" />
+            </div>
+          )}
+        </div>
+
         <div className="grid grid-cols-3 gap-4">
           <div>
             <label className="text-sm font-medium">Description (AZ)</label>
