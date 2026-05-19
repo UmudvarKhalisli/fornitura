@@ -67,13 +67,17 @@ export default function NewProductPage() {
       let errorData;
       if (!res.ok) {
         errorData = await res.json();
-        console.error('Validation Details:', errorData.details);
+        console.error('SERVER ERROR DETAILS:', errorData);
+        alert(`Validation or Server Error:\n${JSON.stringify(errorData, null, 2)}`);
         throw new Error(errorData.error || 'Failed');
       }
       
       router.push('/admin/products');
     } catch (err: any) {
-      alert(err.message || 'Error creating product');
+      console.error(err);
+      if (!err.message.includes('Failed')) {
+        alert(err.message || 'Error creating product. Check console.');
+      }
     } finally {
       setLoading(false);
     }

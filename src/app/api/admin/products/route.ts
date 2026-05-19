@@ -9,16 +9,20 @@ export async function POST(request: Request) {
 
   try {
     const body = await request.json();
+    console.log('Incoming Payload:', body);
+    
     const parsed = productSchema.safeParse(body);
     if (!parsed.success) {
+      console.log('Zod Validation Failed:', parsed.error.flatten());
       return NextResponse.json({ error: 'Validation failed', details: parsed.error.flatten() }, { status: 400 });
     }
 
+    console.log('Zod Passed. Calling DB createProduct...');
     const product = await createProduct(parsed.data);
     return NextResponse.json(product);
-  } catch (error) {
-    console.error('Create product error:', error);
-    return NextResponse.json({ error: 'Failed to create product' }, { status: 500 });
+  } catch (error: any) {
+    console.error('Create product EXACT error:', error);
+    return NextResponse.json({ error: error.message || 'Failed to create product', fullError: error }, { status: 500 });
   }
 }
 
