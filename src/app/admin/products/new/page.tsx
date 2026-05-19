@@ -53,15 +53,27 @@ export default function NewProductPage() {
     e.preventDefault();
     setLoading(true);
     try {
+      // Clean up empty fields which might break uuid validation
+      const payload: any = { ...form };
+      if (!payload.category_id) payload.category_id = null;
+      if (!payload.brand_id) payload.brand_id = null;
+
       const res = await fetch('/api/admin/products', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify(payload),
       });
-      if (!res.ok) throw new Error('Failed');
+      
+      let errorData;
+      if (!res.ok) {
+        errorData = await res.json();
+        console.error('Validation Details:', errorData.details);
+        throw new Error(errorData.error || 'Failed');
+      }
+      
       router.push('/admin/products');
-    } catch (err) {
-      alert('Error creating product');
+    } catch (err: any) {
+      alert(err.message || 'Error creating product');
     } finally {
       setLoading(false);
     }

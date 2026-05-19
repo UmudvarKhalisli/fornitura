@@ -62,15 +62,25 @@ export default function EditProductPage() {
     e.preventDefault();
     setLoading(true);
     try {
+      // Clean up empty fields which might break uuid validation
+      const payload = { ...form };
+      if (!payload.category_id) payload.category_id = null;
+      if (!payload.brand_id) payload.brand_id = null;
+
       const res = await fetch('/api/admin/products', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: params.id, ...form }),
+        body: JSON.stringify({ id: params.id, ...payload }),
       });
-      if (!res.ok) throw new Error('Failed');
+      
+      if (!res.ok) {
+        const errorData = await res.json();
+        console.error('Validation Details:', errorData.details);
+        throw new Error(errorData.error || 'Failed');
+      }
       router.push('/admin/products');
-    } catch {
-      alert('Error updating product');
+    } catch (err: any) {
+      alert(err.message || 'Error updating product');
     } finally {
       setLoading(false);
     }
