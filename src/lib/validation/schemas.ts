@@ -5,7 +5,7 @@ export const contactFormSchema = z.object({
   email: z.string().email().max(255).trim(),
   phone: z.string().max(30).trim().optional().default(''),
   subject: z.string().max(200).trim().optional().default(''),
-  message: z.string().min(10).max(5000).trim(),
+  message: z.string().min(3).max(5000).trim(),
 });
 
 export const productSchema = z.object({
