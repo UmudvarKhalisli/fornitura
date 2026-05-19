@@ -19,6 +19,7 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
+    console.log('Incoming contact body:', body);
 
     // Validate
     const parsed = contactFormSchema.safeParse(body);
@@ -49,7 +50,10 @@ export async function POST(request: Request) {
 
     if (dbError) {
       console.error('Database insert error:', dbError);
-      throw dbError;
+      return NextResponse.json(
+        { error: `Database error: ${dbError.message}`, details: dbError },
+        { status: 500 }
+      );
     }
 
     // Send email notification via Resend
@@ -67,6 +71,8 @@ export async function POST(request: Request) {
           <p><strong>Mövzu:</strong> ${sanitized.subject}</p>
           <p><strong>Mesaj:</strong></p>
           <p>${sanitized.message}</p>
+          ${sanitized.product_name ? `<p><strong>Məhsul:</strong> ${sanitized.product_name}</p>` : ''}
+          ${sanitized.product_url ? `<p><strong>Link:</strong> <a href="${sanitized.product_url}">${sanitized.product_url}</a></p>` : ''}
         `,
       });
       console.log('Resend API result:', emailResult);
@@ -75,10 +81,10 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Contact form error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: error.message || 'Internal server error', stack: error.stack },
       { status: 500 }
     );
   }

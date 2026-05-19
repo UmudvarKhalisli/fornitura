@@ -31,13 +31,24 @@ export function ContactForm({ dictionary, locale, settings, showContactInfo }: C
         body: JSON.stringify({ ...form, locale }),
       });
 
-      if (!res.ok) throw new Error('Failed');
+      if (!res.ok) {
+        const errorData = await res.json();
+        console.error('Contact form submission error:', errorData);
+        throw new Error(errorData.error || 'Failed to submit contact form');
+      }
+
       trackContactFormSubmit();
       
+      // WhatsApp redirect if successful
+      const whatsappNum = (settings?.whatsapp_number || '994502107920').replace(/[^\d]/g, '');
+      const waMessage = encodeURIComponent(`Yeni müraciət:\nAd: ${form.name}\nMövzu: ${form.subject}\nMesaj: ${form.message}`);
+      window.open(`https://wa.me/${whatsappNum}?text=${waMessage}`, '_blank');
+
       setState('success');
       setForm({ name: '', email: '', phone: '', subject: '', message: '' });
       setTimeout(() => setState('idle'), 5000);
-    } catch {
+    } catch (err: any) {
+      console.error('Contact form catch error:', err);
       setState('error');
     }
   };
