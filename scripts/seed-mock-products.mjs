@@ -148,7 +148,7 @@ async function seed() {
       compatible_models: ['Model A', 'Model B'],
       stock_status: i % 5 === 0 ? 'out_of_stock' : 'in_stock',
       images: [],
-      main_image: null,
+      main_image: `/mock-parts/part${i + 1}.png`,
       is_featured: i % 4 === 0,
       is_active: true,
       seo_title_az: p.name_az,
