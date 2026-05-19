@@ -33,35 +33,97 @@ async function signIn() {
   if (error) throw error;
 }
 
-const oilParts = [
-  { name_en: 'Drill Bit Tungsten', name_az: 'Volfram Qazma Baltası', name_ru: 'Вольфрамовое Буровое Долото', part_number: 'OB-101' },
-  { name_en: 'Mud Pump Liner', name_az: 'Palçıq Pompası Qatı', name_ru: 'Втулка Бурового Насоса', part_number: 'MP-205' },
-  { name_en: 'Blowout Preventer Valve', name_az: 'Qoruyucu Klapan (BOP)', name_ru: 'Превенторный Клапан', part_number: 'BOP-099' },
-  { name_en: 'Rotary Table Bearing', name_az: 'Rotor Stolunun Podşipniki', name_ru: 'Подшипник Роторного Стола', part_number: 'RT-442' },
-  { name_en: 'Kelly Spinner Motor', name_az: 'Kelly Fırladıcı Motor', name_ru: 'Мотор Вертлюга', part_number: 'KS-120' },
-  { name_en: 'High Pressure Hose 50ft', name_az: 'Yüksək Təzyiq Şlanqı 15m', name_ru: 'Шланг Высокого Давления 15м', part_number: 'HP-50' },
-  { name_en: 'Centrifugal Sand Pump', name_az: 'Mərkəzdənqaçma Qum Pompası', name_ru: 'Центробежный Песковый Насос', part_number: 'CP-88' },
-  { name_en: 'Shale Shaker Screen', name_az: 'Vibroələk Şəbəkəsi', name_ru: 'Сетка Вибросита', part_number: 'SS-310' },
-  { name_en: 'Pulsation Dampener', name_az: 'Pulsasiya Söndürücü', name_ru: 'Гаситель Пульсаций', part_number: 'PD-45' },
-  { name_en: 'Drawworks Brake Band', name_az: 'Buxarə Əyləc Lenti', name_ru: 'Тормозная Лента Лебедки', part_number: 'DB-77' },
-  { name_en: 'Sucker Rod 25ft', name_az: 'Nasos Ştanqı 7.5m', name_ru: 'Насосная Штанга 7.5м', part_number: 'SR-25' },
-  { name_en: 'Wellhead Choke Manifold', name_az: 'Quyuüstü Drossel Manifoldu', name_ru: 'Дроссельный Манифольд Устья Скважины', part_number: 'WM-300' },
-  { name_en: 'Casing Elevator', name_az: 'Qoruyucu Boru Elevatoru', name_ru: 'Обсадной Элеватор', part_number: 'CE-550' },
-];
-
-const heavyParts = [
-  { name_en: 'Excavator Track Chain', name_az: 'Ekskavator Tırtıl Zənciri', name_ru: 'Гусеничная Цепь Экскаватора', part_number: 'EX-TC1' },
-  { name_en: 'Hydraulic Cylinder Seal Kit', name_az: 'Hidravlik Silindr Kipgəci Dəsti', name_ru: 'Комплект Уплотнений Гидроцилиндра', part_number: 'HY-SK4' },
-  { name_en: 'Bulldozer Cutting Edge', name_az: 'Buldozer Kəsici Bıçağı', name_ru: 'Режущая Кромка Бульдозера', part_number: 'BD-CE8' },
-  { name_en: 'Loader Bucket Teeth', name_az: 'Yükləyici Çömçə Dişləri', name_ru: 'Зубья Ковша Погрузчика', part_number: 'LD-BT2' },
-  { name_en: 'Diesel Engine Injector', name_az: 'Dizel Mühərrik İnjektoru', name_ru: 'Форсунка Дизельного Двигателя', part_number: 'DE-INJ' },
-  { name_en: 'Transmission Filter Kit', name_az: 'Transmissiya Filtr Dəsti', name_ru: 'Комплект Трансмиссионных Фильтров', part_number: 'TR-FK5' },
-  { name_en: 'Swing Motor Gearbox', name_az: 'Dönmə Motorunun Sürətlər Qutusu', name_ru: 'Редуктор Поворотного Мотора', part_number: 'SM-GB1' },
-  { name_en: 'Heavy Duty Alternator 24V', name_az: 'Ağır Texnika Generatoru 24V', name_ru: 'Генератор Тяжелой Техники 24В', part_number: 'AL-24V' },
-  { name_en: 'Air Compressor Valve', name_az: 'Hava Kompressoru Klapanı', name_ru: 'Клапан Воздушного Компрессора', part_number: 'AC-V9' },
-  { name_en: 'Final Drive Planetary Gear', name_az: 'Son Ötürücü Planetar Dişli', name_ru: 'Планетарная Шестерня Бортового Редуктора', part_number: 'FD-PG3' },
-  { name_en: 'Cooling System Radiator', name_az: 'Soyutma Sistemi Radiatoru', name_ru: 'Радиатор Системы Охлаждения', part_number: 'CS-RAD' },
-  { name_en: 'Boom Lift Cylinder', name_az: 'Qaldırıcı Ox Silindri', name_ru: 'Цилиндр Подъема Стрелы', part_number: 'BL-CYL' },
+const mockParts = [
+  { 
+    name_en: 'Heavy Duty Turbocharger', 
+    name_az: 'Ağır Texnika Turbokompressoru', 
+    name_ru: 'Турбокомпрессор для Спецтехники', 
+    part_number: 'TC-905X',
+    description_en: 'High-performance turbocharger designed to boost engine efficiency and power output for heavy construction machinery.',
+    description_az: 'Ağır tikinti texnikalarında mühərrikin səmərəliliyini və gücünü artırmaq üçün dizayn edilmiş yüksək performanslı turbokompressor.',
+    description_ru: 'Высокопроизводительный турбокомпрессор, предназначенный для повышения эффективности и мощности двигателей тяжелой строительной техники.'
+  },
+  { 
+    name_en: 'Industrial Cooling Radiator', 
+    name_az: 'Sənaye Soyutma Radiatoru', 
+    name_ru: 'Промышленный Радиатор Охлаждения', 
+    part_number: 'RAD-2200',
+    description_en: 'Durable aluminum core radiator providing optimal thermal management for continuous heavy-duty operations.',
+    description_az: 'Fasiləsiz ağır fəaliyyət üçün optimal istilik tənzimləməsini təmin edən dözümlü alüminium özəkli radiator.',
+    description_ru: 'Прочный радиатор с алюминиевым сердечником, обеспечивающий оптимальное терморегулирование при непрерывных тяжелых работах.'
+  },
+  { 
+    name_en: 'Hydraulic Cylinder Shaft', 
+    name_az: 'Hidravlik Silindr Ştoku (Mili)', 
+    name_ru: 'Шток Гидравлического Цилиндра', 
+    part_number: 'HCS-45-CR',
+    description_en: 'Chrome-plated hydraulic cylinder shaft ensuring high resistance to corrosion and mechanical wear.',
+    description_az: 'Korroziyaya və mexaniki aşınmaya qarşı yüksək müqavimət təmin edən xrom örtüklü hidravlik silindr mili.',
+    description_ru: 'Хромированный шток гидравлического цилиндра, обеспечивающий высокую устойчивость к коррозии и механическому износу.'
+  },
+  { 
+    name_en: 'Flanged Ball Valve', 
+    name_az: 'Flanslı Şar Klapan', 
+    name_ru: 'Фланцевый Шаровой Кран', 
+    part_number: 'FBV-800',
+    description_en: 'Robust flanged ball valve built for tight shutoff and reliable fluid control in high-pressure industrial systems.',
+    description_az: 'Yüksək təzyiqli sənaye sistemlərində etibarlı maye nəzarəti və tam sızdırmazlıq üçün istehsal edilmiş flanslı şar klapan.',
+    description_ru: 'Надежный фланцевый шаровой кран, созданный для герметичного перекрытия и надежного управления жидкостями в промышленных системах высокого давления.'
+  },
+  { 
+    name_en: 'Flexible Flange Coupling', 
+    name_az: 'Elastik Flans Muftası', 
+    name_ru: 'Эластичная Фланцевая Муфта', 
+    part_number: 'FFC-60',
+    description_en: 'Precision-machined flexible flange coupling for absorbing shock loads and compensating for shaft misalignment.',
+    description_az: 'Zərbə yüklərini udmaq və millər arası uyğunsuzluğu kompensasiya etmək üçün dəqiq işlənmiş elastik flans muftası.',
+    description_ru: 'Точно обработанная эластичная фланцевая муфта для поглощения ударных нагрузок и компенсации несоосности валов.'
+  },
+  { 
+    name_en: 'Heavy Machinery Filter Kit', 
+    name_az: 'Ağır Texnika Filtr Dəsti', 
+    name_ru: 'Комплект Фильтров Спецтехники', 
+    part_number: 'FK-COMBO-5',
+    description_en: 'Comprehensive equipment filter kit including oil, air, and hydraulic filters to ensure absolute system cleanliness.',
+    description_az: 'Sistemin mütləq təmizliyini təmin etmək üçün yağ, hava və hidravlik filtrləri özündə birləşdirən kompleks avadanlıq filtr dəsti.',
+    description_ru: 'Комплексный набор фильтров для оборудования, включающий масляный, воздушный и гидравлический фильтры для обеспечения абсолютной чистоты системы.'
+  },
+  { 
+    name_en: 'Heavy Duty Universal Joint', 
+    name_az: 'Gücləndirilmiş Kardan Oynağı (Krestovina)', 
+    name_ru: 'Усиленная Крестовина Карданного Вала', 
+    part_number: 'UJ-40X',
+    description_en: 'High-strength forged universal joint designed to transmit rotary motion under extreme torque conditions.',
+    description_az: 'Ekstremal fırlanma anı şəraitində hərəkəti ötürmək üçün dizayn edilmiş yüksək möhkəmlikli döymə kardan krestovinası.',
+    description_ru: 'Высокопрочная кованая крестовина карданного вала, предназначенная для передачи вращательного движения в условиях экстремального крутящего момента.'
+  },
+  { 
+    name_en: 'Industrial Clutch Kit', 
+    name_az: 'Sənaye Maşınları üçün Mufta (Səbət) Dəsti', 
+    name_ru: 'Комплект Сцепления Промышленных Машин', 
+    part_number: 'CLK-2500',
+    description_en: 'Complete heavy-duty clutch kit providing smooth engagement and superior friction life for industrial transmissions.',
+    description_az: 'Sənaye transmissiyaları üçün səlis qoşulma və üstün sürtünmə ömrü təmin edən gücləndirilmiş tam mufta dəsti.',
+    description_ru: 'Полный усиленный комплект сцепления, обеспечивающий плавное включение и превосходный срок службы для промышленных трансмиссий.'
+  },
+  { 
+    name_en: 'Double Acting Hydraulic Cylinder', 
+    name_az: 'İki Tərəfli Hidravlik Silindr', 
+    name_ru: 'Гидроцилиндр Двустороннего Действия', 
+    part_number: 'DAHC-120-800',
+    description_en: 'Powerful double acting hydraulic cylinder designed to handle massive lifting and pushing capacities.',
+    description_az: 'Kütləvi qaldırma və itələmə güclərinin öhdəsindən gəlmək üçün dizayn edilmiş güclü ikitərəfli hidravlik silindr.',
+    description_ru: 'Мощный гидроцилиндр двустороннего действия, рассчитанный на огромные подъемные и толкающие усилия.'
+  },
+  { 
+    name_en: 'High Pressure Hydraulic Pump', 
+    name_az: 'Yüksək Təzyiqli Hidravlik Nasos', 
+    name_ru: 'Гидравлический Насос Высокого Давления', 
+    part_number: 'HPP-G4',
+    description_en: 'Efficient and durable high pressure hydraulic pump to supply consistent operational fluid power.',
+    description_az: 'Ardıcıl hidravlik güc təmin etmək üçün səmərəli və dözümlü yüksək təzyiqli hidravlik nasos.',
+    description_ru: 'Эффективный и долговечный гидравлический насос высокого давления для обеспечения стабильной гидравлической мощности.'
+  }
 ];
 
 async function seed() {
@@ -73,14 +135,11 @@ async function seed() {
   const catId = categories && categories.length > 0 ? categories[0].id : null;
   const brandId = brands && brands.length > 0 ? brands[0].id : null;
 
-  const allParts = [...oilParts, ...heavyParts].map((p, i) => {
+  const allParts = mockParts.map((p, i) => {
     const slug = p.name_en.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-' + Math.floor(Math.random() * 1000);
     return {
       ...p,
       slug,
-      description_en: 'Premium quality ' + p.name_en + ' designed for maximum durability and efficiency in harsh environments.',
-      description_az: 'Sərt şərtlərdə maksimum dözümlülük və səmərəlilik üçün dizayn edilmiş yüksək keyfiyyətli ' + p.name_az + '.',
-      description_ru: 'Высококачественный ' + p.name_ru + ' предназначенный для максимальной долговечности и эффективности в суровых условиях.',
       short_description_en: 'High-quality replacement part.',
       short_description_az: 'Yüksək keyfiyyətli ehtiyat hissəsi.',
       short_description_ru: 'Высококачественная запасная часть.',
