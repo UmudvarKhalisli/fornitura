@@ -38,17 +38,23 @@ export async function POST(request: Request) {
       message: sanitizeInput(parsed.data.message),
     };
 
+    console.log('Sanitized contact data:', sanitized);
+
     // Insert to database
     const supabase = createAdminClient();
-    const { error } = await supabase.from('messages').insert(sanitized);
+    const { error: dbError } = await supabase.from('messages').insert(sanitized);
 
-    if (error) throw error;
+    if (dbError) {
+      console.error('Database insert error:', dbError);
+      throw dbError;
+    }
 
     // Send email notification via Resend
     try {
-      await resend.emails.send({
+      console.log('Attempting to send email via Resend...');
+      const emailResult = await resend.emails.send({
         from: 'Fornitura Contact <onboarding@resend.dev>',
-        to: 'forniturammc@gmail.com',
+        to: process.env.CONTACT_EMAIL_TO || 'forniturammc@gmail.com',
         subject: `Yeni müraciət: ${sanitized.subject}`,
         html: `
           <h3>Yeni əlaqə müraciəti</h3>
@@ -60,9 +66,9 @@ export async function POST(request: Request) {
           <p>${sanitized.message}</p>
         `,
       });
+      console.log('Resend API result:', emailResult);
     } catch (emailError) {
       console.error('Email sending failed:', emailError);
-      // We don't throw here to ensure the user gets a success response since DB insert succeeded
     }
 
     return NextResponse.json({ success: true });
