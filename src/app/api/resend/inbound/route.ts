@@ -9,43 +9,56 @@ export async function POST(request: Request) {
     const payload = await request.json();
     
     // Resend webhook event-lərini loqla
-    console.log('RESEND_INBOUND_WEBHOOK_RECEIVED:', JSON.stringify(payload, null, 2));
+    console.log('RESEND_WEBHOOK_RECEIVED:', JSON.stringify(payload, null, 2));
+
+    const eventType = payload?.type;
+    console.log('RESEND_EMAIL_EVENT_TYPE:', eventType);
 
     // Webhook event tipini yoxla
-    if (payload.type !== 'email.received') {
-      return NextResponse.json({ success: true, message: 'Ignored non-email event' });
+    if (eventType !== 'email.received') {
+      return NextResponse.json({ success: true, ignored: true });
+    }
+
+    if (!process.env.RESEND_API_KEY) {
+      throw new Error('RESEND_API_KEY is missing');
     }
 
     const emailData = payload.data;
-    const { from, to, subject, text, html, created_at } = emailData;
+    const fromAddress = emailData?.from || 'Naməlum';
+    const toAddress = Array.isArray(emailData?.to) ? emailData.to.join(', ') : (emailData?.to || 'info@fornitura.az');
+    const originalSubject = emailData?.subject || '(Mövzu yoxdur)';
+    const createdAt = emailData?.created_at || new Date().toISOString();
+    const contentHtml = emailData?.html || (emailData?.text ? `<pre style="white-space: pre-wrap;">${emailData.text}</pre>` : '<p>Mesaj mətni tapılmadı.</p>');
 
     // Email-i yönləndir
-    const { data, error } = await resend.emails.send({
+    const forwardResult = await resend.emails.send({
       from: 'Fornitura <info@fornitura.az>',
       to: FORWARD_TO,
-      subject: `Yeni email: ${subject || '(Mövzu yoxdur)'}`,
+      subject: `Yeni email: ${originalSubject}`,
       html: `
         <div style="font-family: sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #eee; padding: 20px; border-radius: 10px;">
           <h2 style="color: #000; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px;">Yeni Daxil Olan Email</h2>
-          <p><strong>Göndərən:</strong> ${from}</p>
-          <p><strong>Alan:</strong> ${Array.isArray(to) ? to.join(', ') : to}</p>
-          <p><strong>Mövzu:</strong> ${subject}</p>
-          <p><strong>Tarix:</strong> ${new Date(created_at).toLocaleString('az-AZ')}</p>
+          <p><strong>Göndərən:</strong> ${fromAddress}</p>
+          <p><strong>Alan:</strong> ${toAddress}</p>
+          <p><strong>Mövzu:</strong> ${originalSubject}</p>
+          <p><strong>Tarix:</strong> ${new Date(createdAt).toLocaleString('az-AZ')}</p>
           <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
           <div style="background: #f9f9f9; padding: 15px; border-radius: 5px;">
-            <strong>Mesaj mətni:</strong><br />
-            ${html || `<pre style="white-space: pre-wrap;">${text}</pre>`}
+            <strong>Mesaj:</strong><br />
+            ${contentHtml}
           </div>
         </div>
       `,
     });
 
-    if (error) {
-      console.error('RESEND_FORWARDING_ERROR:', error);
-      return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    console.log('RESEND_FORWARD_RESULT:', forwardResult);
+
+    if (forwardResult.error) {
+      console.error('RESEND_FORWARDING_ERROR:', forwardResult.error);
+      return NextResponse.json({ success: false, error: forwardResult.error.message }, { status: 500 });
     }
 
-    return NextResponse.json({ success: true, id: data?.id });
+    return NextResponse.json({ success: true });
   } catch (error: any) {
     console.error('RESEND_INBOUND_GENERAL_ERROR:', error);
     return NextResponse.json(
