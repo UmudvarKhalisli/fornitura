@@ -40,7 +40,7 @@ export function RepairIntro({ dictionary, locale, settings }: RepairIntroProps) 
                 {dictionary.repair_service.learn_more}
               </Link>
               <a
-                href={`https://wa.me/${settings?.whatsapp_number?.replace(/[^\d]/g, '') || ''}`}
+                href={`https://wa.me/${(settings?.whatsapp_number || '994502107920').replace(/[^\d]/g, '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-3.5 border-2 border-light-gray text-deep-charcoal font-medium rounded-md hover:border-deep-charcoal transition-all duration-300 text-sm bg-white"

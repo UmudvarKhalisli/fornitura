@@ -138,7 +138,7 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
               {true && (
                 <li>
                   <a
-                    href={`https://wa.me/${(settings?.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP || '').replace(/[^\d]/g, '')}`}
+                    href={`https://wa.me/${(settings?.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP || '994502107920').replace(/[^\d]/g, '')}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-sm text-metallic-silver hover:text-[#25D366] transition-colors group"
@@ -176,7 +176,7 @@ export function Footer({ locale, dictionary, settings }: FooterProps) {
                 </a>
               )}
               {true && (
-                <a href={`https://wa.me/${(settings?.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP || "").replace(/[^\\d]/g, "")}?text=${encodeURIComponent("Salam! Fornitura.az saytından yazıram. Ehtiyat hissələri və servis xidmətləri barədə məlumat almaq istəyirdim.")}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-dark-graphite rounded-lg flex items-center justify-center hover:bg-muted-gold hover:text-deep-charcoal transition-all hover:-translate-y-1 shadow-lg" aria-label="Youtube">
+                <a href={`https://wa.me/${(settings?.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP || "994502107920").replace(/[^\d]/g, "")}?text=${encodeURIComponent("Salam! Fornitura.az saytından yazıram. Ehtiyat hissələri və servis xidmətləri barədə məlumat almaq istəyirdim.")}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-dark-graphite rounded-lg flex items-center justify-center hover:bg-muted-gold hover:text-deep-charcoal transition-all hover:-translate-y-1 shadow-lg" aria-label="Youtube">
                   <OfficialWhatsAppIcon className="w-5 h-5" />
                 </a>
               )}

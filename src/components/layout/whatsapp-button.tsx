@@ -18,7 +18,7 @@ export function WhatsAppButton({
   label,
   className,
 }: WhatsAppButtonProps) {
-  const url = `https://wa.me/${phone.replace(/[^\d]/g, '')}?text=${encodeURIComponent(message)}`;
+  const url = `https://wa.me/${(phone || '994502107920').replace(/[^\d]/g, '') || '994502107920'}?text=${encodeURIComponent(message)}`;
 
   if (variant === 'floating') {
     return (

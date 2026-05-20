@@ -20,6 +20,6 @@ export function buildWhatsAppMessage(params: WhatsAppMessageParams): string {
 }
 
 export function getWhatsAppUrl(phone: string, message: string): string {
-  const clean = phone.replace(/[^\d]/g, '');
-  return `https://wa.me/${clean}?text=${message}`;
+  const clean = (phone || '994502107920').replace(/[^\d]/g, '');
+  return `https://wa.me/${clean || '994502107920'}?text=${message}`;
 }

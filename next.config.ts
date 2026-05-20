@@ -30,6 +30,20 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: '/az/spare-parts',
+        destination: '/az/ehtiyat-hisseleri',
+        permanent: true,
+      },
+      {
+        source: '/az/product/:slug',
+        destination: '/az/mehsul/:slug',
+        permanent: true,
+      },
+    ];
+  },
   experimental: {
     serverActions: {
       bodySizeLimit: '5mb',

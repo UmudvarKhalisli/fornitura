@@ -1,4 +1,6 @@
 import { SITE_URL } from '@/lib/seo/constants';
+import { getLocalizedPath } from '@/lib/utils/routes';
+import { Locale } from '@/lib/seo/constants';
 import { JsonLd } from './json-ld';
 
 interface BreadcrumbItem {
@@ -19,7 +21,7 @@ export function BreadcrumbSchema({ items, locale }: BreadcrumbSchemaProps) {
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: `${SITE_URL}/${locale}${item.path}`,
+      item: `${SITE_URL}${item.path === '' ? `/${locale}` : getLocalizedPath(item.path, locale as Locale)}`,
     })),
   };
 

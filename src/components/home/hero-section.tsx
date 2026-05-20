@@ -56,7 +56,7 @@ export function HeroSection({ dictionary, locale, settings }: HeroSectionProps) 
               {dictionary.hero.cta_primary}
             </Link>
             <a
-              href={`https://wa.me/${settings?.whatsapp_number?.replace(/[^\d]/g, '') || ''}`}
+              href={`https://wa.me/${(settings?.whatsapp_number || '994502107920').replace(/[^\d]/g, '')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-3.5 border border-white/20 text-white font-medium rounded-md hover:bg-white/10 transition-colors text-sm md:text-base"

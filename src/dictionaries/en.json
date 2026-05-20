@@ -165,7 +165,9 @@
     "contact": "Contact Information",
     "follow_us": "Follow Us",
     "working_hours": "Working Hours",
-    "working_hours_text": "Monday - Saturday: 09:00 - 18:00"
+    "working_hours_text": "Monday - Saturday: 09:00 - 18:00",
+    "privacy": "Privacy policy",
+    "terms": "Terms of service"
   },
   "common": {
     "loading": "Loading...",

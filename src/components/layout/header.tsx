@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { Menu, X, Phone, MessageCircle } from 'lucide-react';
 import { LanguageSwitcher } from './language-switcher';
 import { OfficialWhatsAppIcon } from '@/components/shared/icons';
+import { getLocalizedPath } from '@/lib/utils/routes';
+import { Locale } from '@/lib/seo/constants';
 
 const InstagramIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -98,7 +100,7 @@ export function Header({ locale, dictionary, settings }: HeaderProps) {
           {/* Right side */}
           <div className="flex items-center gap-3">
             <a
-              href={`tel:+${settings?.phone_number || process.env.NEXT_PUBLIC_PHONE || ''}`}
+              href={`tel:${settings?.phone_number || process.env.NEXT_PUBLIC_PHONE || '+994502107920'}`}
               className="hidden md:flex items-center gap-1.5 text-sm text-medium-gray hover:text-deep-charcoal transition-colors"
             >
               <Phone className="w-4 h-4" />
@@ -149,7 +151,7 @@ export function Header({ locale, dictionary, settings }: HeaderProps) {
             );
           })}
           <a
-            href={`tel:+${settings?.phone_number || process.env.NEXT_PUBLIC_PHONE || ''}`}
+            href={`tel:${settings?.phone_number || process.env.NEXT_PUBLIC_PHONE || '+994502107920'}`}
             className="flex items-center gap-2 px-3 py-2.5 text-base text-medium-gray hover:text-deep-charcoal"
           >
             <Phone className="w-4 h-4" />
@@ -168,7 +170,7 @@ export function Header({ locale, dictionary, settings }: HeaderProps) {
             <a href={settings?.tiktok_url || "https://www.tiktok.com/@fornitura.az?_r=1&_t=ZS-96P9wpY1fBA"} target="_blank" rel="noopener noreferrer" className="p-2 rounded-md hover:text-deep-charcoal hover:bg-light-gray transition-colors" aria-label="TikTok">
               <TiktokIcon className="w-5 h-5" />
             </a>
-            <a href={`https://wa.me/${(settings?.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP || "").replace(/[^\d]/g, "")}?text=${encodeURIComponent("Salam, məhsul haqqında məlumat almaq istəyirəm")}`} target="_blank" rel="noopener noreferrer" className="p-2 rounded-md hover:text-deep-charcoal hover:bg-light-gray transition-colors" aria-label="WhatsApp">
+            <a href={`https://wa.me/${(settings?.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP || "994502107920").replace(/[^\d]/g, "")}?text=${encodeURIComponent("Salam, məhsul haqqında məlumat almaq istəyirəm")}`} target="_blank" rel="noopener noreferrer" className="p-2 rounded-md hover:text-deep-charcoal hover:bg-light-gray transition-colors" aria-label="WhatsApp">
               <OfficialWhatsAppIcon className="w-5 h-5" />
             </a>
           </div>
@@ -178,10 +180,10 @@ export function Header({ locale, dictionary, settings }: HeaderProps) {
           </div>
 
           <div className="flex flex-col px-3 gap-3 text-sm text-medium-gray pb-6">
-            <Link prefetch={true} href={`/${locale}/privacy-policy`} onClick={() => setMobileOpen(false)} className="hover:text-deep-charcoal transition-colors">
+            <Link prefetch={true} href={getLocalizedPath('privacy-policy', locale as Locale)} onClick={() => setMobileOpen(false)} className="hover:text-deep-charcoal transition-colors">
               {dictionary.footer?.privacy || "Məxfilik siyasəti"}
             </Link>
-            <Link prefetch={true} href={`/${locale}/terms-of-service`} onClick={() => setMobileOpen(false)} className="hover:text-deep-charcoal transition-colors">
+            <Link prefetch={true} href={getLocalizedPath('terms-of-service', locale as Locale)} onClick={() => setMobileOpen(false)} className="hover:text-deep-charcoal transition-colors">
               {dictionary.footer?.terms || "İstifadə şərtləri"}
             </Link>
           </div>        </nav>

@@ -24,14 +24,17 @@ export async function generateMetadata({
   const product = await getProductBySlug(productSlug);
   const dictionary = await getDictionary(locale);
   const name = product ? (getLocalizedField(product, 'name', locale as Locale) as string) : '';
+  const categoryName = product?.category ? (getLocalizedField(product.category, 'name', locale as Locale) as string) : '';
+  
+  const seoDesc = product?.[`seo_description_${locale}` as keyof typeof product]
+    ? (product[`seo_description_${locale}` as keyof typeof product] as string)
+    : `Fornitura-da ${name} sifariş edin. Ağır texnika ehtiyat hissələri üçün etibarlı mənbə. ${categoryName}`;
 
   return generateSEOMetadata({
     title: product?.[`seo_title_${locale}` as keyof typeof product]
       ? (product[`seo_title_${locale}` as keyof typeof product] as string)
       : `${name} - ${dictionary.seo.catalog_title}`,
-    description: product?.[`seo_description_${locale}` as keyof typeof product]
-      ? (product[`seo_description_${locale}` as keyof typeof product] as string)
-      : product?.[`description_${locale}` as keyof typeof product] as string,
+    description: seoDesc,
     locale: locale as Locale,
     path: `/product/${productSlug}`,
     image: product?.main_image || undefined,
@@ -107,7 +110,7 @@ export default async function ProductDetailPage({
       <section className="py-10 md:py-16 bg-white">
         <Container>
           <Link
-            href={`/${locale}/spare-parts`}
+            href={getLocalizedPath('/spare-parts', locale as Locale)}
             className="inline-flex items-center gap-1.5 text-sm text-medium-gray hover:text-deep-charcoal transition-colors mb-6"
           >
             <ArrowLeft className="w-4 h-4" />
