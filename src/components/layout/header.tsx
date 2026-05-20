@@ -36,8 +36,6 @@ const WhatsappIcon = ({ className }: { className?: string }) => (
 );
 
 import { cn } from '@/lib/utils';
-import { getLocalizedPath } from '@/lib/utils/routes';
-import type { Locale } from '@/lib/seo/constants';
 
 interface HeaderProps {
   locale: string;
