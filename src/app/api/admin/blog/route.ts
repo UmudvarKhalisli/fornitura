@@ -1,7 +1,29 @@
 import { NextResponse } from 'next/server';
 import { getAdminUserId } from '@/lib/supabase/admin';
 import { blogPostSchema } from '@/lib/validation/schemas';
-import { createPost, updatePost } from '@/lib/db/queries/blog';
+import { createPost, updatePost, getPostById, getAllPosts } from '@/lib/db/queries/blog';
+
+export async function GET(request: Request) {
+  const adminId = await getAdminUserId();
+  if (!adminId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get('id');
+
+  try {
+    if (id) {
+      const post = await getPostById(id);
+      if (!post) return NextResponse.json({ error: 'Post not found' }, { status: 404 });
+      return NextResponse.json(post);
+    } else {
+      const posts = await getAllPosts();
+      return NextResponse.json(posts);
+    }
+  } catch (error) {
+    console.error('Get post(s) error:', error);
+    return NextResponse.json({ error: 'Failed to fetch' }, { status: 500 });
+  }
+}
 
 export async function POST(request: Request) {
   const adminId = await getAdminUserId();

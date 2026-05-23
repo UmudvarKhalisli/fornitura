@@ -11,12 +11,14 @@ export default function EditBlogPostPage() {
   const params = useParams();
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
+  const [uploadingImage, setUploadingImage] = useState(false);
   const [form, setForm] = useState<any>({
     title_az: '', title_en: '', title_ru: '',
     slug_az: '', slug_en: '', slug_ru: '',
     content_az: '', content_en: '', content_ru: '',
     excerpt_az: '', excerpt_en: '', excerpt_ru: '',
     tags: '',
+    image: '',
     is_published: false,
   });
 
@@ -43,8 +45,8 @@ export default function EditBlogPostPage() {
         body: JSON.stringify({
           id: params.id,
           ...form,
-          tags: form.tags.split(',').map((t: string) => t.trim()).filter(Boolean),
-          published_at: form.is_published ? new Date().toISOString() : null,
+          tags: typeof form.tags === 'string' ? form.tags.split(',').map((t: string) => t.trim()).filter(Boolean) : form.tags,
+          published_at: form.is_published ? (form.published_at || new Date().toISOString()) : null,
         }),
       });
       if (!res.ok) throw new Error('Failed');
@@ -53,6 +55,31 @@ export default function EditBlogPostPage() {
       alert('Error updating post');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingImage(true);
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('folder', 'fornitura/blog');
+
+    try {
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Upload failed');
+      
+      setForm((prev: any) => ({ ...prev, image: data.url }));
+    } catch (err: any) {
+      alert(err.message || 'Error uploading image');
+    } finally {
+      setUploadingImage(false);
     }
   };
 
@@ -98,6 +125,33 @@ export default function EditBlogPostPage() {
           <label className="text-sm font-medium">Tags</label>
           <Input value={form.tags} onChange={(e) => setForm({...form, tags: e.target.value})} />
         </div>
+
+        {/* Image Upload */}
+        <div className="space-y-4 border p-4 rounded-lg bg-light-gray/5">
+          <label className="text-sm font-medium">Cover Image / Şəkil</label>
+          {form.image && (
+            <div className="mb-4">
+              <img src={form.image} alt="Blog image" className="h-32 object-contain rounded-md" />
+            </div>
+          )}
+          <div className="flex items-center gap-4">
+            <Input 
+              type="file" 
+              accept="image/jpeg, image/png, image/webp, image/avif" 
+              onChange={handleImageUpload} 
+              disabled={uploadingImage}
+              className="max-w-sm"
+            />
+            {uploadingImage && <span className="text-sm text-yellow-600">Uploading...</span>}
+          </div>
+          <Input 
+            type="text" 
+            placeholder="Or enter image URL here directly..." 
+            value={form.image} 
+            onChange={(e) => setForm({...form, image: e.target.value})} 
+          />
+        </div>
+
         <div className="grid grid-cols-3 gap-4">
           <div>
             <label className="text-sm font-medium">Content (AZ)</label>

@@ -9,14 +9,41 @@ import { Textarea } from '@/components/ui/textarea';
 export default function NewBlogPostPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
   const [form, setForm] = useState({
     title_az: '', title_en: '', title_ru: '',
     slug_az: '', slug_en: '', slug_ru: '',
     content_az: '', content_en: '', content_ru: '',
     excerpt_az: '', excerpt_en: '', excerpt_ru: '',
     tags: '',
+    image: '',
     is_published: false,
   });
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingImage(true);
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('folder', 'fornitura/blog');
+
+    try {
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Upload failed');
+      
+      setForm((prev) => ({ ...prev, image: data.url }));
+    } catch (err: any) {
+      alert(err.message || 'Error uploading image');
+    } finally {
+      setUploadingImage(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -84,6 +111,32 @@ export default function NewBlogPostPage() {
         <div>
           <label className="text-sm font-medium">Tags (comma-separated)</label>
           <Input value={form.tags} onChange={(e) => setForm({...form, tags: e.target.value})} placeholder="excavator, maintenance, tips" />
+        </div>
+
+        {/* Image Upload */}
+        <div className="space-y-4 border p-4 rounded-lg bg-light-gray/5">
+          <label className="text-sm font-medium">Cover Image / Şəkil</label>
+          {form.image && (
+            <div className="mb-4">
+              <img src={form.image} alt="Blog image" className="h-32 object-contain rounded-md" />
+            </div>
+          )}
+          <div className="flex items-center gap-4">
+            <Input 
+              type="file" 
+              accept="image/jpeg, image/png, image/webp, image/avif" 
+              onChange={handleImageUpload} 
+              disabled={uploadingImage}
+              className="max-w-sm"
+            />
+            {uploadingImage && <span className="text-sm text-yellow-600">Uploading...</span>}
+          </div>
+          <Input 
+            type="text" 
+            placeholder="Or enter image URL here directly..." 
+            value={form.image} 
+            onChange={(e) => setForm({...form, image: e.target.value})} 
+          />
         </div>
 
         <div className="grid grid-cols-3 gap-4">
