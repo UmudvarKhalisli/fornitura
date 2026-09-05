@@ -13,6 +13,5 @@ export function MaintenancePage() {
         </p>
       </section>
     </main>
-    </div>
   );
 }
