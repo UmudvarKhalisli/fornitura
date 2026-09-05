@@ -24,14 +24,8 @@ export function middleware(request: NextRequest) {
   );
 
   if (pathLocale) {
-    // Keep the public site on the Coming Soon page until launch.
-    const pathSegments = pathname.split('/').filter(Boolean);
-    if (pathSegments.length > 1) {
-      return NextResponse.redirect(new URL(`/${pathLocale}`, request.url));
-    }
-
     // Check if we need to rewrite a localized path to an internal path
-    const segments = pathSegments;
+    const segments = pathname.split('/').filter(Boolean);
     const locale = segments[0] as Locale;
     const remainingSegments = segments.slice(1);
 
